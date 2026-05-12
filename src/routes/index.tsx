@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Leaf, Users } from "lucide-react";
-import heroImg from "@/assets/op-stockpile.jpg";
-import excavator from "@/assets/op-excavator.jpg";
-import port from "@/assets/op-port.jpg";
+import heroImg from "@docs/op-stockpile.jpg";
+import excavator from "@docs/op-excavator.jpg";
+import port from "@docs/op-port.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

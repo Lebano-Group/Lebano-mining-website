@@ -11,6 +11,8 @@ import {
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -75,10 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lebano Mining — Coal Mining Excellence in South Africa" },
-      { name: "description", content: "Lebano Mining is a South African coal mining and bulk commodities logistics company delivering excellence from mine to port since 2012." },
+      {
+        name: "description",
+        content:
+          "Lebano Mining is a South African coal mining and bulk commodities logistics company delivering excellence from mine to port since 2012.",
+      },
       { name: "author", content: "Lebano Mining (Pty) Ltd" },
       { property: "og:title", content: "Lebano Mining — Coal Mining Excellence in South Africa" },
-      { property: "og:description", content: "Exploration, mining and end-to-end bulk commodity logistics across South Africa." },
+      {
+        property: "og:description",
+        content: "Exploration, mining and end-to-end bulk commodity logistics across South Africa.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@LebanoMining" },
@@ -92,7 +101,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -121,9 +133,13 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col">
+        <ScrollToTopOnNavigate />
         <SiteHeader />
-        <main className="flex-1"><Outlet /></main>
+        <main className="flex-1">
+          <Outlet />
+        </main>
         <SiteFooter />
+        <Toaster />
       </div>
     </QueryClientProvider>
   );
