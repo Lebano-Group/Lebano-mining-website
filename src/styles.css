@@ -110,4 +110,52 @@
     pointer-events: none;
     mix-blend-mode: overlay;
   }
+
+  @keyframes hero-headline-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .hero-headline-track {
+    animation: hero-headline-marquee 36s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline-track {
+      animation: none;
+      transform: none;
+    }
+    .hero-marquee-duplicate {
+      display: none;
+    }
+  }
+
+  /* Who we are — industrial / open-pit inspired frame (keeps gritty mining feel) */
+  .mining-photo-shell {
+    filter: drop-shadow(0 22px 40px oklch(0 0 0 / 0.55));
+  }
+
+  .mining-photo-frame {
+    padding: 3px;
+    background: linear-gradient(
+      145deg,
+      oklch(0.78 0.15 78 / 0.95),
+      oklch(0.55 0.11 62 / 0.55) 45%,
+      oklch(0.35 0.06 55 / 0.85) 100%
+    );
+    clip-path: polygon(0 9%, 11% 0, 100% 0, 100% 91%, 89% 100%, 0 100%);
+  }
+
+  .mining-photo-frame__inner {
+    overflow: hidden;
+    clip-path: polygon(0 9%, 11% 0, 100% 0, 100% 91%, 89% 100%, 0 100%);
+    box-shadow: inset 0 0 0 1px oklch(0.97 0.01 80 / 0.08);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mining-photo-shell {
+      filter: drop-shadow(0 12px 24px oklch(0 0 0 / 0.4));
+    }
+  }
 }

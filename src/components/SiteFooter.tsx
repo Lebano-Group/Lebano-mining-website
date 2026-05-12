@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "../../docs/logo.jpg";
+
+const footerLinkClass =
+  "inline-block transition-all duration-200 ease-out hover:translate-x-1 hover:text-primary";
 
 export function SiteFooter() {
   return (
@@ -8,7 +11,11 @@ export function SiteFooter() {
       <div className="container-narrow py-16 grid gap-12 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="Lebano Mining" className="h-12 w-12 object-contain rounded bg-white/95 p-1" />
+            <img
+              src={logo}
+              alt="Lebano Mining"
+              className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-primary/30 ring-offset-2 ring-offset-background"
+            />
             <div>
               <div className="font-display tracking-wider">LEBANO MINING</div>
               <div className="text-[10px] tracking-[0.25em] text-primary">EST. 2012</div>
@@ -21,11 +28,11 @@ export function SiteFooter() {
         <div>
           <h4 className="text-sm uppercase tracking-[0.2em] text-primary mb-4">Explore</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/about" className="hover:text-primary">About Us</Link></li>
-            <li><Link to="/services" className="hover:text-primary">Services</Link></li>
-            <li><Link to="/team" className="hover:text-primary">Leadership</Link></li>
-            <li><Link to="/gallery" className="hover:text-primary">Gallery</Link></li>
-            <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+            <li><Link to="/about" className={footerLinkClass}>About Us</Link></li>
+            <li><Link to="/services" className={footerLinkClass}>Services</Link></li>
+            <li><Link to="/team" className={footerLinkClass}>Leadership</Link></li>
+            <li><Link to="/gallery" className={footerLinkClass}>Gallery</Link></li>
+            <li><Link to="/contact" className={footerLinkClass}>Contact</Link></li>
           </ul>
         </div>
         <div>
@@ -41,7 +48,6 @@ export function SiteFooter() {
           <h4 className="text-sm uppercase tracking-[0.2em] text-primary mb-4">Registered</h4>
           <p className="text-sm text-muted-foreground leading-relaxed">
             LEBANO MINING (PTY) LTD<br />
-            Reg. No. K2012223665<br />
             Incorporated 14 December 2012<br />
             Thornhill Office Park, Waterfall, Gauteng
           </p>
