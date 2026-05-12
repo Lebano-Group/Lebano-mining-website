@@ -29,17 +29,17 @@ export const Route = createFileRoute("/gallery")({
 
 const photos = [
   { src: lebano41, label: "Coal Yard Operations", region: "Operations" },
-  { src: lebano37, label: "Fleet — Bell B40D ADTs", region: "Logistics" },
-  { src: lebano43, label: "Loader & Stockpile", region: "Richards Bay" },
-  { src: lebano36, label: "Articulated Fleet On Site", region: "Operations" },
-  { src: lebano40, label: "Port & Cranes — Transnet", region: "Richards Bay" },
-  { src: lebano44, label: "Port Bulk Handling", region: "Richards Bay" },
-  { src: lebano38, label: "Branded Haul Truck — ADT #240", region: "Fleet" },
-  { src: excavator, label: "Bulk handling — Richards Bay", region: "Richards Bay" },
-  { src: team, label: "Field Team On-Site", region: "Operations" },
-  { src: fleet, label: "Heavy Haul Fleet", region: "Logistics" },
-  { src: stockpile, label: "Coal Stockpile", region: "Richards Bay Terminal" },
-  { src: port, label: "Port Operations", region: "Richards Bay" },
+  { src: lebano37, label: "Fleet — Bell B40D ADTs"},
+  { src: lebano43, label: "Loader & Stockpile"},
+  { src: lebano36, label: "Articulated Fleet On Site",},
+  { src: lebano40, label: "Port & Cranes — Transnet"},
+  { src: lebano44, label: "Port Bulk Handling", region: "Operations" },
+  { src: lebano38, label: "Branded Haul Truck — ADT #240"},
+  { src: excavator, label: "Bulk handling — Richards Bay",},
+  { src: team, label: "Field Team On-Site"},
+  { src: fleet, label: "Heavy Haul Fleet"},
+  { src: stockpile, label: "Coal Stockpile"},
+  { src: port, label: "Port Operations"},
 ];
 
 function Gallery() {
