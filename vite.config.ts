@@ -4,11 +4,19 @@ import { fileURLToPath } from "node:url";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/** Vercel sets this during CI builds; Nitro emits the serverless output Vercel expects. */
+const isVercel = process.env.VERCEL === "1";
+
+const tanstackPlugins = tanstackStart({
+  server: { entry: "server" },
+});
 
 // Custom worker entry (SSR error wrapper). wrangler.jsonc `main` must match this build output.
 export default defineConfig({
@@ -25,10 +33,9 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tsconfigPaths(),
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
-    ...tanstackStart({
-      server: { entry: "server" },
-    }),
+    ...(isVercel
+      ? [...tanstackPlugins, nitro()]
+      : [cloudflare({ viteEnvironment: { name: "ssr" } }), ...tanstackPlugins]),
     viteReact(),
   ],
 });
