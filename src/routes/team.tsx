@@ -27,7 +27,7 @@ const members = [
     facts: ["Founded Lebano Mining in 2012", "20+ years in mining & commodities"],
     bio: [
       "Mr. Mutavhatsindi is the founder and chairman of the Lebano Mining group of companies. With over 20 years of sector experience, his entrepreneurial approach has built a significant portfolio across both precious metals and bulk commodities asset classes in South Africa.",
-      "Having entered logistics by transporting domestic thermal coal for ESKOM, today Lebano operates as a significant end-to-end logistics solutions provider from mine to port, including the export of dry bulk commodities through the Richards Bay terminal.",
+      "Having entered logistics by transporting domestic thermal coal for ESKOM, today Lebano operates as a significant logistics solutions provider focused on dry bulk export and terminal coordination through the Richards Bay terminal.",
       "Starting from humble beginnings, Mr. Mutavhatsindi remains committed to transforming the South African mining landscape by creating opportunities for black industrialists and entrepreneurs while driving socio-economic development.",
     ],
   },

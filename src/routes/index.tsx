@@ -7,11 +7,11 @@ import port from "@docs/op-port.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lebano Mining — Coal Mining Excellence in South Africa" },
+      { title: "Lebano Mining — Bulk Commodity Logistics at Richards Bay" },
       {
         name: "description",
         content:
-          "A decade of unwavering commitment to excellence in coal mining, exploration and bulk commodity logistics.",
+          "Thermal coal and bulk commodity logistics through Richards Bay — domestic supply and export since 2012.",
       },
     ],
   }),
@@ -56,8 +56,9 @@ function Home() {
           </div>
           <HeroMarqueeHeadline />
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            At Lebano Mining we don't just extract coal — we cultivate partnerships and foster progress. A decade of
-            disciplined operations from Mpumalanga to Richards Bay and beyond.
+            At Lebano Mining we cultivate partnerships across the bulk commodity chain — from
+            allocation to export at Richards Bay. Explore what&apos;s possible with a trusted
+            logistics partner.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
@@ -83,8 +84,8 @@ function Home() {
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Who We Are</div>
           <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">A decade of unwavering commitment to excellence</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            As a reputable mining company based in South Africa, Lebano Mining has consistently delivered excellent
-            services, contributing significantly to the energy landscape.
+            As a bulk commodity logistics partner with operations through Richards Bay, Lebano Mining has consistently
+            delivered excellent services, contributing significantly to the energy landscape.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             We continuously invest in research and development, exploring new technologies and methodologies to enhance

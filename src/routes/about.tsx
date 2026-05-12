@@ -10,12 +10,18 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Founded in 2012, Lebano Mining is an emerging South African mining company in exploration, development and bulk commodity logistics.",
+          "Founded in 2012, Lebano Mining delivers thermal coal and bulk commodity logistics through Richards Bay.",
       },
     ],
   }),
   component: About,
 });
+
+const aboutCardMotion =
+  "shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
+
+const foundationCardMotion =
+  "transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_oklch(0.74_0.14_75/0.55)]";
 
 function About() {
   return (
@@ -27,7 +33,7 @@ function About() {
             Progress.
           </>
         }
-        subtitle="An emerging South African mining company focused on exploration, development and the logistics of bulk commodities."
+        subtitle="South African bulk commodity logistics centred on Richards Bay — export coordination and domestic supply."
         image={excavator}
       />
 
@@ -39,9 +45,9 @@ function About() {
           <p>
             Lebano Mining was established 12 years ago by its founder and industrialist,{" "}
             <span className="text-foreground">Livhuwani Mutavhatsindi</span>. Today, Lebano Mining
-            is an emerging South African mining company, with a primary focus on the exploration,
-            development and mining of bulk commodities and associated logistics services across the
-            mining value supply chain.
+            focuses on thermal coal and bulk commodity logistics through its Richards Bay port
+            allocation — coordinating stockpiling, loading and export for domestic and international
+            markets.
           </p>
           <p>
             During the past three years, Lebano Mining has exported over{" "}
@@ -56,13 +62,15 @@ function About() {
             partnerships pivotal to the growth and success of the company.
           </p>
         </div>
-        <aside className="lg:col-span-2 p-8 rounded border border-border bg-card h-fit">
+        <aside
+          className={`lg:col-span-2 p-8 rounded border border-border bg-card h-fit ${aboutCardMotion}`}
+        >
           <h3 className="font-display text-xl uppercase text-primary mb-4">Lebano Operations</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Lebano holds mineral rights and interest in various exploration, development and
-            operational assets for thermal coal production. Assets in development are situated in
-            the <span className="text-foreground">Belfast, Hendrina and Ermelo</span> regions of
-            Mpumalanga, supplying both domestic and export markets.
+            Lebano Mining&apos;s activities are centred on bulk commodity handling and logistics
+            through its <span className="text-foreground">Richards Bay</span> port allocation —
+            coordinating stockpiling, loading and export movements for thermal coal and related bulk
+            products for domestic supply and international markets.
           </p>
         </aside>
       </section>
@@ -92,7 +100,7 @@ function About() {
 
       {/* Core values */}
       <section className="container-narrow py-24">
-        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12 text-center">
+        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12 text-center text-gradient-gold">
           Our Core Values
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
@@ -110,10 +118,7 @@ function About() {
               b: "Key partnerships with industry customers, global commodity trading houses and logistics providers across Africa.",
             },
           ].map((v) => (
-            <div key={v.t} className="p-8 rounded border border-border bg-card">
-              <div className="font-display text-primary text-sm uppercase tracking-[0.2em] mb-3">
-                Value
-              </div>
+            <div key={v.t} className={`p-8 rounded border border-border bg-card ${aboutCardMotion}`}>
               <h3 className="font-display text-2xl uppercase mb-3">{v.t}</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">{v.b}</p>
             </div>
@@ -123,7 +128,9 @@ function About() {
 
       {/* Foundation */}
       <section className="container-narrow pb-24">
-        <div className="rounded-lg p-10 md:p-14 bg-gradient-gold text-primary-foreground shadow-gold">
+        <div
+          className={`rounded-lg p-10 md:p-14 bg-gradient-gold text-primary-foreground shadow-gold ${foundationCardMotion}`}
+        >
           <div className="text-xs uppercase tracking-[0.3em] mb-3 opacity-80">
             Social Responsibility
           </div>

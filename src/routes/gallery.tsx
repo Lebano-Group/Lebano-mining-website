@@ -20,7 +20,7 @@ export const Route = createFileRoute("/gallery")({
       {
         name: "description",
         content:
-          "Photographs from Lebano Mining operations, fleet, port stockpiles and field teams across South Africa.",
+          "Photographs from Lebano Mining bulk handling, fleet and port operations at Richards Bay.",
       },
     ],
   }),
@@ -30,12 +30,12 @@ export const Route = createFileRoute("/gallery")({
 const photos = [
   { src: lebano41, label: "Coal Yard Operations", region: "Operations" },
   { src: lebano37, label: "Fleet — Bell B40D ADTs", region: "Logistics" },
-  { src: lebano43, label: "Loader & Stockpile", region: "Mpumalanga" },
+  { src: lebano43, label: "Loader & Stockpile", region: "Richards Bay" },
   { src: lebano36, label: "Articulated Fleet On Site", region: "Operations" },
   { src: lebano40, label: "Port & Cranes — Transnet", region: "Richards Bay" },
   { src: lebano44, label: "Port Bulk Handling", region: "Richards Bay" },
   { src: lebano38, label: "Branded Haul Truck — ADT #240", region: "Fleet" },
-  { src: excavator, label: "Open-Pit Excavation", region: "Mpumalanga" },
+  { src: excavator, label: "Bulk handling — Richards Bay", region: "Richards Bay" },
   { src: team, label: "Field Team On-Site", region: "Operations" },
   { src: fleet, label: "Heavy Haul Fleet", region: "Logistics" },
   { src: stockpile, label: "Coal Stockpile", region: "Richards Bay Terminal" },
@@ -48,10 +48,10 @@ function Gallery() {
       <PageHeader
         title={
           <>
-            From the <span className="text-gradient-gold">pit face</span> to the port.
+            Richards Bay <span className="text-gradient-gold">operations</span> & logistics.
           </>
         }
-        subtitle="A visual journey through our mining operations, logistics and people."
+        subtitle="A visual journey through our port allocation, fleet and bulk handling at Richards Bay."
         image={lebano41}
       />
 

@@ -45,10 +45,10 @@ export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
               key={item.title}
               type="button"
               onClick={() => !isFront && setActive(idx)}
-              className={`absolute inset-x-0 mx-auto flex w-[min(88vw,700px)] max-w-[700px] flex-col justify-between rounded-2xl border bg-gradient-panel p-7 text-left shadow-elevated transition-all duration-500 ease-out md:h-[300px] md:p-8 ${
+              className={`absolute inset-x-0 mx-auto flex w-[min(88vw,700px)] max-w-[700px] flex-col justify-between overflow-hidden rounded-[1.75rem] border bg-gradient-panel p-7 text-left transition-all duration-500 ease-out md:h-[300px] md:rounded-[2.25rem] md:p-8 ${
                 isFront
-                  ? "border-primary/45 ring-1 ring-primary/30"
-                  : "cursor-pointer border-border/80 hover:border-primary/35"
+                  ? "border-primary/45 shadow-[0_28px_64px_-22px_oklch(0_0_0/0.72),0_0_0_1px_oklch(0.74_0.14_75/0.12),inset_0_1px_0_0_oklch(1_0_0/0.1),inset_0_-28px_56px_-24px_oklch(0_0_0/0.52)] ring-1 ring-primary/25"
+                  : "cursor-pointer border-border/80 shadow-[0_20px_48px_-24px_oklch(0_0_0/0.65),inset_0_1px_0_0_oklch(1_0_0/0.05),inset_0_-22px_48px_-26px_oklch(0_0_0/0.45)] hover:border-primary/35"
               }`}
               style={{
                 zIndex: z,
@@ -59,22 +59,33 @@ export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
               aria-current={isFront ? "true" : undefined}
               aria-label={isFront ? `${item.title} (current)` : `Show ${item.title}`}
             >
-              <div className="flex items-start justify-between gap-6">
-                <div className="inline-flex items-center gap-3 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-primary">
-                  <item.icon className="size-5" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Core Service</span>
+              {/* Curved-surface lighting: specular band + falloff (not a flat fill) */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(120%_85%_at_50%_-8%,oklch(0.97_0.02_80/0.14),transparent_52%),radial-gradient(90%_70%_at_100%_0%,oklch(0.74_0.14_75/0.1),transparent_45%),linear-gradient(165deg,oklch(1_0_0/0.06)_0%,transparent_42%,oklch(0_0_0/0.22)_100%)]"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-[42%] left-1/2 h-[78%] w-[118%] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(closest-side,oklch(0.78_0.12_75/0.18),transparent_100%)] opacity-90 blur-2xl mix-blend-screen"
+              />
+              <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-between">
+                <div className="flex items-start justify-between gap-6">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-primary">
+                    <item.icon className="size-5" />
+                    <span className="text-xs uppercase tracking-[0.24em]">Core Service</span>
+                  </div>
+                  <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground md:inline">
+                    {String(idx + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
+                  </span>
                 </div>
-                <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground md:inline">
-                  {String(idx + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="mt-5">
-                <h3 className="font-display text-2xl uppercase leading-tight md:text-3xl">
-                  {item.title}
-                </h3>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {item.body}
-                </p>
+                <div className="mt-5">
+                  <h3 className="font-display text-2xl uppercase leading-tight md:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {item.body}
+                  </p>
+                </div>
               </div>
             </button>
           );

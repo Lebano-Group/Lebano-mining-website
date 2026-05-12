@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Mineral exploration, mining operations, end-to-end logistics, commodity export and strategic resource planning.",
+          "Richards Bay terminal logistics, bulk commodity export, exploration support and strategic resource planning.",
       },
     ],
   }),
@@ -27,12 +27,12 @@ const items = [
   {
     icon: Mountain,
     title: "Mining Operations",
-    body: "Development and operational mining of thermal coal; mineral rights management.",
+    body: "Thermal coal and bulk handling coordinated through Lebano's Richards Bay port allocation and mineral rights.",
   },
   {
     icon: Truck,
     title: "End-to-End Logistics",
-    body: "Mine to port logistics — transport, rail coordination, and port allocation at Richards Bay.",
+    body: "Richards Bay terminal logistics — transport, rail coordination, and port allocation for bulk export.",
   },
   {
     icon: Globe2,
@@ -67,10 +67,11 @@ function Services() {
       <PageHeader
         title={
           <>
-            Integrated <span className="text-gradient-gold">mine-to-market</span> services.
+            Integrated bulk commodity <span className="text-gradient-gold">services</span> at
+            Richards Bay.
           </>
         }
-        subtitle="From geological assessment to dry bulk export — we operate across the full mining value chain."
+        subtitle="From inbound logistics to vessel loading — coordinated through our Richards Bay allocation."
         image={port}
       />
       <section className="container-narrow py-16 md:py-24">

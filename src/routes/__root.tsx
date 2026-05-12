@@ -80,13 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Lebano Mining is a South African coal mining and bulk commodities logistics company delivering excellence from mine to port since 2012.",
+          "Lebano Mining is a South African bulk commodities logistics company focused on thermal coal and dry bulk export through Richards Bay since 2012.",
       },
       { name: "author", content: "Lebano Mining (Pty) Ltd" },
       { property: "og:title", content: "Lebano Mining — Coal Mining Excellence in South Africa" },
       {
         property: "og:description",
-        content: "Exploration, mining and end-to-end bulk commodity logistics across South Africa.",
+        content:
+          "Bulk commodity logistics and export through Richards Bay — thermal coal and dry bulk for domestic and international markets.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

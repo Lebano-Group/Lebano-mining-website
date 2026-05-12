@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import logo from "@docs/logo.jpg";
+import logo from "@docs/logo.png";
+
+/** Source artwork 2000×2500 (4:5). `width`/`height` preserve aspect ratio for layout. */
+const LOGO_INTRINSIC = { width: 2000, height: 2500 } as const;
 
 const footerLinkClass =
   "inline-block transition-all duration-200 ease-out hover:translate-x-1 hover:text-primary";
@@ -10,20 +13,19 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border bg-gradient-panel">
       <div className="container-narrow py-16 grid gap-12 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-3 mb-4">
+          <div className="mb-4">
             <img
               src={logo}
               alt="Lebano Mining"
-              className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-primary/30 ring-offset-2 ring-offset-background"
+              width={LOGO_INTRINSIC.width}
+              height={LOGO_INTRINSIC.height}
+              className="h-[6.5rem] sm:h-28 md:h-32 w-auto max-w-[min(340px,88vw)] sm:max-w-[min(400px,75vw)] md:max-w-[min(460px,55vw)] object-contain object-left"
             />
-            <div>
-              <div className="font-display tracking-wider">LEBANO MINING</div>
-              <div className="text-[10px] tracking-[0.25em] text-primary">EST. 2012</div>
-            </div>
+            <div className="text-[10px] tracking-[0.25em] text-primary mt-2">EST. 2012</div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            A decade of excellence in coal mining, exploration, and end-to-end bulk commodity
-            logistics across South Africa.
+            Thermal coal and bulk commodity logistics through Richards Bay — domestic supply and
+            export since 2012.
           </p>
         </div>
         <div>
