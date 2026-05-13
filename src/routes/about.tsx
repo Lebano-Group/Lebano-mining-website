@@ -1,5 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ChevronRight, ShieldCheck, Leaf, Users } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import excavator from "@docs/op-excavator.jpg";
 import team from "@docs/op-team-onsite.jpg";
 
@@ -23,7 +32,69 @@ const aboutCardMotion =
 const foundationCardMotion =
   "transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_oklch(0.74_0.14_75/0.55)]";
 
+const mashuduInitiatives = [
+  {
+    id: "univen",
+    title: "University of Venda",
+    lines: [
+      "The foundation donated R1 million to the University of Venda to support the institution and its students.",
+    ],
+  },
+  {
+    id: "venda-community",
+    title: "Community of Venda",
+    lines: [
+      "Fifteen full football kits were donated to community teams in Venda.",
+    ],
+  },
+  {
+    id: "kingsway",
+    title: "Kingsway Centre",
+    lines: [
+      "The foundation contributed R10,000 every month for one year to Kingsway Centre.",
+    ],
+  },
+  {
+    id: "st-laurence",
+    title: "St Laurence Centre",
+    lines: [
+      "Monthly donations of R15,000 were made to St Laurence Centre.",
+      "Representatives visited the centre to hand out gifts: seven bicycles, Woolworths shopping vouchers to the value of R10,000, and McDonald's meals for all forty-two children present.",
+    ],
+  },
+  {
+    id: "soweto-schools",
+    title: "Soweto school donations",
+    lines: [
+      "The foundation's work was covered in the Daily Sun.",
+      "Ditwana Primary School (Orlando East): fifty McDonald's meals were handed out.",
+      "Tshebedisano Primary School (Pimville): fifty McDonald's meals were handed out.",
+    ],
+  },
+  {
+    id: "venda-event",
+    title: "Event in Venda",
+    lines: [
+      "A community event in Venda honoured legacy artists from the region so their contributions are remembered. Artists recognised included:",
+    ],
+    bullets: [
+      "David Mmbi",
+      "Dr Roxley Mitchell",
+      "Jambo (Zimbabwe)",
+      "Dr Colbert Mukhwevo",
+      "Julia Nemakhavhani",
+      "Tshimangadzo Esther Sinyegwe",
+      "Adziambei Band",
+    ],
+  },
+] as const;
+
+type MashuduId = (typeof mashuduInitiatives)[number]["id"];
+
 function About() {
+  const [mashuduOpenId, setMashuduOpenId] = useState<MashuduId | null>(null);
+  const activeMashudu = mashuduInitiatives.find((i) => i.id === mashuduOpenId);
+
   return (
     <>
       <PageHeader
@@ -98,29 +169,36 @@ function About() {
         </div>
       </section>
 
-      {/* Core values */}
+      {/* Core values (from home) */}
       <section className="container-narrow py-24">
-        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12 text-center text-gradient-gold">
-          Our Core Values
-        </h2>
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Core values</div>
+          <h2 className="font-display text-4xl md:text-5xl uppercase">
+            Built on Trust, Safety & Stewardship
+          </h2>
+        </div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
-              t: "Responsible Mineral Development",
-              b: "Stakeholder engagement, upliftment of host communities, local economic development and skills transfer.",
+              icon: ShieldCheck,
+              title: "Safety First",
+              body: "Stringent safety protocols and continuous training ensure every person returns home safely.",
             },
             {
-              t: "Safety, Health & Environment",
-              b: "Unwavering dedication to health and safety standards, proactive environmental responsibility.",
+              icon: Leaf,
+              title: "Environment",
+              body: "Proactive environmental responsibility and R&D for reduced impact across operations.",
             },
             {
-              t: "Strategic Partnerships",
-              b: "Key partnerships with industry customers, global commodity trading houses and logistics providers across Africa.",
+              icon: Users,
+              title: "Community",
+              body: "Local economic development, skills transfer and upliftment of host communities.",
             },
           ].map((v) => (
-            <div key={v.t} className={`p-8 rounded border border-border bg-card ${aboutCardMotion}`}>
-              <h3 className="font-display text-2xl uppercase mb-3">{v.t}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{v.b}</p>
+            <div key={v.title} className={`p-8 rounded border border-border bg-card ${aboutCardMotion} group/value`}>
+              <v.icon className="size-8 text-primary mb-4 transition-transform duration-300 group-hover/value:scale-110" />
+              <h3 className="font-display text-2xl uppercase mb-3">{v.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{v.body}</p>
             </div>
           ))}
         </div>
@@ -137,13 +215,65 @@ function About() {
           <h2 className="font-display text-3xl md:text-5xl uppercase mb-4">
             Mashudu Francina Foundation
           </h2>
-          <p className="max-w-3xl leading-relaxed">
-            Established by Lebano Mining in 2022, the foundation funds scholarships for
-            underprivileged learners at primary and tertiary educational institutions across South
-            Africa, alongside feeding and support programs for underprivileged South Africans.
+          <p className="max-w-3xl leading-relaxed mb-8 opacity-95">
+            Established by Lebano Mining in 2022, the Mashudu Francina Foundation extends our
+            social investment across education, child welfare and the arts. The following programmes
+            are recorded in our foundation documentation — open each item for the full account.
           </p>
+          <nav aria-label="Foundation programmes" className="max-w-3xl">
+            <ul className="flex flex-col gap-2.5 text-left">
+              {mashuduInitiatives.map((item) => (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-expanded={mashuduOpenId === item.id}
+                    onClick={() => setMashuduOpenId(item.id)}
+                    className="group/link inline-flex max-w-full cursor-pointer items-center gap-2 rounded-sm text-left text-base font-medium text-blue-950 transition-colors hover:opacity-90 active:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-950 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-100"
+                  >
+                    <ChevronRight
+                      className="size-4 shrink-0 text-blue-950 transition-transform group-hover/link:translate-x-0.5"
+                      aria-hidden
+                    />
+                    <span className="underline decoration-blue-950/70 decoration-2 underline-offset-[5px] group-hover/link:decoration-blue-950">
+                      {item.title}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
+
+      <Dialog open={mashuduOpenId !== null} onOpenChange={(open) => !open && setMashuduOpenId(null)}>
+        <DialogContent className="max-h-[min(85vh,640px)] overflow-y-auto sm:max-w-lg">
+          {activeMashudu ? (
+            <>
+              <DialogHeader>
+                <DialogTitle>{activeMashudu.title}</DialogTitle>
+                <DialogDescription>
+                  Foundation programme details for {activeMashudu.title}.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                {activeMashudu.lines.map((line) => (
+                  <p key={line} className="leading-relaxed">
+                    {line}
+                  </p>
+                ))}
+                {"bullets" in activeMashudu && activeMashudu.bullets ? (
+                  <ul className="list-disc pl-5 space-y-1">
+                    {activeMashudu.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

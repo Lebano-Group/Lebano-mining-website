@@ -4,34 +4,9 @@ import { PageHeader } from "@/components/PageHeader";
 import { MapPin, Phone, Mail, Clock, Building2 } from "lucide-react";
 import { toast } from "sonner";
 import port from "@docs/op-port.jpg";
+import { submitContactInquiry } from "@/server/contact-inquiry";
 
 const INBOX = "info@lebanomining.com";
-const FORM_SOURCE = "Lebano Mining — Website inquiry";
-const SITE_LABEL = "lebanomining.com contact form";
-
-/** One tidy plain-text email: branding + contact block + message block (FormSubmit lists fewer separate fields). */
-function buildInquiryEmailBody(params: {
-  name: string;
-  email: string;
-  company: string;
-  phone: string;
-  visitorMessage: string;
-}): string {
-  const lines: string[] = [
-    `${FORM_SOURCE}`,
-    `Source: ${SITE_LABEL}`,
-    "",
-    "CONTACT DETAILS",
-    `Name:    ${params.name}`,
-    `Email:   ${params.email}`,
-  ];
-  if (params.company.trim()) lines.push(`Company: ${params.company}`);
-  if (params.phone.trim()) lines.push(`Phone:   ${params.phone}`);
-  lines.push("", "MESSAGE", "");
-  lines.push(params.visitorMessage.trim() || "(No message text provided.)");
-  lines.push("", "— End of inquiry —");
-  return lines.join("\n");
-}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -110,50 +85,28 @@ function ContactForm() {
     const phone = String(fd.get("phone") ?? "").trim();
     const visitorMessage = String(fd.get("message") ?? "").trim();
 
-    const message = buildInquiryEmailBody({
-      name,
-      email,
-      company,
-      phone,
-      visitorMessage,
-    });
-
-    const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(INBOX)}`;
-
     setPending(true);
     try {
-      const res = await fetch(ajaxUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `${FORM_SOURCE} — ${name}`,
-          _gotcha: "",
+      const result = await submitContactInquiry({
+        data: {
+          name,
           email,
-          message,
-        }),
+          company: company || undefined,
+          phone: phone || undefined,
+          message: visitorMessage,
+        },
       });
 
-      const data: unknown = await res.json().catch(() => null);
-      const successVal =
-        data && typeof data === "object" && "success" in data
-          ? (data as Record<string, unknown>).success
-          : undefined;
-      // FormSubmit returns success as boolean true or string "true" depending on endpoint/version.
-      const ok = res.ok && (successVal === true || successVal === "true");
-
-      if (!ok) {
-        console.error("FormSubmit:", res.status, data);
-        toast.error("Could not send your message. Please try again or email us directly.");
+      if (!result.ok) {
+        toast.error(result.message);
         return;
       }
 
       toast.success("Message sent — we'll be in touch shortly.");
       form.reset();
-    } catch {
-      toast.error("Could not send your message. Please email info@lebanomining.com directly.");
+    } catch (err) {
+      console.error(err);
+      toast.error(`Could not send your message. Please email ${INBOX} directly.`);
     } finally {
       setPending(false);
     }

@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
-import lebo from "@docs/team-lebo.jpg";
-import joel from "@docs/team-joel.jpg";
-import shireen from "@docs/team-shireen.jpg";
+import lebo from "@docs/team/lebo-mutavhatsindi.png";
+import joel from "@docs/team/joel-kesler.png";
+import shireen from "@docs/team/shireen-stow.png";
+import kabelo from "@docs/team/kabelo-sebidi.png";
 import teamSite from "@docs/op-team-onsite.jpg";
 
 export const Route = createFileRoute("/team")({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/team")({
       {
         name: "description",
         content:
-          "Meet the founders and executives leading Lebano Mining: Lebo Mutavhatsindi, Joel Kesler and Shireen Stow.",
+          "Meet the leadership of Lebano Mining: Livhuwani Mutavhatsindi, Joel Kesler, Shireen Stow and Kabelo Sebidi.",
       },
     ],
   }),
@@ -59,6 +60,21 @@ const members = [
       "Shireen is a Chartered Accountant (South Africa) with international experience across the assurance and finance functions of major mining and listed companies.",
       "In the USA, Shireen worked at PwC's assurance group covering large listed entities and start-ups across hospitality, biotech and technology. Subsequent to leaving PwC she has held various senior financial positions, including CFO at Atlatsa Resources Corporation, listed on the TSX, NYSE and JSE.",
       "She currently holds the position of Chief Financial Officer at the Tomahawk Group.",
+    ],
+  },
+  {
+    img: kabelo,
+    name: "Mr. Kabelo Sebidi",
+    role: "Legal Representative",
+    facts: [
+      "Legal Representative — Lebano Mining (Pty) Ltd",
+      "Admitted Attorney of the High Court of South Africa",
+      "Bachelor of Laws (LLB) — University of Fort Hare",
+    ],
+    bio: [
+      "Mr. Kabelo Sebidi is an Admitted Attorney of the High Court of South Africa and serves as Legal Representative of Lebano Mining (Pty) Ltd. He holds a Bachelor of Laws (LLB) from the University of Fort Hare — one of South Africa's most distinguished institutions of higher learning.",
+      "In his role at Lebano Mining, Mr. Sebidi provides expert legal counsel across the company's commercial, operational and regulatory affairs — ensuring that the company's partnerships, contracts and business activities are conducted within a rigorous and fully compliant legal framework.",
+      "His appointment reflects Lebano Mining's commitment to the highest standards of legal governance and institutional integrity across all levels of the organisation.",
     ],
   },
 ];
