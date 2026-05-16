@@ -3,6 +3,13 @@ import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -10,6 +17,21 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import mashuduHero from "@docs/mashudu-foundation-community.png";
+import vendaImg1 from "@docs/community of Venda/87820489-8a1d-4955-ad20-433eb2387650.jpeg";
+import vendaImg2 from "@docs/community of Venda/cf5be46c-bf32-42bc-a646-a1bd772d53d0.jpeg";
+import vendaImg3 from "@docs/community of Venda/06ecaa83-7e1f-47ec-89a5-06a123f91481.jpeg";
+import vendaImg4 from "@docs/community of Venda/e69e91e7-3c76-42b0-8631-2836ae567ebc.jpeg";
+import vendaImg5 from "@docs/community of Venda/e6efa5d4-71e1-420a-8048-7d695e6406c4.jpeg";
+import vendaImg6 from "@docs/community of Venda/WhatsApp Image 2026-05-12 at 19.25.27.jpeg";
+
+const vendaCommunityImages = [
+  { src: vendaImg1, alt: "Community football teams in Venda on a dirt pitch" },
+  { src: vendaImg2, alt: "Youth football team in red kits, Venda" },
+  { src: vendaImg3, alt: "Football team group photo in Venda" },
+  { src: vendaImg4, alt: "Players preparing on the field in Venda" },
+  { src: vendaImg5, alt: "Community football team gathering in Venda" },
+  { src: vendaImg6, alt: "Mashudu Francinah Foundation kit with number 15" },
+] as const;
 
 export const Route = createFileRoute("/sustainability")({
   head: () => ({
@@ -50,6 +72,7 @@ const mashuduInitiatives = [
       "Mr. Mutavhatsindi is funding the construction of a school in Venda — providing a permanent educational facility for the local community and expanding access to quality schooling for learners who would otherwise have limited options. Upon completion, the school will stand as a lasting legacy of the Foundation's work in Limpopo.",
       "Fifteen full football kits were donated to community teams in Venda.",
     ],
+    images: vendaCommunityImages,
   },
   {
     id: "kingsway",
@@ -189,7 +212,13 @@ function Sustainability() {
       </section>
 
       <Dialog open={mashuduOpenId !== null} onOpenChange={(open) => !open && setMashuduOpenId(null)}>
-        <DialogContent className="max-h-[min(85vh,640px)] overflow-y-auto sm:max-w-lg">
+        <DialogContent
+          className={`max-h-[min(90vh,720px)] overflow-y-auto ${
+            activeMashudu && "images" in activeMashudu && activeMashudu.images
+              ? "sm:max-w-4xl"
+              : "sm:max-w-lg"
+          }`}
+        >
           {activeMashudu ? (
             <>
               <DialogHeader>
@@ -198,18 +227,45 @@ function Sustainability() {
                   Foundation programme details for {activeMashudu.title}.
                 </DialogDescription>
               </DialogHeader>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                {activeMashudu.lines.map((line, idx) => (
-                  <p key={`${activeMashudu.id}-${idx}`} className="leading-relaxed">
-                    {line}
-                  </p>
-                ))}
-                {"bullets" in activeMashudu && activeMashudu.bullets ? (
-                  <ul className="list-disc pl-5 space-y-1">
-                    {activeMashudu.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
+              <div
+                className={
+                  "images" in activeMashudu && activeMashudu.images
+                    ? "grid gap-6 md:grid-cols-2 md:items-start"
+                    : undefined
+                }
+              >
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  {activeMashudu.lines.map((line, idx) => (
+                    <p key={`${activeMashudu.id}-${idx}`} className="leading-relaxed">
+                      {line}
+                    </p>
+                  ))}
+                  {"bullets" in activeMashudu && activeMashudu.bullets ? (
+                    <ul className="list-disc pl-5 space-y-1">
+                      {activeMashudu.bullets.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+                {"images" in activeMashudu && activeMashudu.images ? (
+                  <Carousel className="w-full" opts={{ loop: true }}>
+                    <CarouselContent>
+                      {activeMashudu.images.map((img, idx) => (
+                        <CarouselItem key={idx}>
+                          <div className="overflow-hidden rounded-lg border border-border bg-card">
+                            <img
+                              src={img.src}
+                              alt={img.alt}
+                              className="aspect-[4/3] w-full object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </Carousel>
                 ) : null}
               </div>
             </>
