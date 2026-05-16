@@ -23,6 +23,21 @@ import vendaImg3 from "@docs/community of Venda/06ecaa83-7e1f-47ec-89a5-06a123f9
 import vendaImg4 from "@docs/community of Venda/e69e91e7-3c76-42b0-8631-2836ae567ebc.jpeg";
 import vendaImg5 from "@docs/community of Venda/e6efa5d4-71e1-420a-8048-7d695e6406c4.jpeg";
 import vendaImg6 from "@docs/community of Venda/WhatsApp Image 2026-05-12 at 19.25.27.jpeg";
+import stLaurenceImg1 from "@docs/st laurence/IMG_1721.JPG";
+import stLaurenceImg2 from "@docs/st laurence/IMG_1755.JPG";
+import stLaurenceImg3 from "@docs/st laurence/IMG_1756.JPG";
+import stLaurenceImg4 from "@docs/st laurence/IMG_1757.JPG";
+import stLaurenceImg5 from "@docs/st laurence/IMG_1758.JPG";
+import stLaurenceImg6 from "@docs/st laurence/IMG_1759.JPG";
+import stLaurenceImg7 from "@docs/st laurence/IMG_1760.JPG";
+import stLaurenceImg8 from "@docs/st laurence/IMG_1809.JPG";
+import stLaurenceImg9 from "@docs/st laurence/IMG_1841.JPG";
+import stLaurenceImg10 from "@docs/st laurence/IMG_1842.JPG";
+import stLaurenceImg11 from "@docs/st laurence/IMG_1844.JPG";
+import stLaurenceImg12 from "@docs/st laurence/IMG_1852.JPG";
+import stLaurenceImg13 from "@docs/st laurence/IMG_1853.JPG";
+import stLaurenceImg14 from "@docs/st laurence/IMG_E1720.JPG";
+import stLaurenceImg15 from "@docs/st laurence/IMG_E1888.JPG";
 
 const vendaCommunityImages = [
   { src: vendaImg1, alt: "Community football teams in Venda on a dirt pitch" },
@@ -31,6 +46,24 @@ const vendaCommunityImages = [
   { src: vendaImg4, alt: "Players preparing on the field in Venda" },
   { src: vendaImg5, alt: "Community football team gathering in Venda" },
   { src: vendaImg6, alt: "Mashudu Francinah Foundation kit with number 15" },
+] as const;
+
+const stLaurenceImages = [
+  { src: stLaurenceImg1, alt: "Children and adults at Mashudu Francinah Foundation event, St Laurence Centre" },
+  { src: stLaurenceImg2, alt: "Foundation community gathering outdoors" },
+  { src: stLaurenceImg3, alt: "McDonald's meal distribution with Mashudu Francinah Foundation banners" },
+  { src: stLaurenceImg4, alt: "St Laurence Centre community outreach" },
+  { src: stLaurenceImg5, alt: "Foundation representatives at community event" },
+  { src: stLaurenceImg6, alt: "Children receiving support at St Laurence Centre" },
+  { src: stLaurenceImg7, alt: "Community programme at St Laurence Centre" },
+  { src: stLaurenceImg8, alt: "Children with festive gift bags at outdoor gathering" },
+  { src: stLaurenceImg9, alt: "Children sharing McDonald's meals at picnic tables" },
+  { src: stLaurenceImg10, alt: "Foundation team with children at outdoor meal" },
+  { src: stLaurenceImg11, alt: "Community meal and gift distribution" },
+  { src: stLaurenceImg12, alt: "Foundation representative with children and gifts" },
+  { src: stLaurenceImg13, alt: "Children with Merry Christmas gift bags" },
+  { src: stLaurenceImg14, alt: "Foundation volunteers with a family at St Laurence Centre" },
+  { src: stLaurenceImg15, alt: "Children assembling donated Raleigh bicycles" },
 ] as const;
 
 export const Route = createFileRoute("/sustainability")({
@@ -89,6 +122,7 @@ const mashuduInitiatives = [
       "Monthly donations of R15,000 were made to St Laurence Centre.",
       "Representatives visited the centre to hand out gifts: seven bicycles, Woolworths shopping vouchers to the value of R10,000, and McDonald's meals for all forty-two children present.",
     ],
+    images: stLaurenceImages,
   },
   {
     id: "soweto-schools",
