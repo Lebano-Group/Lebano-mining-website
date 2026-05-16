@@ -1,12 +1,37 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { MapPin, Phone, Mail, Clock, Building2 } from "lucide-react";
 import { toast } from "sonner";
 import port from "@docs/op-port.jpg";
-import { submitContactInquiry } from "@/server/contact-inquiry";
 
 const INBOX = "info@lebanomining.com";
+const FORM_SOURCE = "Lebano Mining ΓÇö Website inquiry";
+const SITE_LABEL = "lebanomining.com contact form";
+
+/** One tidy plain-text email: branding + contact block + message block (FormSubmit lists fewer separate fields). */
+function buildInquiryEmailBody(params: {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  visitorMessage: string;
+}): string {
+  const lines: string[] = [
+    `${FORM_SOURCE}`,
+    `Source: ${SITE_LABEL}`,
+    "",
+    "CONTACT DETAILS",
+    `Name:    ${params.name}`,
+    `Email:   ${params.email}`,
+  ];
+  if (params.company.trim()) lines.push(`Company: ${params.company}`);
+  if (params.phone.trim()) lines.push(`Phone:   ${params.phone}`);
+  lines.push("", "MESSAGE", "");
+  lines.push(params.visitorMessage.trim() || "(No message text provided.)");
+  lines.push("", "ΓÇö End of inquiry ΓÇö");
+  return lines.join("\n");
+}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,7 +40,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Get in touch with Lebano Mining — Midrand, Gauteng, South Africa. info@lebanomining.com · +27 10 824 8330.",
+          "Get in touch with Lebano Mining ΓÇö Midrand, Gauteng, South Africa. info@lebanomining.com ┬╖ +27 10 824 8330.",
       },
     ],
   }),
@@ -50,7 +75,7 @@ function Contact() {
             },
             { icon: Phone, label: "Phone", value: "+27 10 824 8330" },
             { icon: Mail, label: "Email", value: INBOX },
-            { icon: Clock, label: "Office Hours", value: "Monday to Friday, 08:00 – 16:00" },
+            { icon: Clock, label: "Office Hours", value: "Monday to Friday, 08:00 ΓÇô 16:00" },
           ].map((c) => (
             <div key={c.label} className="flex gap-4 p-6 rounded border border-border bg-card">
               <div className="size-12 shrink-0 rounded bg-gradient-gold flex items-center justify-center text-primary-foreground">
@@ -85,28 +110,50 @@ function ContactForm() {
     const phone = String(fd.get("phone") ?? "").trim();
     const visitorMessage = String(fd.get("message") ?? "").trim();
 
+    const message = buildInquiryEmailBody({
+      name,
+      email,
+      company,
+      phone,
+      visitorMessage,
+    });
+
+    const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(INBOX)}`;
+
     setPending(true);
     try {
-      const result = await submitContactInquiry({
-        data: {
-          name,
-          email,
-          company: company || undefined,
-          phone: phone || undefined,
-          message: visitorMessage,
+      const res = await fetch(ajaxUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
+        body: JSON.stringify({
+          _subject: `${FORM_SOURCE} ΓÇö ${name}`,
+          _gotcha: "",
+          email,
+          message,
+        }),
       });
 
-      if (!result.ok) {
-        toast.error(result.message);
+      const data: unknown = await res.json().catch(() => null);
+      const successVal =
+        data && typeof data === "object" && "success" in data
+          ? (data as Record<string, unknown>).success
+          : undefined;
+      // FormSubmit returns success as boolean true or string "true" depending on endpoint/version.
+      const ok = res.ok && (successVal === true || successVal === "true");
+
+      if (!ok) {
+        console.error("FormSubmit:", res.status, data);
+        toast.error("Could not send your message. Please try again or email us directly.");
         return;
       }
 
-      toast.success("Message sent — we'll be in touch shortly.");
+      toast.success("Message sent ΓÇö we'll be in touch shortly.");
       form.reset();
-    } catch (err) {
-      console.error(err);
-      toast.error(`Could not send your message. Please email ${INBOX} directly.`);
+    } catch {
+      toast.error("Could not send your message. Please email info@lebanomining.com directly.");
     } finally {
       setPending(false);
     }
@@ -140,7 +187,7 @@ function ContactForm() {
         disabled={pending}
         className="w-full px-6 py-3.5 rounded bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider text-sm shadow-gold hover:opacity-90 transition disabled:opacity-60"
       >
-        {pending ? "Sending…" : "Submit Inquiry"}
+        {pending ? "SendingΓÇª" : "Submit Inquiry"}
       </button>
     </form>
   );
