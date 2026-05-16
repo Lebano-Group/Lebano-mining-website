@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const DEFAULT_TO = "info@lebanomining.com";
+const INBOX = "info@lebanomining.com";
 const FORM_SOURCE = "Lebano Mining — Website inquiry";
 const SITE_LABEL = "lebanomining.com contact form";
 
@@ -38,24 +38,52 @@ const inquiryInput = z.object({
 
 export type ContactInquiryResult = { ok: true } | { ok: false; message: string };
 
+/** Server-side FormSubmit — avoids browser CORS blocks on localhost/production. */
+async function sendViaFormSubmit(params: {
+  name: string;
+  email: string;
+  message: string;
+}): Promise<ContactInquiryResult> {
+  const ajaxUrl = `https://formsubmit.co/ajax/${encodeURIComponent(INBOX)}`;
+
+  const res = await fetch(ajaxUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      _subject: `${FORM_SOURCE} — ${params.name}`,
+      _replyto: params.email,
+      _captcha: "false",
+      _template: "table",
+      email: params.email,
+      message: params.message,
+    }),
+  });
+
+  const data: unknown = await res.json().catch(() => null);
+  const successVal =
+    data && typeof data === "object" && "success" in data
+      ? (data as Record<string, unknown>).success
+      : undefined;
+  const ok = res.ok && (successVal === true || successVal === "true");
+
+  if (!ok) {
+    console.error("FormSubmit error:", res.status, data);
+    return {
+      ok: false,
+      message: "Could not send your message. Please try again or email us directly.",
+    };
+  }
+
+  return { ok: true };
+}
+
 export const submitContactInquiry = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => inquiryInput.parse(data))
   .handler(async ({ data }): Promise<ContactInquiryResult> => {
-    const apiKey = process.env.RESEND_API_KEY?.trim();
-    const from = process.env.CONTACT_FROM?.trim();
-    const to = (process.env.CONTACT_TO?.trim() || DEFAULT_TO).trim();
-
-    if (!apiKey || !from) {
-      console.error(
-        "Contact form: set RESEND_API_KEY and CONTACT_FROM on the server (e.g. Vercel env).",
-      );
-      return {
-        ok: false,
-        message: "Message could not be sent. Please email us directly.",
-      };
-    }
-
-    const text = buildInquiryEmailBody({
+    const message = buildInquiryEmailBody({
       name: data.name,
       email: data.email,
       company: data.company ?? "",
@@ -63,29 +91,9 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
       visitorMessage: data.message,
     });
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: data.email,
-        subject: `${FORM_SOURCE} — ${data.name}`,
-        text,
-      }),
+    return sendViaFormSubmit({
+      name: data.name,
+      email: data.email,
+      message,
     });
-
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      console.error("Resend API error:", res.status, detail);
-      return {
-        ok: false,
-        message: "Message could not be sent. Please try again or email us directly.",
-      };
-    }
-
-    return { ok: true };
   });
