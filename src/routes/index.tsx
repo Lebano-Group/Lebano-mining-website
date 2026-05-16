@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { VerticalTimeline } from "@/components/VerticalTimeline";
+import { CommoditiesCubeCarousel } from "@/components/CommoditiesCubeCarousel";
 import heroImg from "@docs/op-stockpile.jpg";
 import excavator from "@docs/op-excavator.jpg";
 
@@ -270,31 +271,42 @@ function Home() {
       </section>
 
       {/* OUR COMMODITIES */}
-      <section className="container-narrow pb-28 md:pb-36">
-        <div className="max-w-3xl mb-14">
-          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Commodities</div>
-          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
-            Producing Today. Exploring for Tomorrow.
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
-            exploration programme across the commodities that will define Africa&apos;s industrial and
-            energy future.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {commodities.map((c) => (
-            <div key={c.title} className={`p-8 md:p-10 ${cardHover}`}>
-              <div className="flex flex-wrap items-baseline gap-3 mb-4">
-                <span className="text-2xl text-primary" aria-hidden>
-                  {c.symbol}
-                </span>
-                <h3 className="font-display text-xl md:text-2xl uppercase">{c.title}</h3>
-              </div>
-              <p className="text-xs uppercase tracking-wider text-primary mb-4">{c.tag}</p>
-              <p className="text-muted-foreground leading-relaxed">{c.body}</p>
+      <section className="relative container-narrow overflow-hidden pb-28 md:pb-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-[10%] top-20 h-[min(520px,70vw)] w-[min(520px,70vw)] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.42_0.1_170/0.16),transparent_65%)] blur-3xl"
+        />
+        <div className="relative grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20">
+          <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+            <CommoditiesCubeCarousel
+              className="w-full max-w-[520px] lg:max-w-none"
+              items={commodities.map((c) => ({
+                symbol: c.symbol,
+                title: c.title,
+                badge: c.tag,
+                body: c.body,
+              }))}
+            />
+          </div>
+          <div className="order-1 lg:order-2">
+            <p className="text-lg font-medium leading-snug text-sky-300 md:text-xl">
+              Global Energy Solutions.
+            </p>
+            <p className="mt-1 text-base leading-snug text-sky-200/90 md:text-lg">
+              Europe and Southeast Asia.
+            </p>
+            <div className="text-xs uppercase tracking-[0.3em] text-primary mt-10 mb-4">
+              Our Commodities
             </div>
-          ))}
+            <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
+              Producing Today. Exploring for Tomorrow.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed max-w-xl">
+              Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
+              exploration programme across the commodities that will define Africa&apos;s industrial and
+              energy future.
+            </p>
+          </div>
         </div>
       </section>
     </>
