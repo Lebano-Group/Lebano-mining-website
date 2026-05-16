@@ -1,279 +1,274 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ChevronRight, ShieldCheck, Leaf, Users } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, MapPin } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { ServicesCircularCarousel } from "@/components/ServicesCircularCarousel";
+import { VerticalTimeline } from "@/components/VerticalTimeline";
 import excavator from "@docs/op-excavator.jpg";
+import port from "@docs/op-port.jpg";
 import team from "@docs/op-team-onsite.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Lebano Mining — Our Journey & Values" },
+      { title: "Operations — Lebano Mining" },
       {
         name: "description",
         content:
-          "Founded in 2012, Lebano Mining delivers thermal coal and bulk commodity logistics through Richards Bay.",
+          "Coal assets across five Mpumalanga regions, Richards Bay export infrastructure, exploration in lithium copper and chrome, and institutional off-take partnerships.",
       },
     ],
   }),
-  component: About,
+  component: Operations,
 });
 
-const aboutCardMotion =
-  "shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
+const cardHover =
+  "rounded border border-border bg-card shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
 
-const foundationCardMotion =
-  "transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_oklch(0.74_0.14_75/0.55)]";
+const coalSites = [
+  { name: "Belfast", detail: "exploration & development stage" },
+  { name: "Hendrina", detail: "active development" },
+  { name: "Ermelo", detail: "active development" },
+  { name: "Carolina", detail: "development stage" },
+  { name: "Witbank", detail: "development stage" },
+] as const;
 
-const mashuduInitiatives = [
+const coalCarouselSlides = coalSites.map((site) => ({
+  icon: MapPin,
+  title: site.name,
+  body: `Mpumalanga — ${site.detail}`,
+  badge: "Development Region",
+}));
+
+const explorationItems = [
   {
-    id: "univen",
-    title: "University of Venda",
-    lines: [
-      "The foundation donated R1 million to the University of Venda to support the institution and its students.",
-    ],
+    title: "Lithium",
+    body:
+      "Lebano Mining is actively exploring for Lithium — a critical mineral at the heart of the global energy transition. Lithium is the foundational input for battery technology, electric vehicle production and large-scale grid storage systems, making it one of the most strategically significant commodities of the next decade.",
   },
   {
-    id: "venda-community",
-    title: "Community of Venda",
-    lines: [
-      "Fifteen full football kits were donated to community teams in Venda.",
-    ],
+    title: "Copper",
+    body:
+      "Lebano Mining is actively exploring for Copper — the metal of electrification. Copper is fundamental to renewable energy infrastructure, power grid expansion, electric vehicles and the full spectrum of technologies that underpin the global transition to a low-carbon economy.",
   },
   {
-    id: "kingsway",
-    title: "Kingsway Centre",
-    lines: [
-      "The foundation contributed R10,000 every month for one year to Kingsway Centre.",
-    ],
-  },
-  {
-    id: "st-laurence",
-    title: "St Laurence Centre",
-    lines: [
-      "Monthly donations of R15,000 were made to St Laurence Centre.",
-      "Representatives visited the centre to hand out gifts: seven bicycles, Woolworths shopping vouchers to the value of R10,000, and McDonald's meals for all forty-two children present.",
-    ],
-  },
-  {
-    id: "soweto-schools",
-    title: "Soweto school donations",
-    lines: [
-      "The foundation's work was covered in the Daily Sun.",
-      "Ditwana Primary School (Orlando East): fifty McDonald's meals were handed out.",
-      "Tshebedisano Primary School (Pimville): fifty McDonald's meals were handed out.",
-    ],
-  },
-  {
-    id: "venda-event",
-    title: "Event in Venda",
-    lines: [
-      "A community event in Venda honoured legacy artists from the region so their contributions are remembered. Artists recognised included:",
-    ],
-    bullets: [
-      "David Mmbi",
-      "Dr Roxley Mitchell",
-      "Jambo (Zimbabwe)",
-      "Dr Colbert Mukhwevo",
-      "Julia Nemakhavhani",
-      "Tshimangadzo Esther Sinyegwe",
-      "Adziambei Band",
-    ],
+    title: "Chrome",
+    body:
+      "Lebano Mining is actively exploring for Chrome — a critical South African export commodity and a key input for stainless steel production, aerospace alloys and industrial applications. South Africa holds the world's largest known chrome reserves, making it a natural focus for domestic exploration.",
   },
 ] as const;
 
-type MashuduId = (typeof mashuduInitiatives)[number]["id"];
-
-function About() {
-  const [mashuduOpenId, setMashuduOpenId] = useState<MashuduId | null>(null);
-  const activeMashudu = mashuduInitiatives.find((i) => i.id === mashuduOpenId);
-
+function Operations() {
   return (
     <>
       <PageHeader
         title={
           <>
-            Cultivating <span className="text-gradient-gold">Partnerships.</span> Fostering
-            Progress.
+            Lebano Mining does not simply hold <span className="text-gradient-gold">assets.</span>
+            <br className="hidden sm:block" />
+            <span className="sm:ml-0">
+              It <span className="text-gradient-gold">operates</span> them.
+            </span>
           </>
         }
-        subtitle="South African bulk commodity logistics centred on Richards Bay — export coordination and domestic supply."
+        subtitle="Moving resources from ground to vessel — across five Mpumalanga development regions, through the Richards Bay Coal Terminal, to markets across Europe and Southeast Asia. Simultaneously building the exploration portfolio of tomorrow."
         image={excavator}
       />
 
-      <section className="container-narrow py-24 grid lg:grid-cols-5 gap-12">
-        <div className="lg:col-span-3 space-y-6 text-muted-foreground leading-relaxed">
-          <h2 className="font-display text-3xl md:text-4xl uppercase text-foreground">
-            Our Journey
+      {/* Coal Assets — rotational carousel (services-style) */}
+      <section className="container-narrow py-24">
+        <div className="max-w-3xl mb-10">
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Coal Assets</div>
+          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
+            Mpumalanga Province — Five Development Regions
           </h2>
-          <p>
-            Lebano Mining was established 12 years ago by its founder and industrialist,{" "}
-            <span className="text-foreground">Livhuwani Mutavhatsindi</span>. Today, Lebano Mining
-            focuses on thermal coal and bulk commodity logistics through its Richards Bay port
-            allocation — coordinating stockpiling, loading and export for domestic and international
-            markets.
-          </p>
-          <p>
-            During the past three years, Lebano Mining has exported over{" "}
-            <span className="text-primary font-semibold">3.5 million metric tons</span> of bulk
-            commodities through its port allocation at Richards Bay, including iron ore and thermal
-            coal products to European and Southeast Asian markets.
-          </p>
-          <p>
-            Over the course of more than a decade, Lebano Mining has cultivated strategic
-            relationships with{" "}
-            <span className="text-foreground">Vittol, African Rail Corporation and Transnet</span> —
-            partnerships pivotal to the growth and success of the company.
+          <p className="text-muted-foreground leading-relaxed">
+            South Africa&apos;s primary thermal coal producing jurisdiction — established infrastructure,
+            proven geology and direct rail access to Richards Bay.
           </p>
         </div>
-        <aside
-          className={`lg:col-span-2 p-8 rounded border border-border bg-card h-fit ${aboutCardMotion}`}
-        >
-          <h3 className="font-display text-xl uppercase text-primary mb-4">Lebano Operations</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Lebano Mining&apos;s activities are centred on bulk commodity handling and logistics
-            through its <span className="text-foreground">Richards Bay</span> port allocation —
-            coordinating stockpiling, loading and export movements for thermal coal and related bulk
-            products for domestic supply and international markets.
-          </p>
-        </aside>
+        <ServicesCircularCarousel items={[...coalCarouselSlides]} />
       </section>
 
-      {/* Safety */}
-      <section className="bg-gradient-panel border-y border-border/60 py-20">
-        <div className="container-narrow grid lg:grid-cols-2 gap-12 items-center">
-          <img
-            src={team}
-            alt="Lebano team on site"
-            className="rounded shadow-elevated aspect-[4/3] object-cover w-full"
-          />
-          <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Safety First</div>
-            <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
-              Not just a priority — a core value.
+      {/* Value chain — sequential flow (timeline) */}
+      <section className="container-narrow border-t border-border py-20 md:py-24">
+        <div className="max-w-3xl mb-12">
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Integrated flow</div>
+          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">From Ground to Market</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Lebano Mining traces a single chain from development assets in Mpumalanga through
+            integrated rail logistics and a dedicated Richards Bay allocation to long-term export
+            corridors in Europe and Southeast Asia.
+          </p>
+        </div>
+        <VerticalTimeline
+          items={[
+            {
+              kicker: "01 — Assets",
+              title: "Development & mineral rights",
+              body: "Active development across five Mpumalanga regions — exploration, project build-up and production aligned with thermal coal and bulk commodity strategy.",
+            },
+            {
+              kicker: "02 — Logistics",
+              title: "Rail to the export corridor",
+              body: "Mine-to-rail logistics via Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
+            },
+            {
+              kicker: "03 — Terminal",
+              title: "Richards Bay Coal Terminal",
+              body: "Dedicated port allocation within a world-scale dry bulk gateway — aligning stockpile, railing and vessel loading through RBCT.",
+            },
+            {
+              kicker: "04 — Markets",
+              title: "International off-take",
+              body: "1Mt+ per annum exported with institutional partnerships including Vitol and NG Global Energy Solutions — anchored in European and Southeast Asian demand.",
+            },
+          ]}
+        />
+      </section>
+
+      {/* Export Infrastructure */}
+      <section className="relative isolate overflow-hidden border-y border-border">
+        <img
+          src={port}
+          alt="Richards Bay coal terminal infrastructure"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-coal/88" />
+        <div className="relative container-narrow py-24">
+          <div className={`max-w-2xl p-8 md:p-10 ${cardHover} bg-card/95 backdrop-blur-sm`}>
+            <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">
+              Export Infrastructure
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl uppercase mb-6">
+              Richards Bay Coal Terminal
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              We understand the profound impact our industry can have on the well-being of our
-              workforce and the communities in which we operate. Our stringent safety protocols and
-              continuous training programs reflect our commitment to ensuring that every person
-              involved in our operations returns home safely.
-            </p>
+            <ul className="space-y-3 text-muted-foreground leading-relaxed mb-8">
+              <li>
+                <span className="text-foreground font-medium">Annual throughput capacity: </span>
+                90Mt+
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Lebano Mining: </span>
+                Dedicated port allocation
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Export volume: </span>
+                1Mt+ per annum
+              </li>
+              <li>
+                <span className="text-foreground font-medium">Markets: </span>
+                Europe | Southeast Asia
+              </li>
+            </ul>
+            <Link
+              to="/contact"
+              className="group/cta mt-12 inline-flex items-center gap-2 px-7 py-3.5 rounded bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider text-sm shadow-gold transition-all duration-300 hover:opacity-95 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+            >
+              Discuss Off-Take{" "}
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Core values (from home) */}
+      {/* Exploration Portfolio */}
       <section className="container-narrow py-24">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Core values</div>
-          <h2 className="font-display text-4xl md:text-5xl uppercase">
-            Built on Trust, Safety & Stewardship
+        <div className="max-w-3xl mb-14">
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
+            Exploration Portfolio
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
+            Exploring the Commodities of Tomorrow
           </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Beyond coal, Lebano Mining is actively exploring for three critical minerals —
+            positioning the company at the frontier of global commodity demand and South Africa&apos;s
+            expanding mineral economy.
+          </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: ShieldCheck,
-              title: "Safety First",
-              body: "Stringent safety protocols and continuous training ensure every person returns home safely.",
-            },
-            {
-              icon: Leaf,
-              title: "Environment",
-              body: "Proactive environmental responsibility and R&D for reduced impact across operations.",
-            },
-            {
-              icon: Users,
-              title: "Community",
-              body: "Local economic development, skills transfer and upliftment of host communities.",
-            },
-          ].map((v) => (
-            <div key={v.title} className={`p-8 rounded border border-border bg-card ${aboutCardMotion} group/value`}>
-              <v.icon className="size-8 text-primary mb-4 transition-transform duration-300 group-hover/value:scale-110" />
-              <h3 className="font-display text-2xl uppercase mb-3">{v.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{v.body}</p>
+          {explorationItems.map((item) => (
+            <div key={item.title} className={`p-8 md:p-10 ${cardHover}`}>
+              <p className="text-xs uppercase tracking-wider text-primary mb-4">● Exploration Stage</p>
+              <h3 className="font-display text-2xl uppercase mb-4">{item.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{item.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Foundation */}
-      <section className="container-narrow pb-24">
-        <div
-          className={`rounded-lg p-10 md:p-14 bg-gradient-gold text-primary-foreground shadow-gold ${foundationCardMotion}`}
-        >
-          <div className="text-xs uppercase tracking-[0.3em] mb-3 opacity-80">
-            Social Responsibility
-          </div>
-          <h2 className="font-display text-3xl md:text-5xl uppercase mb-4">
-            Mashudu Francina Foundation
+      {/* International Export */}
+      <section className="container-narrow pb-28 pt-0">
+        <div className="max-w-4xl mb-14">
+          <h2 className="font-display text-3xl md:text-5xl uppercase mb-6 leading-tight">
+            1 Million Metric Tons. Annually.{" "}
+            <span className="text-gradient-gold">To Established Markets.</span>
           </h2>
-          <p className="max-w-3xl leading-relaxed mb-8 opacity-95">
-            Established by Lebano Mining in 2022, the Mashudu Francina Foundation extends our
-            social investment across education, child welfare and the arts. The following programmes
-            are recorded in our foundation documentation — open each item for the full account.
+          <p className="text-muted-foreground leading-relaxed">
+            Anchored by long-term partnerships with Vitol — one of the world&apos;s largest independent
+            commodity trading companies — and supported by NG Global Energy Solutions.
           </p>
-          <nav aria-label="Foundation programmes" className="max-w-3xl">
-            <ul className="flex flex-col gap-2.5 text-left">
-              {mashuduInitiatives.map((item) => (
-                <li key={item.id}>
-                  <button
-                    type="button"
-                    aria-haspopup="dialog"
-                    aria-expanded={mashuduOpenId === item.id}
-                    onClick={() => setMashuduOpenId(item.id)}
-                    className="group/link inline-flex max-w-full cursor-pointer items-center gap-2 rounded-sm text-left text-base font-medium text-blue-950 transition-colors hover:opacity-90 active:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-950 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-100"
-                  >
-                    <ChevronRight
-                      className="size-4 shrink-0 text-blue-950 transition-transform group-hover/link:translate-x-0.5"
-                      aria-hidden
-                    />
-                    <span className="underline decoration-blue-950/70 decoration-2 underline-offset-[5px] group-hover/link:decoration-blue-950">
-                      {item.title}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
+            <div className="font-display text-4xl md:text-5xl uppercase text-gradient-gold mb-3">
+              1Mt+
+            </div>
+            <p className="text-sm text-muted-foreground leading-snug">
+              Exported per annum through dedicated Richards Bay port allocation
+            </p>
+          </div>
+          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
+            <div className="font-display text-xl md:text-2xl uppercase mb-3 leading-snug">
+              Europe &amp;
+              <br />
+              SE Asia
+            </div>
+            <p className="text-sm text-muted-foreground leading-snug">
+              Established international export markets with long-term off-take relationships
+            </p>
+          </div>
+          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
+            <div className="font-display text-lg md:text-xl uppercase mb-3 tracking-wide">
+              VITOL
+              <br />
+              <span className="text-primary text-base">+ NG Global</span>
+            </div>
+            <p className="text-sm text-muted-foreground leading-snug">
+              Institutional trading partnerships — global commodity market access
+            </p>
+          </div>
         </div>
       </section>
 
-      <Dialog open={mashuduOpenId !== null} onOpenChange={(open) => !open && setMashuduOpenId(null)}>
-        <DialogContent className="max-h-[min(85vh,640px)] overflow-y-auto sm:max-w-lg">
-          {activeMashudu ? (
-            <>
-              <DialogHeader>
-                <DialogTitle>{activeMashudu.title}</DialogTitle>
-                <DialogDescription>
-                  Foundation programme details for {activeMashudu.title}.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                {activeMashudu.lines.map((line) => (
-                  <p key={line} className="leading-relaxed">
-                    {line}
-                  </p>
-                ))}
-                {"bullets" in activeMashudu && activeMashudu.bullets ? (
-                  <ul className="list-disc pl-5 space-y-1">
-                    {activeMashudu.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-            </>
-          ) : null}
-        </DialogContent>
-      </Dialog>
+      {/* Safety & Environment */}
+      <section className="bg-gradient-panel border-y border-border/60 py-20">
+        <div className="container-narrow grid lg:grid-cols-2 gap-12 items-center">
+          <img
+            src={team}
+            alt="Lebano Mining team on site"
+            className="rounded shadow-elevated aspect-[4/3] object-cover w-full"
+          />
+          <div>
+            <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">
+              Safety &amp; Environment
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
+              Non-Negotiable. At Every Level.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              At Lebano Mining, safety is not a commitment. It is an operational standard —
+              enforceable, measurable and non-negotiable at every level of the organisation.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Rigorous health and safety protocols aligned with South Africa&apos;s Mine Health and
+              Safety Act and international standards. Environmental management plans covering land use,
+              water management, dust control and progressive rehabilitation maintained across all active
+              sites.
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -2,7 +2,13 @@ import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export type ServiceSlide = { icon: LucideIcon; title: string; body: string };
+export type ServiceSlide = {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+  /** Badge text on the slide (defaults to Core Service). */
+  badge?: string;
+};
 
 export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
   const [active, setActive] = useState(0);
@@ -72,7 +78,9 @@ export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
                 <div className="flex items-start justify-between gap-6">
                   <div className="inline-flex items-center gap-3 rounded-full border border-primary/35 bg-primary/10 px-4 py-2 text-primary">
                     <item.icon className="size-5" />
-                    <span className="text-xs uppercase tracking-[0.24em]">Core Service</span>
+                    <span className="text-xs uppercase tracking-[0.24em]">
+                      {item.badge ?? "Core Service"}
+                    </span>
                   </div>
                   <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground md:inline">
                     {String(idx + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
@@ -97,7 +105,7 @@ export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
           type="button"
           onClick={prev}
           className="inline-flex size-12 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-md transition hover:-translate-y-0.5 hover:border-primary/60 hover:bg-card"
-          aria-label="Previous service"
+          aria-label="Previous slide"
         >
           <ChevronLeft className="size-6" />
         </button>
@@ -120,7 +128,7 @@ export function ServicesCircularCarousel({ items }: { items: ServiceSlide[] }) {
           type="button"
           onClick={next}
           className="inline-flex size-12 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-md transition hover:-translate-y-0.5 hover:border-primary/60 hover:bg-card"
-          aria-label="Next service"
+          aria-label="Next slide"
         >
           <ChevronRight className="size-6" />
         </button>

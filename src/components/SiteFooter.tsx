@@ -32,18 +32,23 @@ export function SiteFooter() {
           <h4 className="text-sm uppercase tracking-[0.2em] text-primary mb-4">Explore</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/about" className={footerLinkClass}>
-                About Us
+              <Link to="/" className={footerLinkClass}>
+                Our Business
               </Link>
             </li>
             <li>
-              <Link to="/services" className={footerLinkClass}>
-                Services
+              <Link to="/about" className={footerLinkClass}>
+                Operations
               </Link>
             </li>
             <li>
               <Link to="/team" className={footerLinkClass}>
                 Leadership
+              </Link>
+            </li>
+            <li>
+              <Link to="/sustainability" className={footerLinkClass}>
+                Sustainability
               </Link>
             </li>
             <li>

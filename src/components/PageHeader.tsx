@@ -4,14 +4,17 @@ export function PageHeader({
   title,
   subtitle,
   image,
+  imageAlt = "",
 }: {
   title: ReactNode;
   subtitle?: string;
   image: string;
+  /** Empty string intentionally decorative hero (inherits prior behaviour). */
+  imageAlt?: string;
 }) {
   return (
     <section className="relative isolate overflow-hidden border-b border-border">
-      <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={image} alt={imageAlt} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       <div className="relative container-narrow py-24 md:py-32">
         <h1 className="font-display text-5xl md:text-7xl uppercase max-w-3xl">{title}</h1>
