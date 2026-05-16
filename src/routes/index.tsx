@@ -274,27 +274,29 @@ function Home() {
           aria-hidden
           className="pointer-events-none absolute -left-[12%] top-24 h-[min(480px,65vw)] w-[min(480px,65vw)] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.55_0.12_78/0.18),transparent_68%)] blur-3xl"
         />
-        <div className="relative mb-14 max-w-3xl md:mb-16">
-          <div className="text-sm text-primary mb-4">Our Commodities</div>
-          <h2 className="font-display text-4xl md:text-5xl mb-6">
-            Producing Today. Exploring for Tomorrow.
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
-            exploration programme across the commodities that will define Africa&apos;s industrial and
-            energy future.
-          </p>
-        </div>
-        <div className="relative flex justify-center">
-          <CommoditiesCubeCarousel
-            className="w-full max-w-[560px]"
-            items={commodities.map((c) => ({
-              symbol: c.symbol,
-              title: c.title,
-              badge: c.tag,
-              body: c.body,
-            }))}
-          />
+        <div className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+          <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+            <CommoditiesCubeCarousel
+              className="w-full max-w-[560px] lg:max-w-none"
+              items={commodities.map((c) => ({
+                symbol: c.symbol,
+                title: c.title,
+                badge: c.tag,
+                body: c.body,
+              }))}
+            />
+          </div>
+          <div className="order-1 max-w-xl lg:order-2">
+            <div className="text-sm text-primary mb-4">Our Commodities</div>
+            <h2 className="font-display text-4xl md:text-5xl mb-6">
+              Producing Today. Exploring for Tomorrow.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
+              exploration programme across the commodities that will define Africa&apos;s industrial and
+              energy future.
+            </p>
+          </div>
         </div>
       </section>
     </>

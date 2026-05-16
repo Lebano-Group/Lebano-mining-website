@@ -20,7 +20,7 @@ const tanstackPlugins = tanstackStart({
 
 // Custom worker entry (SSR error wrapper). wrangler.jsonc `main` must match this build output.
 export default defineConfig({
-  envPrefix: ["VITE_", "RESEND_", "CONTACT_"],
+  envPrefix: ["VITE_"],
   resolve: {
     // tsconfig paths are not always applied in the Cloudflare worker SSR bundle; alias ensures @docs resolves everywhere.
     alias: {

@@ -1,0 +1,2 @@
+# Optional: same Web3Forms key in `.env` is enough for local dev.
+# VITE_WEB3FORMS_ACCESS_KEY=your_key_from_web3forms.com

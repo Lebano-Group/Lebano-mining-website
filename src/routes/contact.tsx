@@ -1,12 +1,81 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { MapPin, Phone, Mail, Clock, Building2 } from "lucide-react";
-import { toast } from "sonner";
 import port from "@docs/op-port.jpg";
-import { submitContactInquiry } from "@/server/contact-inquiry";
 
 const INBOX = "info@lebanomining.com";
+const FORM_SOURCE = "Lebano Mining — Website inquiry";
+const SITE_LABEL = "lebanomining.com contact form";
+
+/** Bold-looking text in plain-text mailto (Outlook does not render HTML in mailto bodies). */
+function bold(text: string): string {
+  return [...text]
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      if (code >= 0x41 && code <= 0x5a) return String.fromCodePoint(0x1d5d4 + (code - 0x41));
+      if (code >= 0x61 && code <= 0x7a) return String.fromCodePoint(0x1d5ee + (code - 0x61));
+      if (code >= 0x30 && code <= 0x39) return String.fromCodePoint(0x1d7ec + (code - 0x30));
+      return char;
+    })
+    .join("");
+}
+
+function label(text: string): string {
+  return `${bold(text)}`;
+}
+
+function buildInquiryEmailBody(params: {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  visitorMessage: string;
+}): string {
+  const message = params.visitorMessage.trim() || "(No message text provided.)";
+  const lines: string[] = [
+    bold(FORM_SOURCE),
+    `Source: ${SITE_LABEL}`,
+    "",
+    bold("CONTACT DETAILS"),
+    "────────────────────────────",
+    `${label("Name:")}     ${params.name}`,
+    `${label("Email:")}    ${params.email}`,
+  ];
+  if (params.company.trim()) lines.push(`${label("Company:")}  ${params.company}`);
+  if (params.phone.trim()) lines.push(`${label("Phone:")}    ${params.phone}`);
+  lines.push(
+    "",
+    bold("MESSAGE"),
+    "────────────────────────────",
+    message,
+    "",
+    "— End of inquiry —",
+  );
+  return lines.join("\n");
+}
+
+function buildMailtoUrl(params: {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  visitorMessage: string;
+}): string {
+  const subject = `${FORM_SOURCE} — ${params.name}`;
+  const body = buildInquiryEmailBody(params);
+  return `mailto:${INBOX}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/** Navigate to the system mail client (Outlook, Mail, etc.). */
+function redirectToMailApp(mailtoUrl: string): void {
+  const link = document.createElement("a");
+  link.href = mailtoUrl;
+  link.rel = "noopener noreferrer";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.location.assign(mailtoUrl);
+}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -73,9 +142,7 @@ function Contact() {
 }
 
 function ContactForm() {
-  const [pending, setPending] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -85,31 +152,9 @@ function ContactForm() {
     const phone = String(fd.get("phone") ?? "").trim();
     const visitorMessage = String(fd.get("message") ?? "").trim();
 
-    setPending(true);
-    try {
-      const result = await submitContactInquiry({
-        data: {
-          name,
-          email,
-          company: company || undefined,
-          phone: phone || undefined,
-          message: visitorMessage,
-        },
-      });
-
-      if (!result.ok) {
-        toast.error(result.message);
-        return;
-      }
-
-      toast.success("Message sent — we'll be in touch shortly.");
-      form.reset();
-    } catch (err) {
-      console.error(err);
-      toast.error(`Could not send your message. Please email ${INBOX} directly.`);
-    } finally {
-      setPending(false);
-    }
+    const mailtoUrl = buildMailtoUrl({ name, email, company, phone, visitorMessage });
+    redirectToMailApp(mailtoUrl);
+    form.reset();
   }
 
   return (
@@ -118,6 +163,10 @@ function ContactForm() {
       onSubmit={handleSubmit}
     >
       <h2 className="font-display text-3xl uppercase">Send a message</h2>
+      <p className="text-sm text-muted-foreground">
+        Submit opens Outlook or your default email app with your message ready to send to{" "}
+        {INBOX}.
+      </p>
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Name" name="name" required />
         <Field label="Company" name="company" required={false} />
@@ -137,10 +186,9 @@ function ContactForm() {
       </div>
       <button
         type="submit"
-        disabled={pending}
-        className="w-full px-6 py-3.5 rounded bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider text-sm shadow-gold hover:opacity-90 transition disabled:opacity-60"
+        className="w-full px-6 py-3.5 rounded bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider text-sm shadow-gold hover:opacity-90 transition"
       >
-        {pending ? "Sending…" : "Submit Inquiry"}
+        Submit Inquiry
       </button>
     </form>
   );
