@@ -99,32 +99,30 @@ const commodities = [
   {
     symbol: "◆",
     title: "Thermal Coal",
-    tag: "Active Production",
-    body: "1Mt+ exported annually through Richards Bay. Five development regions across Mpumalanga Province. Long-term off-take with Vitol and NG Global Energy Solutions.",
+    tag: "● Active Production",
+    body:
+      "1Mt+ exported annually through Richards Bay. Five development regions across Mpumalanga Province. Long-term off-take with Vitol and NG Global Energy Solutions.",
   },
   {
     symbol: "◇",
     title: "Lithium",
-    tag: "Exploration Stage",
-    body: "Active exploration programme underway. Lithium is a critical mineral for the global energy transition — battery technology, electric vehicles and grid storage.",
+    tag: "● Exploration Stage",
+    body:
+      "Active exploration programme underway. Lithium is a critical mineral for the global energy transition — battery technology, electric vehicles and grid storage.",
   },
   {
     symbol: "◇",
     title: "Copper",
-    tag: "Exploration Stage",
-    body: "Active exploration programme underway. Copper is fundamental to electrification, renewable energy infrastructure and the global transition to a low-carbon economy.",
+    tag: "● Exploration Stage",
+    body:
+      "Active exploration programme underway. Copper is fundamental to electrification, renewable energy infrastructure and the global transition to a low-carbon economy.",
   },
   {
     symbol: "◇",
     title: "Chrome",
-    tag: "Exploration Stage",
-    body: "Active exploration programme underway. Chrome is a critical input for stainless steel production and a key commodity in South Africa's mineral export economy.",
-  },
-  {
-    symbol: "+",
-    title: "Portfolio Expanding",
-    tag: "Ongoing Assessment",
-    body: "Lebano Mining continuously evaluates new mineral opportunities aligned with global demand and South Africa's resource endowment.",
+    tag: "● Exploration Stage",
+    body:
+      "Active exploration programme underway. Chrome is a critical input for stainless steel production and a key commodity in South Africa's mineral export economy.",
   },
 ] as const;
 
@@ -274,39 +272,29 @@ function Home() {
       <section className="relative container-narrow overflow-hidden pb-28 md:pb-36">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-[10%] top-20 h-[min(520px,70vw)] w-[min(520px,70vw)] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.42_0.1_170/0.16),transparent_65%)] blur-3xl"
+          className="pointer-events-none absolute -left-[12%] top-24 h-[min(480px,65vw)] w-[min(480px,65vw)] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.55_0.12_78/0.18),transparent_68%)] blur-3xl"
         />
-        <div className="relative grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20">
-          <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
-            <CommoditiesCubeCarousel
-              className="w-full max-w-[520px] lg:max-w-none"
-              items={commodities.map((c) => ({
-                symbol: c.symbol,
-                title: c.title,
-                badge: c.tag,
-                body: c.body,
-              }))}
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <p className="text-lg font-medium leading-snug text-sky-300 md:text-xl">
-              Global Energy Solutions.
-            </p>
-            <p className="mt-1 text-base leading-snug text-sky-200/90 md:text-lg">
-              Europe and Southeast Asia.
-            </p>
-            <div className="text-xs uppercase tracking-[0.3em] text-primary mt-10 mb-4">
-              Our Commodities
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
-              Producing Today. Exploring for Tomorrow.
-            </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-xl">
-              Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
-              exploration programme across the commodities that will define Africa&apos;s industrial and
-              energy future.
-            </p>
-          </div>
+        <div className="relative mb-14 max-w-3xl md:mb-16">
+          <div className="text-sm text-primary mb-4">Our Commodities</div>
+          <h2 className="font-display text-4xl md:text-5xl mb-6">
+            Producing Today. Exploring for Tomorrow.
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Lebano Mining&apos;s portfolio spans active production in thermal coal and an expanding
+            exploration programme across the commodities that will define Africa&apos;s industrial and
+            energy future.
+          </p>
+        </div>
+        <div className="relative flex justify-center">
+          <CommoditiesCubeCarousel
+            className="w-full max-w-[560px]"
+            items={commodities.map((c) => ({
+              symbol: c.symbol,
+              title: c.title,
+              badge: c.tag,
+              body: c.body,
+            }))}
+          />
         </div>
       </section>
     </>

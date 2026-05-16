@@ -24,16 +24,16 @@ export type CommoditySlide = {
 };
 
 const faceGlass =
-  "border border-sky-300/45 bg-black/35 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.08),inset_0_0_42px_-12px_oklch(0.75_0.12_215/0.12),0_0_52px_-10px_oklch(0.72_0.14_220/0.42)] backdrop-blur-xl";
+  "border border-primary/45 bg-black/35 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.08),inset_0_0_44px_-12px_oklch(0.74_0.14_75/0.14),0_0_48px_-10px_oklch(0.74_0.14_75/0.38)] backdrop-blur-xl";
 
 const faceGlassFront =
-  "border-sky-200/65 bg-black/42 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.12),inset_0_1px_0_0_oklch(0.92_0.05_215/0.2),0_0_72px_-8px_oklch(0.78_0.12_220/0.5),0_0_120px_-24px_oklch(0.65_0.14_200/0.35)]";
+  "border-primary/65 bg-black/40 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.1),inset_0_1px_0_0_oklch(0.82_0.12_78/0.22),0_0_68px_-6px_oklch(0.78_0.15_78/0.48),0_0_100px_-20px_oklch(0.62_0.12_70/0.28)] ring-2 ring-primary/35";
 
 const faceGlassDim =
-  "border-sky-400/35 bg-black/22 opacity-[0.88] saturate-90 brightness-95 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.05),0_0_48px_-16px_oklch(0.55_0.1_215/0.28)] backdrop-blur-md";
+  "border-primary/35 bg-black/22 opacity-[0.9] saturate-95 brightness-95 shadow-[inset_0_0_0_1px_oklch(1_0_0/0.05),0_0_40px_-14px_oklch(0.55_0.1_75/0.25)] backdrop-blur-md";
 
 /**
- * Translucent prism with wireframe‑style luminous edges & depth (reference: floating glass cube hero).
+ * Gold glass prism — translucent faces with warm luminous edges.
  */
 export function CommoditiesCubeCarousel({
   items,
@@ -47,9 +47,8 @@ export function CommoditiesCubeCarousel({
   const anglePerFace = n > 0 ? 360 / n : 0;
 
   const [pausedByHover, setPausedByHover] = useState(false);
-  /** Tighter chord in sidebar layout */
   const [panelHalfPx, setPanelHalfPx] = useState(() =>
-    typeof window !== "undefined" ? Math.min(window.innerWidth * 0.42, 300) : 300,
+    typeof window !== "undefined" ? Math.min(window.innerWidth * 0.44, 320) : 320,
   );
   const [snapActive, setSnapActive] = useState(0);
 
@@ -62,11 +61,7 @@ export function CommoditiesCubeCarousel({
 
   useEffect(() => {
     function upd() {
-      const capped = typeof window.matchMedia !== "undefined" &&
-        window.matchMedia("(min-width: 1024px)").matches
-        ? Math.min(window.innerWidth * 0.2, 210)
-        : Math.min(window.innerWidth * 0.42, 300);
-      setPanelHalfPx(capped);
+      setPanelHalfPx(Math.min(window.innerWidth * 0.44, 320));
     }
     upd();
     window.addEventListener("resize", upd);
@@ -154,11 +149,11 @@ export function CommoditiesCubeCarousel({
       </span>
 
       <div
-        className="pointer-events-none absolute -inset-8 -z-10 rounded-[50%] bg-[radial-gradient(closest-side,oklch(0.45_0.12_175/0.22),transparent_72%)] blur-3xl opacity-70"
+        className="pointer-events-none absolute -inset-8 -z-10 rounded-[50%] bg-[radial-gradient(closest-side,oklch(0.62_0.12_78/0.22),transparent_72%)] blur-3xl opacity-80"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-16 top-10 -z-10 h-52 w-52 rounded-full bg-[radial-gradient(circle_at_center,oklch(0.5_0.14_155/0.18),transparent_68%)] blur-2xl"
+        className="pointer-events-none absolute -right-12 top-8 -z-10 h-48 w-48 rounded-full bg-[radial-gradient(circle_at_center,oklch(0.55_0.1_70/0.16),transparent_68%)] blur-2xl"
         aria-hidden
       />
       <div
@@ -167,9 +162,9 @@ export function CommoditiesCubeCarousel({
       />
 
       <div
-        className="relative mx-auto flex h-[min(52vh,420px)] w-full max-w-[min(100%,520px)] items-center justify-center lg:max-w-none lg:mx-0 md:h-[min(54vh,440px)]"
+        className="relative mx-auto flex h-[min(52vh,440px)] w-full max-w-[min(100%,520px)] items-center justify-center md:h-[min(54vh,460px)]"
         style={{
-          perspective: "min(900px, 100vw)",
+          perspective: "min(960px, 100vw)",
           perspectiveOrigin: "50% 40%",
         }}
         onMouseEnter={() => setPausedByHover(true)}
@@ -178,7 +173,7 @@ export function CommoditiesCubeCarousel({
         <div className="relative h-full w-full [transform-style:preserve-3d]">
           <div
             ref={spinnerRef}
-            className="absolute inset-0 m-auto flex h-[min(48vh,380px)] w-[min(88vw,460px)] max-w-[460px] items-center justify-center [transform-style:preserve-3d] will-change-transform lg:h-[min(50vh,400px)] lg:w-[min(100%,440px)]"
+            className="absolute inset-0 m-auto flex h-[min(48vh,400px)] w-[min(90vw,480px)] max-w-[480px] items-center justify-center [transform-style:preserve-3d] will-change-transform"
           >
             {items.map((item, idx) => {
               const faceRot = idx * anglePerFace;
@@ -186,7 +181,7 @@ export function CommoditiesCubeCarousel({
               return (
                 <div
                   key={item.title}
-                  className="absolute flex h-[min(46vh,360px)] w-[min(86vw,420px)] max-w-[420px] [transform-style:preserve-3d] [backface-visibility:hidden] lg:h-[min(48vh,380px)] lg:max-w-[400px]"
+                  className="absolute flex h-[min(46vh,380px)] w-[min(88vw,440px)] max-w-[440px] [transform-style:preserve-3d] [backface-visibility:hidden]"
                   style={{
                     transform: `rotateY(${faceRot}deg) translateZ(${translateZ}px)`,
                   }}
@@ -194,43 +189,32 @@ export function CommoditiesCubeCarousel({
                   <div
                     role="article"
                     aria-current={front ? "true" : undefined}
-                    className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl p-6 text-left text-foreground md:min-h-[280px] md:rounded-[1.25rem] md:p-8 ${faceGlass} ${
+                    className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl p-6 text-left text-foreground md:min-h-[300px] md:rounded-[1.25rem] md:p-8 ${faceGlass} ${
                       front ? faceGlassFront : faceGlassDim
                     }`}
                   >
-                    {/* Wireframe rim accent */}
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-95 [background:linear-gradient(135deg,oklch(0.92_0.06_215/0.14)_0%,transparent_38%,transparent_62%,oklch(0.35_0.08_200/0.2)_100%)]"
+                      className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-90 [background:linear-gradient(135deg,oklch(0.88_0.1_78/0.16)_0%,transparent_40%,transparent_60%,oklch(0.22_0.04_60/0.22)_100%)]"
                     />
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/80 to-transparent"
+                      className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent"
                     />
 
                     <div className="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden">
-                      <div className="flex shrink-0 items-start justify-between gap-3">
-                        <div className="inline-flex items-center gap-2 rounded-lg border border-sky-300/40 bg-sky-950/35 px-3 py-2 shadow-[inset_0_-1px_0_0_oklch(0_0_0/0.25)] backdrop-blur-sm">
-                          <span className="text-xl leading-none text-sky-200" aria-hidden>
-                            {item.symbol}
-                          </span>
-                          <span className="text-[9px] font-semibold uppercase leading-tight tracking-[0.2em] text-sky-100/95 sm:text-[10px]">
-                            {item.badge}
-                          </span>
-                        </div>
-                        <span className="hidden text-[9px] uppercase tracking-[0.28em] text-sky-200/65 sm:inline sm:text-[10px]">
-                          {String(idx + 1).padStart(2, "0")} ·{" "}
-                          {String(n).padStart(2, "0")}
+                      <div className="flex shrink-0 flex-col gap-2">
+                        <span className="text-2xl leading-none text-primary md:text-3xl" aria-hidden>
+                          {item.symbol}
                         </span>
-                      </div>
-                      <div className="mt-4 flex min-h-0 flex-col">
-                        <h3 className="font-display text-xl uppercase leading-tight text-[oklch(0.97_0.01_80)] md:text-2xl">
+                        <h3 className="font-display text-2xl font-normal leading-snug md:text-[1.625rem]">
                           {item.title}
                         </h3>
-                        <p className="mt-3 max-h-[9.5rem] overflow-y-auto pr-1 text-sm leading-relaxed text-foreground/80 md:max-h-[10.25rem] md:text-[0.9375rem]">
-                          {item.body}
-                        </p>
+                        <p className="text-sm leading-snug text-primary md:text-[0.9375rem]">{item.badge}</p>
                       </div>
+                      <p className="mt-4 max-h-[9.75rem] min-h-0 overflow-y-auto pr-1 text-sm leading-relaxed text-muted-foreground md:max-h-[10.75rem] md:text-[0.9375rem]">
+                        {item.body}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -240,17 +224,17 @@ export function CommoditiesCubeCarousel({
         </div>
       </div>
 
-      <div className="mt-8 flex flex-col items-center justify-center gap-4 lg:items-stretch">
+      <div className="mt-8 flex flex-col items-center justify-center gap-4">
         <div className="flex items-center justify-center gap-4">
           <button
             type="button"
             onClick={() => rotateBySteps(-1)}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-sky-400/40 bg-black/40 text-sky-100 shadow-[0_0_24px_-6px_oklch(0.65_0.12_220/0.45)] backdrop-blur-sm transition hover:border-sky-300/70 hover:bg-sky-950/50"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/45 bg-black/45 text-primary shadow-[0_0_26px_-6px_oklch(0.74_0.14_75/0.4)] backdrop-blur-sm transition hover:border-primary hover:bg-primary/15"
             aria-label="Previous commodity"
           >
             <ChevronLeft className="size-5" />
           </button>
-          <div className="flex max-w-[min(100%,18rem)] flex-wrap items-center justify-center gap-2 rounded-full border border-sky-400/35 bg-black/35 px-3 py-2 backdrop-blur-md">
+          <div className="flex max-w-[min(100%,18rem)] flex-wrap items-center justify-center gap-2 rounded-full border border-primary/35 bg-black/35 px-3 py-2 backdrop-blur-md">
             {items.map((it, i) => (
               <button
                 key={it.title}
@@ -258,8 +242,8 @@ export function CommoditiesCubeCarousel({
                 onClick={() => goToFace(i)}
                 className={`h-1.5 rounded-full transition-all ${
                   i === snapActive
-                    ? "w-7 bg-[linear-gradient(90deg,oklch(0.82_0.1_220),oklch(0.7_0.12_200))] shadow-[0_0_14px_oklch(0.75_0.12_220/0.6)]"
-                    : "w-1.5 bg-sky-500/35 hover:bg-sky-400/55"
+                    ? "w-7 bg-gradient-gold shadow-[0_0_14px_oklch(0.74_0.14_75/0.55)]"
+                    : "w-1.5 bg-primary/35 hover:bg-primary/55"
                 }`}
                 aria-label={`Go to ${it.title}`}
               />
@@ -268,7 +252,7 @@ export function CommoditiesCubeCarousel({
           <button
             type="button"
             onClick={() => rotateBySteps(1)}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-sky-400/40 bg-black/40 text-sky-100 shadow-[0_0_24px_-6px_oklch(0.65_0.12_220/0.45)] backdrop-blur-sm transition hover:border-sky-300/70 hover:bg-sky-950/50"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/45 bg-black/45 text-primary shadow-[0_0_26px_-6px_oklch(0.74_0.14_75/0.4)] backdrop-blur-sm transition hover:border-primary hover:bg-primary/15"
             aria-label="Next commodity"
           >
             <ChevronRight className="size-5" />
