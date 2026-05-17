@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useCallback, useEffect, useState } from "react";
 import { PageHeader } from "@/components/PageHeader";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import excavator from "@docs/op-excavator.jpg";
 import port from "@docs/op-port.jpg";
 import stockpile from "@docs/op-stockpile.jpg";
@@ -42,6 +52,87 @@ const photos = [
   { src: port, label: "Port Operations" },
 ];
 
+function GalleryAlbum() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api, onSelect]);
+
+  const active = photos[current];
+
+  return (
+    <div className="mx-auto max-w-5xl">
+      <div className="rounded border border-border bg-card p-4 shadow-elevated sm:p-6 md:p-8">
+        <Carousel className="w-full" opts={{ loop: true }} setApi={setApi}>
+          <div className="relative">
+            <CarouselContent className="-ml-0">
+              {photos.map((p, i) => (
+                <CarouselItem key={i} className="pl-0">
+                  <div className="overflow-hidden rounded border border-border/80 bg-coal">
+                    <img
+                      src={p.src}
+                      alt={p.label}
+                      className="aspect-[4/3] w-full object-cover sm:aspect-[16/10]"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-3 top-1/2 border-border bg-card/90 backdrop-blur-sm hover:bg-card" />
+            <CarouselNext className="right-3 top-1/2 border-border bg-card/90 backdrop-blur-sm hover:bg-card" />
+          </div>
+
+          <div className="mt-5 flex items-end justify-between gap-4 border-t border-border/60 pt-5">
+            <div>
+              {active.region ? (
+                <div className="text-xs uppercase tracking-[0.25em] text-primary">{active.region}</div>
+              ) : null}
+              <div className="font-display text-xl uppercase text-foreground sm:text-2xl">{active.label}</div>
+            </div>
+            <div className="shrink-0 text-sm tabular-nums text-muted-foreground">
+              {current + 1} / {photos.length}
+            </div>
+          </div>
+        </Carousel>
+
+        <div className="mt-6 flex gap-2 overflow-x-auto pb-1">
+          {photos.map((p, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => api?.scrollTo(i)}
+              aria-label={`View ${p.label}`}
+              aria-current={i === current ? "true" : undefined}
+              className={cn(
+                "relative shrink-0 overflow-hidden rounded border transition-all duration-200",
+                i === current
+                  ? "border-primary ring-2 ring-primary/40 opacity-100"
+                  : "border-border opacity-60 hover:opacity-90",
+              )}
+            >
+              <img src={p.src} alt="" className="size-16 object-cover sm:size-20" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Gallery() {
   return (
     <>
@@ -56,24 +147,7 @@ function Gallery() {
       />
 
       <section className="container-narrow py-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {photos.map((p, i) => (
-            <figure
-              key={`${p.label}-${p.region}`}
-              className={`group relative overflow-hidden rounded border border-border shadow-elevated ${i === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
-            >
-              <img
-                src={p.src}
-                alt={p.label}
-                className={`w-full h-full object-cover transition duration-700 group-hover:scale-105 ${i === 0 ? "aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px]" : "aspect-[4/3]"}`}
-              />
-              <figcaption className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-coal/95 via-coal/60 to-transparent">
-                <div className="text-xs uppercase tracking-[0.25em] text-primary">{p.region}</div>
-                <div className="font-display text-xl uppercase text-foreground">{p.label}</div>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <GalleryAlbum />
       </section>
     </>
   );

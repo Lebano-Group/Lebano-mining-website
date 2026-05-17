@@ -5,7 +5,7 @@ import { ServicesCircularCarousel } from "@/components/ServicesCircularCarousel"
 import { VerticalTimeline } from "@/components/VerticalTimeline";
 import excavator from "@docs/op-excavator.jpg";
 import port from "@docs/op-port.jpg";
-import team from "@docs/op-team-onsite.jpg";
+import lebano44 from "@docs/lebano-44.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -245,8 +245,8 @@ function Operations() {
       <section className="bg-gradient-panel border-y border-border/60 py-20">
         <div className="container-narrow grid lg:grid-cols-2 gap-12 items-center">
           <img
-            src={team}
-            alt="Lebano Mining team on site"
+            src={lebano44}
+            alt="Port bulk handling at Richards Bay"
             className="rounded shadow-elevated aspect-[4/3] object-cover w-full"
           />
           <div>
