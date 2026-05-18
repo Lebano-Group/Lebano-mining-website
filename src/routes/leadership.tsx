@@ -6,7 +6,7 @@ import shireen from "@docs/team/shireen-stow.png";
 import kabelo from "@docs/team/kabelo-sebidi.png";
 import teamSite from "@docs/op-team-onsite.jpg";
 
-export const Route = createFileRoute("/team")({
+export const Route = createFileRoute("/leadership")({
   head: () => ({
     meta: [
       { title: "Leadership — Lebano Mining" },

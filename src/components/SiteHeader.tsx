@@ -11,8 +11,8 @@ const navLinkClass =
 
 const nav = [
   { to: "/", label: "Our Business" },
-  { to: "/about", label: "Operations" },
-  { to: "/team", label: "Leadership" },
+  { to: "/operations", label: "Operations" },
+  { to: "/leadership", label: "Leadership" },
   { to: "/sustainability", label: "Sustainability" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },

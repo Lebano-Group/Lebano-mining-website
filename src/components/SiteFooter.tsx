@@ -37,12 +37,12 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/about" className={footerLinkClass}>
+              <Link to="/operations" className={footerLinkClass}>
                 Operations
               </Link>
             </li>
             <li>
-              <Link to="/team" className={footerLinkClass}>
+              <Link to="/leadership" className={footerLinkClass}>
                 Leadership
               </Link>
             </li>

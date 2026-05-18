@@ -7,7 +7,7 @@ import excavator from "@docs/op-excavator.jpg";
 import port from "@docs/op-port.jpg";
 import lebano44 from "@docs/lebano-44.jpg";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/operations")({
   head: () => ({
     meta: [
       { title: "Operations — Lebano Mining" },
