@@ -46,7 +46,7 @@ const whatWeDo = [
   {
     n: "01",
     title: "Exploration & Development",
-    body: "Mineral rights and active development locally and globally. Exploration underway in Lithium, Copper and Chrome.",
+    body: "Exploration underway in Lithium, Copper and Chrome.",
   },
   {
     n: "02",
@@ -56,7 +56,7 @@ const whatWeDo = [
   {
     n: "03",
     title: "Logistics & Rail",
-    body: "Pit to port solutions for mine to vessel through Transnet and African Rail Corporation.",
+    body: "Pit-to-port solutions for mine to vessel through Transnet and African Rail Corporation.",
   },
   {
     n: "04",
@@ -179,7 +179,7 @@ export function Home() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Lebano Mining operates across the full bulk commodity value chain from mineral
-            exploration in Mpumalanga through to international export through Richards Bay while actively
+            exploration in local and global markets to international export through Richards Bay while actively
             developing an exploration portfolio in the commodities of tomorrow.
           </p>
         </div>

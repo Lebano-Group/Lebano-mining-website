@@ -107,7 +107,7 @@ function Operations() {
             {
               kicker: "02 — Logistics",
               title: "Rail to the export corridor",
-              body: "Pit to Port solutions through Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
+              body: "Pit-to-port solutions through Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
             },
             {
               kicker: "03 — Terminal",
