@@ -47,7 +47,7 @@ const leaders: readonly Leader[] = [
   {
     img: joel,
     name: "Mr. Joel Kesler",
-    role: "Non-Executive Director — Lebano Mining (Pty) Ltd",
+    role: "Non-Executive Director",
     bioExpandable: true,
     bio: [
       "Mr. Joel Kesler is a qualified attorney with degrees in Commerce and Law (cum Laude) from the University of Cape Town. He brings 25 years of experience in international mergers and acquisitions, corporate finance and strategic business development both as a principal and in an advisory capacity to his role on the Lebano Mining board.",
@@ -80,14 +80,13 @@ const leaders: readonly Leader[] = [
   {
     img: kgalamadi,
     name: "Mr. Kgalamadi Ramotlhale",
-    role: "Operations & Stakeholder Executive — Lebano Mining (Pty) Ltd",
+    role: "Operations & Stakeholder Executive",
     bioExpandable: true,
     bio: [
-      "Mr. Kgalamadi Ramotlhale is an experienced operations, portfolio management and stakeholder engagement professional whose career spans over a decade of direct involvement in South Africa's rail freight sector, community development landscape and local economic development space. Trained and forged at Transnet Freight Rail where he progressed from freight train operations through to Portfolio Manager. His institutional knowledge of South Africa's rail freight infrastructure is a direct asset to Lebano Mining's mine-to-port supply chain operations.",
+      "Mr. Kgalamadi Ramotlhale is an experienced operations, portfolio management and stakeholder engagement professional whose career spans over a decade of direct involvement in South Africa's rail freight sector, community development landscape and local economic development space. Trained and forged at Transnet Freight Rail where he progressed from freight train operations through to Portfolio Manager. His institutional knowledge of South Africa's rail freight infrastructure is a direct asset to Lebano Mining's pit-to-port supply chain operations.",
       "Beyond his operational career, Mr. Ramotlhale is widely recognised in community and development circles as a pioneer in stakeholder engagement, particularly for his work bridging communities, government structures, businesses and social initiatives across Pretoria and the broader Gauteng region.",
       "In a consulting capacity, he has worked with organisations including PropertyPoint and the Public Investment Corporation (PIC), contributing to local economic development projects, housing and civic engagement initiatives, and the building of meaningful relationships between residents, institutions and private sector stakeholders.",
       "His ability to bring different groups together around shared interests building trust between communities and decision-makers, advocating for service delivery and grassroots participation, and using both formal and informal platforms to strengthen community cooperation has established him as a recognised voice in stakeholder engagement and community mobilisation across Gauteng.",
-      "Mr. Ramotlhale holds qualifications in Marketing, Business Finance and Supply Chain Management from the University of South Africa, grounding his practical expertise in formal commercial and financial disciplines.",
       "At Lebano Mining, Mr. Ramotlhale's dual capability operational depth in rail logistics and proven expertise in stakeholder and community engagement positions him as a critical bridge between the company's mining operations, its institutional partners and the host communities in which it operates.",
     ],
   },
