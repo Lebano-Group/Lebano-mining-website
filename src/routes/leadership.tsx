@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { UserRound } from "lucide-react";
 import lebo from "@docs/team/lebo-mutavhatsindi.png";
 import joel from "@docs/team/joel-kesler.png";
@@ -25,6 +26,7 @@ type Leader = {
   role: string;
   bio: readonly string[];
   hidden?: boolean;
+  bioExpandable?: boolean;
 } & (
   | { img: string; placeholder?: false }
   | { placeholder: true; img?: never }
@@ -46,6 +48,7 @@ const leaders: readonly Leader[] = [
     img: joel,
     name: "Mr. Joel Kesler",
     role: "Non-Executive Director — Lebano Mining (Pty) Ltd",
+    bioExpandable: true,
     bio: [
       "Mr. Joel Kesler is a qualified attorney with degrees in Commerce and Law (cum Laude) from the University of Cape Town. He brings 25 years of experience in international mergers and acquisitions, corporate finance and strategic business development both as a principal and in an advisory capacity to his role on the Lebano Mining board.",
       "Over an 18-year international executive career, Mr. Kesler held senior positions with public companies listed on the NYSE, TSX and JSE, including as main board director of Atlatsa Resources Corporation a Canadian and South African exploration and mining company specialising in platinum group metals, in joint venture with Anglo American Platinum.",
@@ -56,6 +59,7 @@ const leaders: readonly Leader[] = [
     img: shireen,
     name: "Ms. Shireen Stow",
     role: "Chief Financial Officer",
+    bioExpandable: true,
     bio: [
       "Shireen is a Chartered Accountant (South Africa) with international experience across the assurance and finance functions of major mining and listed companies.",
       "In the USA, Shireen worked at PwC's assurance group covering large listed entities and start-ups across hospitality, biotech and technology. Subsequent to leaving PwC she has held various senior financial positions, including CFO at Atlatsa Resources Corporation, listed on the TSX, NYSE and JSE.",
@@ -66,6 +70,7 @@ const leaders: readonly Leader[] = [
     img: kabelo,
     name: "Mr. Kabelo Sebidi",
     role: "Legal Representative",
+    bioExpandable: true,
     bio: [
       "Mr. Kabelo Sebidi is an Admitted Attorney of the High Court of South Africa and serves as Legal Representative of Lebano Mining (Pty) Ltd. He holds a Bachelor of Laws (LLB) from the University of Fort Hare — one of South Africa's most distinguished institutions of higher learning.",
       "In his role at Lebano Mining, Mr. Sebidi provides expert legal counsel across the company's commercial, operational and regulatory affairs — ensuring that the company's partnerships, contracts and business activities are conducted within a rigorous and fully compliant legal framework.",
@@ -75,12 +80,15 @@ const leaders: readonly Leader[] = [
   {
     img: kgalamadi,
     name: "Mr. Kgalamadi Ramotlhale",
-    role: "Operations & Portfolio Executive — Lebano Mining (Pty) Ltd",
+    role: "Operations & Stakeholder Executive — Lebano Mining (Pty) Ltd",
+    bioExpandable: true,
     bio: [
-      "Mr. Kgalamadi Ramotlhale is an experienced operations and portfolio management professional with over a decade of hands-on expertise in the South African rail freight and logistics sector. He brings to Lebano Mining a deep operational understanding of bulk commodity supply chains, spanning train operations, siding and stockpile management, logistics coordination and portfolio oversight.",
-      "Mr. Ramotlhale's career was forged at Transnet Freight Rail, where he progressed from direct freight train operations through to Portfolio Manager, a trajectory that reflects both operational mastery and the capacity for strategic, multi-asset oversight.",
-      "He holds tertiary qualifications in Marketing, Business Finance and Supply Chain Management from the University of South Africa, complementing his extensive operational experience with formal grounding in commercial and financial disciplines.",
-      "Mr. Ramotlhale's appointment at Lebano Mining brings directly relevant institutional knowledge to the company's operations, specifically his deep familiarity with the Transnet network, bulk commodity logistics and the rail infrastructure that is central to Lebano Mining's pit-to-port supply chain.",
+      "Mr. Kgalamadi Ramotlhale is an experienced operations, portfolio management and stakeholder engagement professional whose career spans over a decade of direct involvement in South Africa's rail freight sector, community development landscape and local economic development space. Trained and forged at Transnet Freight Rail where he progressed from freight train operations through to Portfolio Manager. His institutional knowledge of South Africa's rail freight infrastructure is a direct asset to Lebano Mining's mine-to-port supply chain operations.",
+      "Beyond his operational career, Mr. Ramotlhale is widely recognised in community and development circles as a pioneer in stakeholder engagement, particularly for his work bridging communities, government structures, businesses and social initiatives across Pretoria and the broader Gauteng region.",
+      "In a consulting capacity, he has worked with organisations including PropertyPoint and the Public Investment Corporation (PIC), contributing to local economic development projects, housing and civic engagement initiatives, and the building of meaningful relationships between residents, institutions and private sector stakeholders.",
+      "His ability to bring different groups together around shared interests building trust between communities and decision-makers, advocating for service delivery and grassroots participation, and using both formal and informal platforms to strengthen community cooperation has established him as a recognised voice in stakeholder engagement and community mobilisation across Gauteng.",
+      "Mr. Ramotlhale holds qualifications in Marketing, Business Finance and Supply Chain Management from the University of South Africa, grounding his practical expertise in formal commercial and financial disciplines.",
+      "At Lebano Mining, Mr. Ramotlhale's dual capability operational depth in rail logistics and proven expertise in stakeholder and community engagement positions him as a critical bridge between the company's mining operations, its institutional partners and the host communities in which it operates.",
     ],
   },
 ] as const;
@@ -91,6 +99,61 @@ const executiveTeam = visibleLeaders.slice(1);
 
 function LeaderRole({ role }: { role: string }) {
   return <div className="gold-container mb-3">{role}</div>;
+}
+
+function LeaderBio({
+  paragraphs,
+  expandable = false,
+  compact = false,
+  expanded = false,
+  onToggle,
+}: {
+  paragraphs: readonly string[];
+  expandable?: boolean;
+  compact?: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
+}) {
+  const canExpand = expandable && paragraphs.length > 0;
+  const textClass = compact
+    ? "text-xs leading-relaxed text-muted-foreground"
+    : "text-sm leading-relaxed text-muted-foreground";
+  const buttonClass =
+    "font-semibold uppercase tracking-wider text-primary transition-colors hover:text-primary/80";
+
+  if (!canExpand) {
+    return (
+      <div className={`space-y-2 ${textClass}`}>
+        {paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {expanded ? (
+        <div className={`space-y-2 ${textClass}`}>
+          {paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+      ) : (
+        <p className={`${textClass} line-clamp-[7] h-[9.75rem] overflow-hidden`}>
+          {paragraphs.join(" ")}
+        </p>
+      )}
+      <button
+        type="button"
+        onClick={onToggle}
+        className={`${compact ? "pt-3 text-xs" : "mt-3 text-sm"} ${buttonClass}`}
+        aria-expanded={expanded}
+      >
+        {expanded ? "Read less" : "Read more"}
+      </button>
+    </div>
+  );
 }
 
 function LeaderPhoto({
@@ -155,17 +218,23 @@ function CeoProfile({ leader }: { leader: Leader }) {
 }
 
 function ExecutiveLeaderCard({ leader }: { leader: Leader }) {
+  const [bioExpanded, setBioExpanded] = useState(false);
+
   return (
     <article className="flex min-w-0 flex-col gap-5">
       <LeaderPhoto leader={leader} />
       <div>
         <LeaderRole role={leader.role} />
-        <h3 className="font-display text-xl md:text-2xl uppercase mb-4 leading-tight">{leader.name}</h3>
-        <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-          {leader.bio.map((p, k) => (
-            <p key={k}>{p}</p>
-          ))}
-        </div>
+        <h3 className="font-display text-xl md:text-2xl uppercase mb-3 leading-tight">
+          {leader.name}
+        </h3>
+        <LeaderBio
+          paragraphs={leader.bio}
+          expandable={leader.bioExpandable}
+          compact
+          expanded={bioExpanded}
+          onToggle={() => setBioExpanded((v) => !v)}
+        />
       </div>
     </article>
   );
@@ -201,7 +270,7 @@ function Leadership() {
           ) : null}
 
           {executiveTeam.length > 0 ? (
-            <div className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 md:gap-8 md:py-24 lg:grid-cols-3 lg:gap-10">
+            <div className="grid grid-cols-1 items-start gap-10 py-16 sm:grid-cols-2 md:gap-8 md:py-24 lg:grid-cols-3 lg:gap-10">
               {executiveTeam.map((m) => (
                 <ExecutiveLeaderCard key={m.name} leader={m} />
               ))}

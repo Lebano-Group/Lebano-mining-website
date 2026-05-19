@@ -23,14 +23,20 @@ import vendaImg3 from "@docs/community of Venda/06ecaa83-7e1f-47ec-89a5-06a123f9
 import vendaImg4 from "@docs/community of Venda/e69e91e7-3c76-42b0-8631-2836ae567ebc.jpeg";
 import vendaImg5 from "@docs/community of Venda/e6efa5d4-71e1-420a-8048-7d695e6406c4.jpeg";
 import vendaImg6 from "@docs/community of Venda/WhatsApp Image 2026-05-12 at 19.25.27.jpeg";
-import univenImg1 from "@docs/University of venda/lebano-group-3-1024x576.jpg";
-import univenImg2 from "@docs/University of venda/lebano-group-4-1024x576.jpg";
-import univenImg3 from "@docs/University of venda/lebano-group-6-1024x576.jpg";
-import univenImg4 from "@docs/University of venda/lebano-group-7-1024x576.jpg";
-import univenImg5 from "@docs/University of venda/lebano-group-9-1024x576.jpg";
-import univenImg6 from "@docs/University of venda/lebano-group-10-1024x576.jpg";
-import univenImg7 from "@docs/University of venda/lebano-group-12-1024x576.jpg";
-import univenImg8 from "@docs/University of venda/lebano-group-13-1024x576.jpg";
+import univenPic1 from "@docs/University of venda/Pic1.jpg";
+import univenPic2 from "@docs/University of venda/Pic2-1280x950.jpg";
+import univenPic3 from "@docs/University of venda/Pic3.jpg";
+import univenPic4 from "@docs/University of venda/Pic4-1280x614.jpg";
+import univenPic5 from "@docs/University of venda/Pic5-1280x742.jpg";
+import univenPic6 from "@docs/University of venda/Pic6-1280x851.jpg";
+import univenPic7 from "@docs/University of venda/Pic7-1280x766.jpg";
+import univenPic8 from "@docs/University of venda/Pic8.jpg";
+import univenPic9 from "@docs/University of venda/Pic9-1280x611.jpg";
+import kingswayImg1 from "@docs/University of venda/lebano-group-4-1024x576.jpg";
+import kingswayImg2 from "@docs/University of venda/lebano-group-6-1024x576.jpg";
+import kingswayImg3 from "@docs/University of venda/lebano-group-7-1024x576.jpg";
+import kingswayImg4 from "@docs/University of venda/lebano-group-9-1024x576.jpg";
+import kingswayImg5 from "@docs/University of venda/lebano-group-10-1024x576.jpg";
 import stLaurenceImg1 from "@docs/st laurence/IMG_1721.JPG";
 import stLaurenceImg2 from "@docs/st laurence/IMG_1756.JPG";
 import stLaurenceImg3 from "@docs/st laurence/IMG_1841.JPG";
@@ -40,38 +46,66 @@ import stLaurenceImg6 from "@docs/st laurence/IMG_1852.JPG";
 import stLaurenceImg7 from "@docs/st laurence/IMG_1853.JPG";
 import stLaurenceImg8 from "@docs/st laurence/IMG_E1720.JPG";
 import stLaurenceImg9 from "@docs/st laurence/IMG_E1888.JPG";
+import sowetoImg1 from "@docs/Soweto Schools Donation/bb7bde74b49b4ab3868dee948ebe8b30.webp";
 
 const univenImages = [
   {
-    src: univenImg1,
-    alt: "Mashudu Francinah Foundation presents R1 million cheque to the University of Venda",
+    src: univenPic1,
+    alt: "Mashudu Francinah Foundation team presenting a R1 million ceremonial cheque to the University of Venda",
   },
   {
-    src: univenImg4,
-    alt: "Foundation and university representatives holding the ceremonial donation cheque",
+    src: univenPic2,
+    alt: "Speaker in a University of Venda blazer at the foundation partnership event",
   },
   {
-    src: univenImg5,
-    alt: "Foundation team members at the University of Venda partnership event",
+    src: univenPic3,
+    alt: "Foundation representative in formal attire at a University of Venda event",
   },
   {
-    src: univenImg3,
-    alt: "Foundation representatives in discussion at the University of Venda",
+    src: univenPic4,
+    alt: "Foundation representative speaking at a podium in a University of Venda lecture hall",
   },
   {
-    src: univenImg2,
-    alt: "Toughees school shoes donated through the foundation's University of Venda programme",
+    src: univenPic5,
+    alt: "Young speaker at a podium between University of Venda and Mashudu Francinah Foundation banners",
   },
   {
-    src: univenImg7,
-    alt: "Foundation team addressing learners in a classroom visit",
+    src: univenPic6,
+    alt: "Speaker at a podium with University of Venda and Mashudu Francinah Foundation backdrops",
   },
   {
-    src: univenImg8,
-    alt: "Guest lecture for University of Venda students in a lecture hall",
+    src: univenPic7,
+    alt: "Speaker addressing guests at the University of Venda and foundation partnership ceremony",
   },
   {
-    src: univenImg6,
+    src: univenPic8,
+    alt: "University of Venda students and foundation representatives in a lecture hall",
+  },
+  {
+    src: univenPic9,
+    alt: "Group photo at the R1 million Mashudu Francinah Foundation donation to the University of Venda",
+  },
+] as const;
+
+const kingswayImages = [
+  {
+    src: kingswayImg3,
+    alt: "Foundation representatives in discussion at Kingsway Centre",
+  },
+  {
+    src: kingswayImg4,
+    alt: "Foundation team members at a Kingsway Centre partnership meeting",
+  },
+  {
+    src: kingswayImg2,
+    alt: "Foundation meeting with Kingsway School community partners",
+  },
+  {
+    src: kingswayImg1,
+    alt: "Toughees school shoes prepared for distribution through Kingsway Centre",
+  },
+  {
+    src: kingswayImg5,
     alt: "Children with donated Toughees shoe boxes at a foundation community event",
   },
 ] as const;
@@ -95,6 +129,13 @@ const stLaurenceImages = [
   { src: stLaurenceImg7, alt: "Children with Merry Christmas gift bags" },
   { src: stLaurenceImg8, alt: "Foundation volunteers with a family at St Laurence Centre" },
   { src: stLaurenceImg9, alt: "Children assembling donated Raleigh bicycles" },
+] as const;
+
+const sowetoImages = [
+  {
+    src: sowetoImg1,
+    alt: "Mashudu Francinah Foundation team with donated school shoes and socks at a Soweto schools donation event",
+  },
 ] as const;
 
 export const Route = createFileRoute("/social-responsibility")({
@@ -125,8 +166,8 @@ const mashuduInitiatives = [
     id: "univen",
     title: "University of Venda",
     lines: [
-      "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at primary and tertiary institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
-      "The foundation donated R1 million to the University of Venda to support the institution and its students.",
+      "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
+      "The foundation donated to the University of Venda to support the institution and its students.",
     ],
     images: univenImages,
   },
@@ -146,6 +187,7 @@ const mashuduInitiatives = [
       "Annual structured feeding and community support programmes target food-insecure South Africans — delivered consistently, year on year, through partnerships with established community organisations across the country.",
       "The foundation contributed towards the cost of food and other essentials for one year to Kingsway Centre.",
     ],
+    images: kingswayImages,
   },
   {
     id: "st-laurence",
@@ -164,6 +206,7 @@ const mashuduInitiatives = [
       "Ditwana Primary School (Orlando East): fifty McDonald's meals were handed out.",
       "Tshebedisano Primary School (Pimville): fifty McDonald's meals were handed out.",
     ],
+    images: sowetoImages,
   },
   {
     id: "venda-event",
