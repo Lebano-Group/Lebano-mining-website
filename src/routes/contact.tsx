@@ -96,9 +96,9 @@ function Contact() {
     <>
       <PageHeader
         title={
-          <>
-            Let's build a <span className="text-gradient-gold">partnership</span>.
-          </>
+          <span className="inline-block rounded bg-gradient-gold px-7 py-3.5 text-4xl md:text-5xl lg:text-6xl font-semibold uppercase leading-tight tracking-wider text-primary-foreground shadow-gold">
+            Let&apos;s build a partnership.
+          </span>
         }
         subtitle="Have questions, inquiries, or ready to explore a partnership? Our dedicated team is here to assist you."
         image={port}
@@ -119,7 +119,7 @@ function Contact() {
             },
             { icon: Phone, label: "Phone", value: "+27 10 824 8330" },
             { icon: Mail, label: "Email", value: INBOX },
-            { icon: Clock, label: "Office Hours", value: "Monday to Friday, 08:00 – 16:00" },
+            { icon: Clock, label: "Office Hours", value: "Monday to Friday, 08:00 – 16:00 SAST" },
           ].map((c) => (
             <div key={c.label} className="flex gap-4 p-6 rounded border border-border bg-card">
               <div className="size-12 shrink-0 rounded bg-gradient-gold flex items-center justify-center text-primary-foreground">

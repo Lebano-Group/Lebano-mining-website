@@ -1,7 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Building2 } from "lucide-react";
-import { ServicesCircularCarousel } from "@/components/ServicesCircularCarousel";
-import { VerticalTimeline } from "@/components/VerticalTimeline";
 import excavator from "@docs/op-excavator.jpg";
 
 export const Route = createFileRoute("/about-us")({
@@ -11,7 +8,7 @@ export const Route = createFileRoute("/about-us")({
       {
         name: "description",
         content:
-          "Lebano Mining is an established South African mining and export company with over a decade of operational history across Mpumalanga and Richards Bay.",
+          "Lebano Mining is an established South African mining and export company with over a decade of operational history locally and globally.",
       },
     ],
   }),
@@ -21,41 +18,15 @@ export const Route = createFileRoute("/about-us")({
 const cardHover =
   "rounded border border-border bg-card shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
 
-const milestones = [
-  {
-    year: "2012",
-    body: "Founded by Mr. Livhuwani Mutavhatsindi. Initial focus: domestic thermal coal logistics for Eskom.",
-  },
-  {
-    year: "2014",
-    body: "Expansion into mineral exploration. First Mpumalanga mineral rights acquired.",
-  },
-  {
-    year: "2016",
-    body: "Strategic partnerships established with Transnet and African Rail Corporation.",
-  },
-  {
-    year: "2018",
-    body: "Richards Bay Coal Terminal port allocation secured. International export operations commence.",
-  },
-  {
-    year: "2020",
-    body: "Long-term off-take partnership established with Vitol.",
-  },
-  {
-    year: "2022",
-    body: "Mashudu Francinah Foundation established. Carolina and Witbank regions added to portfolio.",
-  },
-  {
-    year: "2024",
-    body: "Export volume exceeds 1Mt per annum. Lithium, Copper and Chrome exploration programmes initiated.",
-  },
+const companyOverview = [
+  "Lebano Mining (Pty) Ltd is a South African bulk commodity mining and export company, founded in 2012 by Mr. Livhuwani Mutavhatsindi and headquartered in Midrand, Gauteng. The company operates across the full commodity value chain from mineral exploration and asset development through to integrated rail logistics and international export with a primary focus on thermal coal and an expanding exploration portfolio in Lithium, Copper, Gold, Magnesium, Iron ore and Chrome.",
+  "Over more than a decade of active operation, Lebano Mining has grown from a domestic bulk commodity logistics provider into a fully integrated mining and export company with active development assets locally and globally, with a dedicated port allocation at the Richards Bay Coal Terminal, and established commodity trading relationships spanning Europe, India, China and Southeast Asia.",
 ] as const;
 
 const values = [
   {
     title: "Operational Integrity",
-    body: "Delivering consistently on commitments to shareholders, partners and host communities with transparency and rigour at every level of the organisation.",
+    body: "Delivering consistently on commitments to stakeholders, partners and host communities with transparency and rigour at every level of the organisation.",
   },
   {
     title: "Responsible Development",
@@ -63,16 +34,7 @@ const values = [
   },
   {
     title: "Enduring Value Creation",
-    body: "Building assets, institutional relationships and operational capability that generate sustainable, long-term value across the commodity value chain for shareholders, partners and the communities that host our operations.",
-  },
-] as const;
-
-const aboutSlides = [
-  {
-    icon: Building2,
-    badge: "Who we are",
-    title: "Lebano Mining (Pty) Ltd",
-    body: "Lebano Mining (Pty) Ltd is a South African bulk commodity mining and export company, founded in 2012 by Mr. Livhuwani Mutavhatsindi and headquartered in Midrand, Gauteng. The company operates across the full commodity value chain from mineral exploration and asset development through to integrated rail logistics and international export with a primary focus on thermal coal and an expanding exploration portfolio in Lithium, Copper and Chrome. Over more than a decade of active operation, Lebano Mining has grown from a domestic bulk commodity logistics provider into a fully integrated mining and export company with active development assets across five regions of Mpumalanga Province, a dedicated port allocation at the Richards Bay Coal Terminal, and established commodity trading relationships spanning Europe and Southeast Asia.",
+    body: "Building assets, institutional relationships and operational capability that generate sustainable, long-term value across the commodity value chain for stakeholders, partners and the communities that host our operations.",
   },
 ] as const;
 
@@ -98,29 +60,28 @@ function About() {
         </div>
       </section>
 
-      <section className="container-narrow py-16 md:py-24">
-        <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">History</div>
-        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12">Timeline Milestones</h2>
-        <VerticalTimeline
-          items={milestones.map((m) => ({
-            kicker: m.year,
-            title: m.body,
-          }))}
-        />
+      <section className="border-b border-border bg-background">
+        <div className="container-narrow py-20 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 lg:items-start">
+            <div className="lg:col-span-4">
+              <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Who we are</div>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl uppercase leading-tight text-gradient-gold">
+                Lebano Mining (Pty) Ltd
+              </h2>
+              <div className="mt-8 hidden h-px w-16 bg-gradient-gold lg:block" aria-hidden />
+            </div>
+            <div className="lg:col-span-8">
+              <div className="space-y-6 border-l-0 pl-0 text-muted-foreground leading-relaxed md:text-lg lg:border-l lg:border-primary/40 lg:pl-10">
+                {companyOverview.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="container-narrow pb-24">
-        <ServicesCircularCarousel
-          items={aboutSlides.map((slide) => ({
-            icon: slide.icon,
-            title: slide.title,
-            body: slide.body,
-            badge: slide.badge,
-          }))}
-        />
-      </section>
-
-      <section className="container-narrow pb-28">
+      <section className="container-narrow py-20 md:py-28">
         <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Values</div>
         <h2 className="font-display text-4xl md:text-5xl uppercase mb-12">What We Stand For</h2>
         <div className="grid md:grid-cols-3 gap-8">

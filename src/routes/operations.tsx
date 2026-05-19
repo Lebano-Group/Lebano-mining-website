@@ -25,11 +25,11 @@ const cardHover =
   "rounded border border-border bg-card shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
 
 const coalSites = [
-  { name: "Belfast", detail: "exploration & development stage" },
+  { name: "Belfast", detail: "active development" },
   { name: "Hendrina", detail: "active development" },
   { name: "Ermelo", detail: "active development" },
-  { name: "Carolina", detail: "development stage" },
-  { name: "Witbank", detail: "development stage" },
+  { name: "Carolina", detail: "active development" },
+  { name: "Witbank", detail: "active development" },
 ] as const;
 
 const coalCarouselSlides = coalSites.map((site) => ({
@@ -80,7 +80,7 @@ function Operations() {
             <span className="text-primary/50" aria-hidden>|</span>
             <span>Proven geology</span>
             <span className="text-primary/50" aria-hidden>|</span>
-            <span>Direct rail access to Richards Bay</span>
+            <span>Direct rail and road access to Richards Bay</span>
           </p>
         </div>
         <ServicesCircularCarousel items={[...coalCarouselSlides]} />
@@ -93,8 +93,8 @@ function Operations() {
           <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">From Ground to Market</h2>
           <p className="text-muted-foreground leading-relaxed">
             Lebano Mining traces a single chain from development assets in Mpumalanga through
-            integrated rail logistics and a dedicated Richards Bay allocation to long-term export
-            corridors in Europe and Southeast Asia.
+            integrated rail and road solutions to a dedicated Richards Bay allocation to long-term export
+            corridors in Europe, India, China and Southeast Asia.
           </p>
         </div>
         <VerticalTimeline
@@ -107,12 +107,12 @@ function Operations() {
             {
               kicker: "02 — Logistics",
               title: "Rail to the export corridor",
-              body: "Mine-to-rail logistics via Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
+              body: "Pit to Port solutions through Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
             },
             {
               kicker: "03 — Terminal",
               title: "Richards Bay Coal Terminal",
-              body: "Dedicated port allocation within a world-scale dry bulk gateway aligning stockpile, railing and vessel loading through RBCT.",
+              body: "Dedicated port allocation within a world-scale dry bulk gateway aligning stockpile, railing and vessel loading through NPT.",
             },
             {
               kicker: "04 — Markets",
@@ -142,7 +142,7 @@ function Operations() {
             <ul className="space-y-3 text-muted-foreground leading-relaxed mb-8">
               <li>
                 <span className="text-foreground font-medium">Annual throughput capacity: </span>
-                90Mt+
+                60Mt+
               </li>
               <li>
                 <span className="text-foreground font-medium">Lebano Mining: </span>
@@ -178,7 +178,7 @@ function Operations() {
             Exploring the Commodities of Tomorrow
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Beyond coal, Lebano Mining is actively exploring for three critical minerals positioning
+            Beyond coal, Lebano Mining is actively exploring for other critical minerals positioning
             the company at the frontier of global commodity demand and South Africa&apos;s
             expanding mineral economy.
           </p>
@@ -202,7 +202,7 @@ function Operations() {
             <span className="text-gradient-gold">To Established Markets.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Anchored by long-term partnerships with Vitol one of the world&apos;s largest independent
+            Anchored by long-term partnerships with Vitol SA, one of the world&apos;s largest independent
             commodity trading companies and supported by NG Global Energy Solutions.
           </p>
         </div>

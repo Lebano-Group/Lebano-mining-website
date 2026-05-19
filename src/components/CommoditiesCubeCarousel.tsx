@@ -48,7 +48,7 @@ export function CommoditiesCubeCarousel({
 
   const [pausedByHover, setPausedByHover] = useState(false);
   const [panelHalfPx, setPanelHalfPx] = useState(() =>
-    typeof window !== "undefined" ? Math.min(window.innerWidth * 0.44, 320) : 320,
+    typeof window !== "undefined" ? Math.min(window.innerWidth * 0.34, 200) : 200,
   );
   const [snapActive, setSnapActive] = useState(0);
 
@@ -61,7 +61,7 @@ export function CommoditiesCubeCarousel({
 
   useEffect(() => {
     function upd() {
-      setPanelHalfPx(Math.min(window.innerWidth * 0.44, 320));
+      setPanelHalfPx(Math.min(window.innerWidth * 0.34, 200));
     }
     upd();
     window.addEventListener("resize", upd);
@@ -71,7 +71,7 @@ export function CommoditiesCubeCarousel({
   const applySpinnerTransform = useCallback(() => {
     const el = spinnerRef.current;
     if (el) {
-      el.style.transform = `translateZ(-${translateZ}px) rotateY(${-angleRef.current}deg) rotateX(11deg)`;
+      el.style.transform = `translateZ(-${translateZ}px) rotateY(${-angleRef.current}deg) rotateX(6deg)`;
     }
     if (n <= 0 || anglePerFace <= 0) return;
     const a = ((-angleRef.current % 360) + 360) % 360;
@@ -140,7 +140,7 @@ export function CommoditiesCubeCarousel({
 
   return (
     <div
-      className={`relative ${className}`}
+      className={`relative isolate overflow-hidden ${className}`}
       aria-roledescription="carousel"
       aria-label="Our commodities"
     >
@@ -149,31 +149,27 @@ export function CommoditiesCubeCarousel({
       </span>
 
       <div
-        className="pointer-events-none absolute -inset-8 -z-10 rounded-[50%] bg-[radial-gradient(closest-side,oklch(0.62_0.12_78/0.22),transparent_72%)] blur-3xl opacity-80"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-12 top-8 -z-10 h-48 w-48 rounded-full bg-[radial-gradient(circle_at_center,oklch(0.55_0.1_70/0.16),transparent_68%)] blur-2xl"
+        className="pointer-events-none absolute inset-0 -z-10 rounded-[50%] bg-[radial-gradient(closest-side,oklch(0.62_0.12_78/0.16),transparent_72%)] blur-2xl opacity-70"
         aria-hidden
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[82%] h-14 w-[min(72%,440px)] -translate-x-1/2 rounded-[40%] bg-[radial-gradient(closest-side,oklch(0_0_0/0.45),transparent_70%)] opacity-80 blur-xl"
+        className="pointer-events-none absolute left-1/2 top-[78%] h-10 w-[min(85%,280px)] -translate-x-1/2 rounded-[40%] bg-[radial-gradient(closest-side,oklch(0_0_0/0.4),transparent_70%)] opacity-70 blur-lg"
       />
 
       <div
-        className="relative mx-auto flex h-[min(52vh,440px)] w-full max-w-[min(100%,520px)] items-center justify-center md:h-[min(54vh,460px)]"
+        className="relative mx-auto flex h-[min(38vh,320px)] w-full max-w-[min(100%,340px)] items-center justify-center overflow-hidden md:h-[min(40vh,340px)]"
         style={{
-          perspective: "min(960px, 100vw)",
-          perspectiveOrigin: "50% 40%",
+          perspective: "min(640px, 90vw)",
+          perspectiveOrigin: "50% 42%",
         }}
         onMouseEnter={() => setPausedByHover(true)}
         onMouseLeave={() => setPausedByHover(false)}
       >
-        <div className="relative h-full w-full [transform-style:preserve-3d]">
+        <div className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]">
           <div
             ref={spinnerRef}
-            className="absolute inset-0 m-auto flex h-[min(48vh,400px)] w-[min(90vw,480px)] max-w-[480px] items-center justify-center [transform-style:preserve-3d] will-change-transform"
+            className="absolute inset-0 m-auto flex h-[min(36vh,300px)] w-full max-w-[300px] items-center justify-center [transform-style:preserve-3d] will-change-transform"
           >
             {items.map((item, idx) => {
               const faceRot = idx * anglePerFace;
@@ -181,7 +177,7 @@ export function CommoditiesCubeCarousel({
               return (
                 <div
                   key={item.title}
-                  className="absolute flex h-[min(46vh,380px)] w-[min(88vw,440px)] max-w-[440px] [transform-style:preserve-3d] [backface-visibility:hidden]"
+                  className="absolute flex h-[min(34vh,280px)] w-[min(92%,300px)] max-w-[300px] [transform-style:preserve-3d] [backface-visibility:hidden]"
                   style={{
                     transform: `rotateY(${faceRot}deg) translateZ(${translateZ}px)`,
                   }}
@@ -189,7 +185,7 @@ export function CommoditiesCubeCarousel({
                   <div
                     role="article"
                     aria-current={front ? "true" : undefined}
-                    className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl p-6 text-left text-foreground md:min-h-[300px] md:rounded-[1.25rem] md:p-8 ${faceGlass} ${
+                    className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-lg p-5 text-left text-foreground md:rounded-xl md:p-6 ${faceGlass} ${
                       front ? faceGlassFront : faceGlassDim
                     }`}
                   >
@@ -204,15 +200,15 @@ export function CommoditiesCubeCarousel({
 
                     <div className="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden">
                       <div className="flex shrink-0 flex-col gap-2">
-                        <span className="text-2xl leading-none text-primary md:text-3xl" aria-hidden>
+                        <span className="text-xl leading-none text-primary md:text-2xl" aria-hidden>
                           {item.symbol}
                         </span>
-                        <h3 className="font-display text-2xl font-normal leading-snug md:text-[1.625rem]">
+                        <h3 className="font-display text-xl font-normal leading-snug md:text-2xl">
                           {item.title}
                         </h3>
-                        <p className="text-sm leading-snug text-primary md:text-[0.9375rem]">{item.badge}</p>
+                        <p className="text-xs leading-snug text-primary md:text-sm">{item.badge}</p>
                       </div>
-                      <p className="mt-4 max-h-[9.75rem] min-h-0 overflow-y-auto pr-1 text-sm leading-relaxed text-muted-foreground md:max-h-[10.75rem] md:text-[0.9375rem]">
+                      <p className="mt-3 max-h-[7.5rem] min-h-0 overflow-y-auto pr-1 text-xs leading-relaxed text-muted-foreground md:max-h-[8.5rem] md:text-sm">
                         {item.body}
                       </p>
                     </div>
@@ -224,7 +220,7 @@ export function CommoditiesCubeCarousel({
         </div>
       </div>
 
-      <div className="mt-8 flex flex-col items-center justify-center gap-4">
+      <div className="relative z-10 mt-6 flex flex-col items-center justify-center gap-4">
         <div className="flex items-center justify-center gap-4">
           <button
             type="button"

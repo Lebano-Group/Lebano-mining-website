@@ -46,7 +46,7 @@ const whatWeDo = [
   {
     n: "01",
     title: "Exploration & Development",
-    body: "Mineral rights and active development across Belfast, Hendrina, Ermelo, Carolina and Witbank. Exploration underway in Lithium, Copper and Chrome.",
+    body: "Mineral rights and active development locally and globally. Exploration underway in Lithium, Copper and Chrome.",
   },
   {
     n: "02",
@@ -56,12 +56,12 @@ const whatWeDo = [
   {
     n: "03",
     title: "Logistics & Rail",
-    body: "End-to-end logistics mine to vessel via Transnet and African Rail Corporation, connecting Mpumalanga assets to the Richards Bay export corridor.",
+    body: "Pit to port solutions for mine to vessel through Transnet and African Rail Corporation.",
   },
   {
     n: "04",
     title: "International Export",
-    body: "Dedicated Richards Bay port allocation. 1Mt+ exported annually. Long-term partnerships with Vitol and NG Global Energy Solutions. Europe and Southeast Asia.",
+    body: "Dedicated Richards Bay port allocation. 1Mt+ exported annually. Long-term partnerships including Vitol SA and NG Global Energy Solutions. Europe, India, China and Southeast Asia.",
   },
 ] as const;
 
@@ -86,6 +86,27 @@ const commodities = [
     tag: "● Exploration Stage",
     body:
       "Active exploration programme underway. Copper is fundamental to electrification, renewable energy infrastructure and the global transition to a low-carbon economy.",
+  },
+  {
+    symbol: "◇",
+    title: "Gold-Arizona, USA",
+    tag: "● Exploration Stage",
+    body:
+      "Lebano Mining holds active gold exploration interests in the state of Arizona, United States, one of the most historically significant and geologically prospective gold-producing jurisdictions in North America. This international exploration programme reflects the company's commitment to building a diversified, globally positioned mineral portfolio.",
+  },
+  {
+    symbol: "◇",
+    title: "Magnesium",
+    tag: "● Exploration Stage",
+    body:
+      "Active exploration programme underway. Magnesium is one of the lightest structural metals and a critical material in the automotive, aerospace and clean energy sectors — with growing strategic importance as global industries accelerate their transition to lightweight, low-emission technologies.",
+  },
+  {
+    symbol: "◇",
+    title: "Iron Ore",
+    tag: "● Exploration Stage",
+    body:
+      "Active exploration programme underway. Iron ore is a foundational bulk commodity the primary input for global steel production and a commodity in which South Africa holds significant reserve endowments and established export infrastructure.",
   },
   {
     symbol: "◇",
@@ -116,8 +137,8 @@ export function Home() {
           </div>
           <HeroMarqueeHeadline />
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Active across five regions of Mpumalanga. Exporting in excess of one million metric tons
-            annually through Richards Bay to Europe and Southeast Asia. Exploring the commodities
+            Active locally and globally. Exporting in excess of one million metric tons
+            annually through Richards Bay to Europe, Southeast Asia, India and China. Exploring the commodities
             that will power tomorrow.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -158,7 +179,7 @@ export function Home() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Lebano Mining operates across the full bulk commodity value chain from mineral
-            exploration in Mpumalanga through to international export via Richards Bay while actively
+            exploration in Mpumalanga through to international export through Richards Bay while actively
             developing an exploration portfolio in the commodities of tomorrow.
           </p>
         </div>
@@ -177,10 +198,10 @@ export function Home() {
           aria-hidden
           className="pointer-events-none absolute -left-[12%] top-24 h-[min(480px,65vw)] w-[min(480px,65vw)] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.55_0.12_78/0.18),transparent_68%)] blur-3xl"
         />
-        <div className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-          <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+        <div className="relative grid items-start gap-14 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+          <div className="order-2 flex justify-center overflow-hidden lg:order-1">
             <CommoditiesCubeCarousel
-              className="w-full max-w-[560px] lg:max-w-none"
+              className="mx-auto w-full max-w-[min(100%,340px)]"
               items={commodities.map((c) => ({
                 symbol: c.symbol,
                 title: c.title,
@@ -189,7 +210,7 @@ export function Home() {
               }))}
             />
           </div>
-          <div className="order-1 max-w-xl lg:order-2">
+          <div className="order-1 min-w-0 max-w-xl lg:order-2 lg:pt-4">
             <div className="text-sm text-primary mb-4">Our Commodities</div>
             <h2 className="font-display text-4xl md:text-5xl mb-6 text-gradient-gold">
               Producing Today. Exploring for Tomorrow.

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import logo from "@docs/logo.png";
+import logo from "@docs/lebano-logo-black.png";
 
 /** Source artwork 2000×2500 (4:5). `width`/`height` preserve aspect ratio for layout. */
 const LOGO_INTRINSIC = { width: 2000, height: 2500 } as const;
@@ -14,13 +14,15 @@ export function SiteFooter() {
       <div className="container-narrow py-16 grid gap-12 md:grid-cols-4">
         <div>
           <div className="mb-4">
-            <img
-              src={logo}
-              alt="Lebano Mining"
-              width={LOGO_INTRINSIC.width}
-              height={LOGO_INTRINSIC.height}
-              className="h-[6.5rem] sm:h-28 md:h-32 w-auto max-w-[min(340px,88vw)] sm:max-w-[min(400px,75vw)] md:max-w-[min(460px,55vw)] object-contain object-left"
-            />
+            <span className="inline-flex size-[6.5rem] sm:size-28 md:size-32 items-center justify-center overflow-hidden rounded-full border-2 border-primary/45 bg-card/60 p-1 shadow-[0_0_28px_-6px_oklch(0.74_0.14_75/0.4)]">
+              <img
+                src={logo}
+                alt="Lebano Mining"
+                width={LOGO_INTRINSIC.width}
+                height={LOGO_INTRINSIC.height}
+                className="size-full scale-[1.12] object-contain"
+              />
+            </span>
             <div className="text-[10px] tracking-[0.25em] text-primary mt-2">EST. 2012</div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">

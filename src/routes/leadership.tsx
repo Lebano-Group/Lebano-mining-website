@@ -4,7 +4,7 @@ import lebo from "@docs/team/lebo-mutavhatsindi.png";
 import joel from "@docs/team/joel-kesler.png";
 import shireen from "@docs/team/shireen-stow.png";
 import kabelo from "@docs/team/kabelo-sebidi.png";
-import kgalamadi from "@docs/team/kgalamadi-ramotlhale.png";
+import kgalamadi from "@docs/team/kgalamadi-ramotlhale.jpg";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({
@@ -36,9 +36,9 @@ const leaders: readonly Leader[] = [
     name: "Mr. Livhuwani Mutavhatsindi",
     role: "Founder & Chief Executive Officer",
     bio: [
-      "Mr. Livhuwani Mutavhatsindi is the Founder and Chief Executive Officer of Lebano Mining a multi-billion rand South African bulk commodity mining and export company with active development assets across five regions of Mpumalanga Province, an expanding exploration portfolio in Lithium, Copper and Chrome, and dedicated export operations through the Richards Bay Coal Terminal.",
-      "With over two decades of sector experience, Mr. Mutavhatsindi has built Lebano Mining into one of South Africa's most prominent black-owned mining enterprises exporting in excess of 1 million metric tons annually to off-takers across Europe and Southeast Asia, underpinned by institutional partnerships with Vitol, Transnet, African Rail Corporation and NG Global Energy Solutions.",
-      "Prior to founding Lebano Mining, Mr. Mutavhatsindi ran the Buffelsfontein Gold Mine in Klerksdorp in partnership with Village Main Reef, and led a successful turnaround of Harmony Gold Mine assets between 2010 and 2014 returning a financially distressed operation to profitability.",
+      "Mr. Livhuwani Mutavhatsindi is the Founder and Chief Executive Officer of Lebano Mining a multi-billion rand South African bulk commodity mining and export company with active development assets across five regions of Mpumalanga Province, an expanding exploration portfolio in Lithium, Copper, Gold, Magnesium, Iron ore and Chrome.",
+      "With over two decades of sector experience, Mr. Mutavhatsindi has built Lebano Mining into one of South Africa's most prominent black-owned mining enterprises exporting in excess of 1 million metric tons annually to off-takers across Europe, India, China and Southeast Asia, underpinned by institutional partnerships.",
+      "Prior to founding Lebano Mining, Mr. Mutavhatsindi acquired the Buffelsfontein Gold Mine in Klerksdorp in partnership with Village Main Reef, and led a successful turnaround of Harmony Gold Mine old assets between 2010 and 2014 returning a financially distressed operation to profitability.",
       "A committed advocate for the transformation of South Africa's mining sector and the empowerment of its communities, Mr. Mutavhatsindi founded the Mashudu Francinah Foundation in 2022 funding scholarships for deserving learners at institutions across South Africa, financing the construction of a school in Venda, and making annual structured contributions to feeding and community upliftment programmes across the country.",
     ],
   },
@@ -78,9 +78,9 @@ const leaders: readonly Leader[] = [
     role: "Operations & Portfolio Executive — Lebano Mining (Pty) Ltd",
     bio: [
       "Mr. Kgalamadi Ramotlhale is an experienced operations and portfolio management professional with over a decade of hands-on expertise in the South African rail freight and logistics sector. He brings to Lebano Mining a deep operational understanding of bulk commodity supply chains, spanning train operations, siding and stockpile management, logistics coordination and portfolio oversight.",
-      "Mr. Ramotlhale's career was forged at Transnet Freight Rail, where he progressed from direct freight train operations through to Portfolio Manager, a trajectory that reflects both operational mastery and the capacity for strategic, multi-asset oversight. In his portfolio management role, he was responsible for siding management, risk management, client relationship management, stakeholder engagement and the coordination of logistics operations across the Transnet network.",
+      "Mr. Ramotlhale's career was forged at Transnet Freight Rail, where he progressed from direct freight train operations through to Portfolio Manager, a trajectory that reflects both operational mastery and the capacity for strategic, multi-asset oversight.",
       "He holds tertiary qualifications in Marketing, Business Finance and Supply Chain Management from the University of South Africa, complementing his extensive operational experience with formal grounding in commercial and financial disciplines.",
-      "Mr. Ramotlhale's appointment at Lebano Mining brings directly relevant institutional knowledge to the company's operations, specifically his deep familiarity with the Transnet network, bulk commodity logistics and the rail infrastructure that is central to Lebano Mining's mine-to-port supply chain.",
+      "Mr. Ramotlhale's appointment at Lebano Mining brings directly relevant institutional knowledge to the company's operations, specifically his deep familiarity with the Transnet network, bulk commodity logistics and the rail infrastructure that is central to Lebano Mining's pit-to-port supply chain.",
     ],
   },
 ] as const;
@@ -175,18 +175,20 @@ function Leadership() {
   return (
     <>
       <section className="border-b border-border bg-background">
-        <div className="container-narrow py-24 md:py-32">
-          <h1 className="font-display text-5xl md:text-7xl uppercase max-w-3xl text-gradient-gold">
-            Leadership
-          </h1>
-          <h2 className="font-display text-2xl md:text-4xl uppercase max-w-4xl mt-6 tracking-tight text-gradient-gold">
-            Board &amp; Executive Leadership
-          </h2>
-          <p className="mt-8 max-w-3xl text-lg text-muted-foreground leading-relaxed">
+        <div className="container-narrow py-24 md:py-32 text-center">
+          <div className="leadership-hero-enter mx-auto max-w-4xl">
+            <h1 className="font-display text-5xl md:text-7xl uppercase leading-tight text-gradient-gold">
+              Leadership
+            </h1>
+            <h2 className="font-display text-2xl md:text-4xl uppercase mt-6 tracking-tight text-gradient-gold">
+              Board &amp; Executive Leadership
+            </h2>
+            <p className="mt-8 mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed">
             Executives who have operated at the highest levels of South African and international
             mining, finance and legal sectors bringing governance depth, commercial acumen and
             operational credibility to every level of the organisation.
-          </p>
+            </p>
+          </div>
         </div>
       </section>
 

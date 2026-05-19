@@ -100,15 +100,15 @@ const mashuduInitiatives = [
     title: "Kingsway Centre",
     lines: [
       "Annual structured feeding and community support programmes target food-insecure South Africans — delivered consistently, year on year, through partnerships with established community organisations across the country.",
-      "The foundation contributed R10,000 every month for one year to Kingsway Centre.",
+      "The foundation contributed towards the cost of food and other essentials for one year to Kingsway Centre.",
     ],
   },
   {
     id: "st-laurence",
     title: "St Laurence Centre",
     lines: [
-      "Monthly donations of R15,000 were made to St Laurence Centre.",
-      "Representatives visited the centre to hand out gifts: seven bicycles, Woolworths shopping vouchers to the value of R10,000, and McDonald's meals for all forty-two children present.",
+      "Monthly donations towards the cost of food and other essentials were made to St Laurence Centre.",
+      "Representatives visited the centre to hand out gifts: seven bicycles, Woolworths shopping vouchers, and McDonald's meals for all children present.",
     ],
     images: stLaurenceImages,
   },
@@ -245,7 +245,7 @@ function SocialResponsibility() {
           <div className={`p-8 ${cardHover}`}>
             <h3 className="font-display text-xl uppercase text-foreground mb-4">Skills Development</h3>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Structured skills transfer programmes aligned with mining and logistics operations
+              Structured skills transfer programmes and internships offered by Lebano Mining aligned with mining and logistics operations
               creating pathways to sustainable employment within the sector.
             </p>
           </div>
