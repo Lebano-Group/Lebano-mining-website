@@ -23,6 +23,14 @@ import vendaImg3 from "@docs/community of Venda/06ecaa83-7e1f-47ec-89a5-06a123f9
 import vendaImg4 from "@docs/community of Venda/e69e91e7-3c76-42b0-8631-2836ae567ebc.jpeg";
 import vendaImg5 from "@docs/community of Venda/e6efa5d4-71e1-420a-8048-7d695e6406c4.jpeg";
 import vendaImg6 from "@docs/community of Venda/WhatsApp Image 2026-05-12 at 19.25.27.jpeg";
+import univenImg1 from "@docs/University of venda/lebano-group-3-1024x576.jpg";
+import univenImg2 from "@docs/University of venda/lebano-group-4-1024x576.jpg";
+import univenImg3 from "@docs/University of venda/lebano-group-6-1024x576.jpg";
+import univenImg4 from "@docs/University of venda/lebano-group-7-1024x576.jpg";
+import univenImg5 from "@docs/University of venda/lebano-group-9-1024x576.jpg";
+import univenImg6 from "@docs/University of venda/lebano-group-10-1024x576.jpg";
+import univenImg7 from "@docs/University of venda/lebano-group-12-1024x576.jpg";
+import univenImg8 from "@docs/University of venda/lebano-group-13-1024x576.jpg";
 import stLaurenceImg1 from "@docs/st laurence/IMG_1721.JPG";
 import stLaurenceImg2 from "@docs/st laurence/IMG_1756.JPG";
 import stLaurenceImg3 from "@docs/st laurence/IMG_1841.JPG";
@@ -32,6 +40,41 @@ import stLaurenceImg6 from "@docs/st laurence/IMG_1852.JPG";
 import stLaurenceImg7 from "@docs/st laurence/IMG_1853.JPG";
 import stLaurenceImg8 from "@docs/st laurence/IMG_E1720.JPG";
 import stLaurenceImg9 from "@docs/st laurence/IMG_E1888.JPG";
+
+const univenImages = [
+  {
+    src: univenImg1,
+    alt: "Mashudu Francinah Foundation presents R1 million cheque to the University of Venda",
+  },
+  {
+    src: univenImg4,
+    alt: "Foundation and university representatives holding the ceremonial donation cheque",
+  },
+  {
+    src: univenImg5,
+    alt: "Foundation team members at the University of Venda partnership event",
+  },
+  {
+    src: univenImg3,
+    alt: "Foundation representatives in discussion at the University of Venda",
+  },
+  {
+    src: univenImg2,
+    alt: "Toughees school shoes donated through the foundation's University of Venda programme",
+  },
+  {
+    src: univenImg7,
+    alt: "Foundation team addressing learners in a classroom visit",
+  },
+  {
+    src: univenImg8,
+    alt: "Guest lecture for University of Venda students in a lecture hall",
+  },
+  {
+    src: univenImg6,
+    alt: "Children with donated Toughees shoe boxes at a foundation community event",
+  },
+] as const;
 
 const vendaCommunityImages = [
   { src: vendaImg1, alt: "Community football teams in Venda on a dirt pitch" },
@@ -85,6 +128,7 @@ const mashuduInitiatives = [
       "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at primary and tertiary institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
       "The foundation donated R1 million to the University of Venda to support the institution and its students.",
     ],
+    images: univenImages,
   },
   {
     id: "venda-community",
