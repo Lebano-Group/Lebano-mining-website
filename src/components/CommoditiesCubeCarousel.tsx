@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 /** Full lap ~52s */
 const DEG_PER_MS = 360 / 52_000;
@@ -46,7 +46,9 @@ export function CommoditiesCubeCarousel({
   const n = items.length;
   const anglePerFace = n > 0 ? 360 / n : 0;
 
+  const [pausedByUser, setPausedByUser] = useState(false);
   const [pausedByHover, setPausedByHover] = useState(false);
+  const isPaused = pausedByUser || pausedByHover;
   const [panelHalfPx, setPanelHalfPx] = useState(() =>
     typeof window !== "undefined" ? Math.min(window.innerWidth * 0.34, 200) : 200,
   );
@@ -94,7 +96,7 @@ export function CommoditiesCubeCarousel({
 
     const loop = (t: number) => {
       const shouldSpin =
-        !reduceMotion && !pausedByHover && n > 1 && !hidden();
+        !reduceMotion && !isPaused && n > 1 && !hidden();
 
       if (prevTs !== null && shouldSpin) {
         angleRef.current += DEG_PER_MS * (t - prevTs);
@@ -107,7 +109,7 @@ export function CommoditiesCubeCarousel({
 
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [applySpinnerTransform, n, pausedByHover, reduceMotion]);
+  }, [applySpinnerTransform, isPaused, n, reduceMotion]);
 
   useEffect(() => {
     applySpinnerTransform();
@@ -221,7 +223,7 @@ export function CommoditiesCubeCarousel({
       </div>
 
       <div className="relative z-10 mt-6 flex flex-col items-center justify-center gap-4">
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={() => rotateBySteps(-1)}
@@ -229,6 +231,19 @@ export function CommoditiesCubeCarousel({
             aria-label="Previous commodity"
           >
             <ChevronLeft className="size-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setPausedByUser((p) => !p)}
+            className={`inline-flex size-11 items-center justify-center rounded-full border bg-black/45 text-primary shadow-[0_0_26px_-6px_oklch(0.74_0.14_75/0.4)] backdrop-blur-sm transition hover:border-primary hover:bg-primary/15 ${
+              pausedByUser
+                ? "border-primary bg-primary/15"
+                : "border-primary/45"
+            }`}
+            aria-label={pausedByUser ? "Resume auto-rotation" : "Pause auto-rotation"}
+            aria-pressed={pausedByUser}
+          >
+            {pausedByUser ? <Play className="size-5" /> : <Pause className="size-5" />}
           </button>
           <div className="flex max-w-[min(100%,18rem)] flex-wrap items-center justify-center gap-2 rounded-full border border-primary/35 bg-black/35 px-3 py-2 backdrop-blur-md">
             {items.map((it, i) => (
