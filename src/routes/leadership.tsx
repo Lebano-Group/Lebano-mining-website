@@ -4,7 +4,7 @@ import lebo from "@docs/team/lebo-mutavhatsindi.png";
 import joel from "@docs/team/joel-kesler.png";
 import shireen from "@docs/team/shireen-stow.png";
 import kabelo from "@docs/team/kabelo-sebidi.png";
-import teamSite from "@docs/op-team-onsite.jpg";
+import kgalamadi from "@docs/team/kgalamadi-ramotlhale.png";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({
@@ -25,7 +25,6 @@ type Leader = {
   role: string;
   bio: readonly string[];
   hidden?: boolean;
-  subtitle?: string;
 } & (
   | { img: string; placeholder?: false }
   | { placeholder: true; img?: never }
@@ -36,21 +35,21 @@ const leaders: readonly Leader[] = [
     img: lebo,
     name: "Mr. Livhuwani Mutavhatsindi",
     role: "Founder & Chief Executive Officer",
-    subtitle: "Lebano Mining (Pty) Ltd",
     bio: [
-      "Mr. Livhuwani Mutavhatsindi is the Founder and Chief Executive Officer of Lebano Mining — a multi-billion rand South African bulk commodity mining and export company with active development assets across five regions of Mpumalanga Province, an expanding exploration portfolio in Lithium, Copper and Chrome, and dedicated export operations through the Richards Bay Coal Terminal.",
-      "With over two decades of sector experience, Mr. Mutavhatsindi has built Lebano Mining into one of South Africa's most prominent black-owned mining enterprises — exporting in excess of 1 million metric tons annually to off-takers across Europe and Southeast Asia, underpinned by institutional partnerships with Vitol, Transnet, African Rail Corporation and NG Global Energy Solutions.",
-      "Prior to founding Lebano Mining, Mr. Mutavhatsindi ran the Buffelsfontein Gold Mine in Klerksdorp with Village Main Reef, and led a successful turnaround of Harmony Gold Mine assets between 2010 and 2014. He founded the Mashudu Francinah Foundation in 2022 — funding scholarships, financing school construction in Venda and making annual structured contributions to community upliftment across South Africa.",
+      "Mr. Livhuwani Mutavhatsindi is the Founder and Chief Executive Officer of Lebano Mining a multi-billion rand South African bulk commodity mining and export company with active development assets across five regions of Mpumalanga Province, an expanding exploration portfolio in Lithium, Copper and Chrome, and dedicated export operations through the Richards Bay Coal Terminal.",
+      "With over two decades of sector experience, Mr. Mutavhatsindi has built Lebano Mining into one of South Africa's most prominent black-owned mining enterprises exporting in excess of 1 million metric tons annually to off-takers across Europe and Southeast Asia, underpinned by institutional partnerships with Vitol, Transnet, African Rail Corporation and NG Global Energy Solutions.",
+      "Prior to founding Lebano Mining, Mr. Mutavhatsindi ran the Buffelsfontein Gold Mine in Klerksdorp in partnership with Village Main Reef, and led a successful turnaround of Harmony Gold Mine assets between 2010 and 2014 returning a financially distressed operation to profitability.",
+      "A committed advocate for the transformation of South Africa's mining sector and the empowerment of its communities, Mr. Mutavhatsindi founded the Mashudu Francinah Foundation in 2022 funding scholarships for deserving learners at institutions across South Africa, financing the construction of a school in Venda, and making annual structured contributions to feeding and community upliftment programmes across the country.",
     ],
   },
   {
     img: joel,
     name: "Mr. Joel Kesler",
-    role: "Executive / Board",
+    role: "Non-Executive Director — Lebano Mining (Pty) Ltd",
     bio: [
-      "Mr. Kesler is a qualified Lawyer with degrees in Commerce & Law (cum Laude) from the University of Cape Town, and 25 years of experience in international mergers & acquisitions, corporate finance and business development — both as principal and advisor.",
-      "Over the past 18 years he has held senior international executive positions with public companies listed on the NYSE, TSX and JSE. He was a main board director at Atlatsa Resources Corporation, a Canadian–South African mining company specializing in PGMs alongside joint venture partner Anglo American Platinum.",
-      "He is a co-founder and principal of the Tomahawk Group, a multi-family office holding a diversified global portfolio across natural resources, technology, industrials, specialty spirits and real estate.",
+      "Mr. Joel Kesler is a qualified attorney with degrees in Commerce and Law (cum Laude) from the University of Cape Town. He brings 25 years of experience in international mergers and acquisitions, corporate finance and strategic business development both as a principal and in an advisory capacity to his role on the Lebano Mining board.",
+      "Over an 18-year international executive career, Mr. Kesler held senior positions with public companies listed on the NYSE, TSX and JSE, including as main board director of Atlatsa Resources Corporation a Canadian and South African exploration and mining company specialising in platinum group metals, in joint venture with Anglo American Platinum.",
+      "Mr. Kesler is co-founder and principal of the Tomahawk Group, a multi-family office managing a diversified global portfolio with investments across natural resources, technology, industrials, specialty spirits and real estate.",
     ],
   },
   {
@@ -67,7 +66,6 @@ const leaders: readonly Leader[] = [
     img: kabelo,
     name: "Mr. Kabelo Sebidi",
     role: "Legal Representative",
-    hidden: true,
     bio: [
       "Mr. Kabelo Sebidi is an Admitted Attorney of the High Court of South Africa and serves as Legal Representative of Lebano Mining (Pty) Ltd. He holds a Bachelor of Laws (LLB) from the University of Fort Hare — one of South Africa's most distinguished institutions of higher learning.",
       "In his role at Lebano Mining, Mr. Sebidi provides expert legal counsel across the company's commercial, operational and regulatory affairs — ensuring that the company's partnerships, contracts and business activities are conducted within a rigorous and fully compliant legal framework.",
@@ -75,80 +73,138 @@ const leaders: readonly Leader[] = [
     ],
   },
   {
-    placeholder: true,
+    img: kgalamadi,
     name: "Mr. Kgalamadi Ramotlhale",
-    role: "To Be Confirmed",
-    hidden: true,
-    bio: ["Biography to be supplied prior to launch."],
+    role: "Operations & Portfolio Executive — Lebano Mining (Pty) Ltd",
+    bio: [
+      "Mr. Kgalamadi Ramotlhale is an experienced operations and portfolio management professional with over a decade of hands-on expertise in the South African rail freight and logistics sector. He brings to Lebano Mining a deep operational understanding of bulk commodity supply chains, spanning train operations, siding and stockpile management, logistics coordination and portfolio oversight.",
+      "Mr. Ramotlhale's career was forged at Transnet Freight Rail, where he progressed from direct freight train operations through to Portfolio Manager, a trajectory that reflects both operational mastery and the capacity for strategic, multi-asset oversight. In his portfolio management role, he was responsible for siding management, risk management, client relationship management, stakeholder engagement and the coordination of logistics operations across the Transnet network.",
+      "He holds tertiary qualifications in Marketing, Business Finance and Supply Chain Management from the University of South Africa, complementing his extensive operational experience with formal grounding in commercial and financial disciplines.",
+      "Mr. Ramotlhale's appointment at Lebano Mining brings directly relevant institutional knowledge to the company's operations, specifically his deep familiarity with the Transnet network, bulk commodity logistics and the rail infrastructure that is central to Lebano Mining's mine-to-port supply chain.",
+    ],
   },
 ] as const;
 
 const visibleLeaders = leaders.filter((m) => !m.hidden);
+const ceo = visibleLeaders[0];
+const executiveTeam = visibleLeaders.slice(1);
+
+function LeaderRole({ role }: { role: string }) {
+  return <div className="gold-container mb-3">{role}</div>;
+}
+
+function LeaderPhoto({
+  leader,
+  objectPosition = "top",
+  fillHeight = false,
+}: {
+  leader: Leader;
+  objectPosition?: "top" | "center";
+  fillHeight?: boolean;
+}) {
+  return (
+    <div
+      className={`relative w-full overflow-hidden rounded ${fillHeight ? "h-full" : ""}`}
+    >
+      <div
+        className={`pointer-events-none absolute rounded bg-gradient-gold opacity-20 blur-xl ${
+          fillHeight ? "inset-0" : "-inset-2"
+        }`}
+        aria-hidden
+      />
+      {"placeholder" in leader && leader.placeholder ? (
+        <div className="relative flex aspect-[4/5] w-full items-center justify-center rounded border border-dashed border-border/80 bg-muted/30 shadow-elevated">
+          <UserRound
+            className="size-14 text-muted-foreground/55"
+            strokeWidth={1.25}
+            aria-hidden
+          />
+        </div>
+      ) : (
+        <img
+          src={leader.img}
+          alt={leader.name}
+          className={`relative w-full rounded object-cover bg-card shadow-elevated ${
+            fillHeight ? "h-full min-h-[300px] lg:min-h-0" : "aspect-[4/5]"
+          } ${objectPosition === "center" ? "object-center" : "object-top"}`}
+        />
+      )}
+    </div>
+  );
+}
+
+function CeoProfile({ leader }: { leader: Leader }) {
+  return (
+    <article className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(260px,320px)_1fr] lg:items-stretch lg:gap-14">
+      <div className="mx-auto w-full max-w-xs lg:mx-0 lg:h-full lg:max-w-none">
+        <LeaderPhoto leader={leader} objectPosition="center" fillHeight />
+      </div>
+      <div className="min-w-0">
+        <LeaderRole role={leader.role} />
+        <h2 className="font-display text-3xl md:text-5xl lg:text-6xl uppercase mb-6">
+          {leader.name}
+        </h2>
+        <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+          {leader.bio.map((p, k) => (
+            <p key={k}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ExecutiveLeaderCard({ leader }: { leader: Leader }) {
+  return (
+    <article className="flex min-w-0 flex-col gap-5">
+      <LeaderPhoto leader={leader} />
+      <div>
+        <LeaderRole role={leader.role} />
+        <h3 className="font-display text-xl md:text-2xl uppercase mb-4 leading-tight">{leader.name}</h3>
+        <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+          {leader.bio.map((p, k) => (
+            <p key={k}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 function Leadership() {
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-border">
-        <img
-          src={teamSite}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="relative container-narrow py-24 md:py-32">
-          <h1 className="font-display text-5xl md:text-7xl uppercase max-w-3xl">Leadership</h1>
-          <h2 className="font-display text-2xl md:text-4xl uppercase max-w-4xl mt-6 tracking-tight">
+      <section className="border-b border-border bg-background">
+        <div className="container-narrow py-24 md:py-32">
+          <h1 className="font-display text-5xl md:text-7xl uppercase max-w-3xl text-gradient-gold">
+            Leadership
+          </h1>
+          <h2 className="font-display text-2xl md:text-4xl uppercase max-w-4xl mt-6 tracking-tight text-gradient-gold">
             Board &amp; Executive Leadership
           </h2>
           <p className="mt-8 max-w-3xl text-lg text-muted-foreground leading-relaxed">
             Executives who have operated at the highest levels of South African and international
-            mining, finance and legal sectors — bringing governance depth, commercial acumen and
+            mining, finance and legal sectors bringing governance depth, commercial acumen and
             operational credibility to every level of the organisation.
           </p>
         </div>
       </section>
 
       <section className="border-t-2 border-primary/45">
-        <div className="container-narrow py-16 md:py-24 space-y-24 md:space-y-32">
-          {visibleLeaders.map((m, i) => (
-            <article
-              key={m.name}
-              className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""}`}
-            >
-              <div className="lg:col-span-5 relative">
-                <div className="absolute -inset-3 bg-gradient-gold opacity-25 blur-2xl rounded" />
-                {"placeholder" in m && m.placeholder ? (
-                  <div className="relative flex aspect-[4/5] w-full items-center justify-center rounded border border-dashed border-border/80 bg-muted/30 shadow-elevated">
-                    <UserRound
-                      className="size-14 text-muted-foreground/55"
-                      strokeWidth={1.25}
-                      aria-hidden
-                    />
-                  </div>
-                ) : (
-                  <img
-                    src={m.img}
-                    alt={m.name}
-                    className="relative aspect-[4/5] w-full rounded object-cover object-top bg-card shadow-elevated"
-                  />
-                )}
-              </div>
-              <div className="lg:col-span-7">
-                <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">{m.role}</div>
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl uppercase mb-3">
-                  {m.name}
-                </h2>
-                {m.subtitle ? (
-                  <p className="text-muted-foreground text-base md:text-lg mb-8">{m.subtitle}</p>
-                ) : null}
-                <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg">
-                  {m.bio.map((p, k) => (
-                    <p key={k}>{p}</p>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
+        <div className="container-narrow">
+          {ceo ? (
+            <div className="border-b border-border py-16 md:py-24 lg:py-28">
+              <CeoProfile leader={ceo} />
+            </div>
+          ) : null}
+
+          {executiveTeam.length > 0 ? (
+            <div className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 md:gap-8 md:py-24 lg:grid-cols-3 lg:gap-10">
+              {executiveTeam.map((m) => (
+                <ExecutiveLeaderCard key={m.name} leader={m} />
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
     </>

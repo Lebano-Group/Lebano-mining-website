@@ -10,10 +10,11 @@ const navLinkClass =
   "inline-block text-sm uppercase tracking-wider text-muted-foreground transition-all duration-200 ease-out hover:translate-x-1 hover:text-primary active:translate-x-0.5";
 
 const nav = [
-  { to: "/", label: "Our Business" },
+  { to: "/", label: "Home" },
+  { to: "/about-us", label: "About Us" },
   { to: "/operations", label: "Operations" },
   { to: "/leadership", label: "Leadership" },
-  { to: "/sustainability", label: "Sustainability" },
+  { to: "/social-responsibility", label: "Social Responsibility" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
 ] as const;

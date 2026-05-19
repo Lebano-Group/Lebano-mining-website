@@ -24,7 +24,7 @@ export function SiteFooter() {
             <div className="text-[10px] tracking-[0.25em] text-primary mt-2">EST. 2012</div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Thermal coal and bulk commodity logistics through Richards Bay — domestic supply and
+            Thermal coal and bulk commodity logistics through Richards Bay domestic supply and
             export since 2012.
           </p>
         </div>
@@ -33,7 +33,12 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
               <Link to="/" className={footerLinkClass}>
-                Our Business
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about-us" className={footerLinkClass}>
+                About Us
               </Link>
             </li>
             <li>
@@ -47,8 +52,8 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/sustainability" className={footerLinkClass}>
-                Sustainability
+              <Link to="/social-responsibility" className={footerLinkClass}>
+                Social Responsibility
               </Link>
             </li>
             <li>

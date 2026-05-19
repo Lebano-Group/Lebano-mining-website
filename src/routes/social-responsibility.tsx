@@ -24,20 +24,14 @@ import vendaImg4 from "@docs/community of Venda/e69e91e7-3c76-42b0-8631-2836ae56
 import vendaImg5 from "@docs/community of Venda/e6efa5d4-71e1-420a-8048-7d695e6406c4.jpeg";
 import vendaImg6 from "@docs/community of Venda/WhatsApp Image 2026-05-12 at 19.25.27.jpeg";
 import stLaurenceImg1 from "@docs/st laurence/IMG_1721.JPG";
-import stLaurenceImg2 from "@docs/st laurence/IMG_1755.JPG";
-import stLaurenceImg3 from "@docs/st laurence/IMG_1756.JPG";
-import stLaurenceImg4 from "@docs/st laurence/IMG_1757.JPG";
-import stLaurenceImg5 from "@docs/st laurence/IMG_1758.JPG";
-import stLaurenceImg6 from "@docs/st laurence/IMG_1759.JPG";
-import stLaurenceImg7 from "@docs/st laurence/IMG_1760.JPG";
-import stLaurenceImg8 from "@docs/st laurence/IMG_1809.JPG";
-import stLaurenceImg9 from "@docs/st laurence/IMG_1841.JPG";
-import stLaurenceImg10 from "@docs/st laurence/IMG_1842.JPG";
-import stLaurenceImg11 from "@docs/st laurence/IMG_1844.JPG";
-import stLaurenceImg12 from "@docs/st laurence/IMG_1852.JPG";
-import stLaurenceImg13 from "@docs/st laurence/IMG_1853.JPG";
-import stLaurenceImg14 from "@docs/st laurence/IMG_E1720.JPG";
-import stLaurenceImg15 from "@docs/st laurence/IMG_E1888.JPG";
+import stLaurenceImg2 from "@docs/st laurence/IMG_1756.JPG";
+import stLaurenceImg3 from "@docs/st laurence/IMG_1841.JPG";
+import stLaurenceImg4 from "@docs/st laurence/IMG_1842.JPG";
+import stLaurenceImg5 from "@docs/st laurence/IMG_1844.JPG";
+import stLaurenceImg6 from "@docs/st laurence/IMG_1852.JPG";
+import stLaurenceImg7 from "@docs/st laurence/IMG_1853.JPG";
+import stLaurenceImg8 from "@docs/st laurence/IMG_E1720.JPG";
+import stLaurenceImg9 from "@docs/st laurence/IMG_E1888.JPG";
 
 const vendaCommunityImages = [
   { src: vendaImg1, alt: "Community football teams in Venda on a dirt pitch" },
@@ -50,26 +44,20 @@ const vendaCommunityImages = [
 
 const stLaurenceImages = [
   { src: stLaurenceImg1, alt: "Children and adults at Mashudu Francinah Foundation event, St Laurence Centre" },
-  { src: stLaurenceImg2, alt: "Foundation community gathering outdoors" },
-  { src: stLaurenceImg3, alt: "McDonald's meal distribution with Mashudu Francinah Foundation banners" },
-  { src: stLaurenceImg4, alt: "St Laurence Centre community outreach" },
-  { src: stLaurenceImg5, alt: "Foundation representatives at community event" },
-  { src: stLaurenceImg6, alt: "Children receiving support at St Laurence Centre" },
-  { src: stLaurenceImg7, alt: "Community programme at St Laurence Centre" },
-  { src: stLaurenceImg8, alt: "Children with festive gift bags at outdoor gathering" },
-  { src: stLaurenceImg9, alt: "Children sharing McDonald's meals at picnic tables" },
-  { src: stLaurenceImg10, alt: "Foundation team with children at outdoor meal" },
-  { src: stLaurenceImg11, alt: "Community meal and gift distribution" },
-  { src: stLaurenceImg12, alt: "Foundation representative with children and gifts" },
-  { src: stLaurenceImg13, alt: "Children with Merry Christmas gift bags" },
-  { src: stLaurenceImg14, alt: "Foundation volunteers with a family at St Laurence Centre" },
-  { src: stLaurenceImg15, alt: "Children assembling donated Raleigh bicycles" },
+  { src: stLaurenceImg2, alt: "McDonald's meal distribution with Mashudu Francinah Foundation banners" },
+  { src: stLaurenceImg3, alt: "Children sharing McDonald's meals at picnic tables" },
+  { src: stLaurenceImg4, alt: "Foundation team with children at outdoor meal" },
+  { src: stLaurenceImg5, alt: "Community meal and gift distribution" },
+  { src: stLaurenceImg6, alt: "Foundation representative with children and gifts" },
+  { src: stLaurenceImg7, alt: "Children with Merry Christmas gift bags" },
+  { src: stLaurenceImg8, alt: "Foundation volunteers with a family at St Laurence Centre" },
+  { src: stLaurenceImg9, alt: "Children assembling donated Raleigh bicycles" },
 ] as const;
 
-export const Route = createFileRoute("/sustainability")({
+export const Route = createFileRoute("/social-responsibility")({
   head: () => ({
     meta: [
-      { title: "Sustainability & Social Responsibility — Lebano Mining" },
+      { title: "Social Responsibility — Lebano Mining" },
       {
         name: "description",
         content:
@@ -77,7 +65,7 @@ export const Route = createFileRoute("/sustainability")({
       },
     ],
   }),
-  component: Sustainability,
+  component: SocialResponsibility,
 });
 
 const foundationCardMotion =
@@ -94,7 +82,7 @@ const mashuduInitiatives = [
     id: "univen",
     title: "University of Venda",
     lines: [
-      "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at primary and tertiary institutions across South Africa — creating pathways to meaningful employment and professional development for the next generation of South African talent.",
+      "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at primary and tertiary institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
       "The foundation donated R1 million to the University of Venda to support the institution and its students.",
     ],
   },
@@ -102,7 +90,7 @@ const mashuduInitiatives = [
     id: "venda-community",
     title: "Community of Venda",
     lines: [
-      "Mr. Mutavhatsindi is funding the construction of a school in Venda — providing a permanent educational facility for the local community and expanding access to quality schooling for learners who would otherwise have limited options. Upon completion, the school will stand as a lasting legacy of the Foundation's work in Limpopo.",
+      "Mr. Mutavhatsindi is funding the construction of a school in Venda providing a permanent educational facility for the local community and expanding access to quality schooling for learners who would otherwise have limited options. Upon completion, the school will stand as a lasting legacy of the Foundation's work in Limpopo.",
       "Fifteen full football kits were donated to community teams in Venda.",
     ],
     images: vendaCommunityImages,
@@ -151,9 +139,24 @@ const mashuduInitiatives = [
   },
 ] as const;
 
+const foundationProgrammes = [
+  {
+    title: "Education & Scholarships",
+    body: "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at primary and tertiary educational institutions across South Africa creating pathways to meaningful employment and professional development for the next generation of South African talent.",
+  },
+  {
+    title: "School Construction — Venda",
+    body: "The foundation is funding the construction of a school in Venda providing a permanent educational facility for the local community and expanding access to quality schooling for learners who would otherwise have limited options. Upon completion, the school will stand as a lasting legacy of the Foundation's commitment to education in Limpopo.",
+  },
+  {
+    title: "Community Support & Feeding",
+    body: "Annual structured feeding and community support programmes targeting food-insecure South Africans, delivered consistently, year on year, through partnerships with established community organisations across the country.",
+  },
+] as const;
+
 type MashuduId = (typeof mashuduInitiatives)[number]["id"];
 
-function Sustainability() {
+function SocialResponsibility() {
   const [mashuduOpenId, setMashuduOpenId] = useState<MashuduId | null>(null);
   const activeMashudu = mashuduInitiatives.find((i) => i.id === mashuduOpenId);
 
@@ -165,7 +168,7 @@ function Sustainability() {
             Social <span className="text-gradient-gold">Responsibility</span>
           </>
         }
-        subtitle="For Lebano Mining, social responsibility is a personal commitment — not a reporting obligation. The Mashudu Francinah Foundation carries that commitment to learners, families and communities across South Africa."
+        subtitle="The Mashudu Francinah Foundation is Lebano Mining's primary vehicle for structured community investment and social development across South Africa."
         image={mashuduHero}
         imageAlt="Mashudu Francinah Foundation community event with children and team members"
       />
@@ -178,12 +181,16 @@ function Sustainability() {
             Social Responsibility
           </div>
           <h2 className="font-display text-3xl md:text-5xl uppercase mb-4">
-            Mashudu Francinah Foundation
+            The Mashudu Francinah Foundation
           </h2>
           <p className="max-w-3xl leading-relaxed mb-8 opacity-95">
-            Established by Lebano Mining in 2022, the Mashudu Francinah Foundation extends our
-            social investment across education, child welfare and the arts. The following programmes
-            are recorded in our foundation documentation — open each item for the full account.
+            Founded by Mr. Livhuwani Mutavhatsindi in 2022, the Mashudu Francinah Foundation is Lebano
+            Mining&apos;s primary vehicle for structured community investment and social development across
+            South Africa with a particular focus on education, food security and the upliftment of
+            communities in Limpopo Province. The Foundation reflects Mr. Mutavhatsindi&apos;s personal
+            conviction that the measure of a business is not only its commercial performance, but its impact
+            on the people and communities that surround it. The following programmes are recorded in
+            our foundation documentation open each item for the full account.
           </p>
           <nav aria-label="Foundation programmes" className="w-full">
             <ul className="flex flex-wrap justify-center gap-2 sm:gap-3 md:justify-start">
@@ -212,10 +219,19 @@ function Sustainability() {
       </section>
 
       <section className="container-narrow pb-24">
+        <div className="grid md:grid-cols-3 gap-8">
+          {foundationProgrammes.map((programme) => (
+            <div key={programme.title} className={`p-8 ${cardHover}`}>
+              <h3 className="font-display text-xl uppercase text-foreground mb-4">{programme.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{programme.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="container-narrow pb-24">
         <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Host Communities</div>
-        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12">
-          Community Development — Mpumalanga &amp; Limpopo
-        </h2>
+        <h2 className="font-display text-4xl md:text-5xl uppercase mb-12">Community Development</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className={`p-8 ${cardHover}`}>
             <h3 className="font-display text-xl uppercase text-foreground mb-4">
@@ -229,7 +245,7 @@ function Sustainability() {
           <div className={`p-8 ${cardHover}`}>
             <h3 className="font-display text-xl uppercase text-foreground mb-4">Skills Development</h3>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Structured skills transfer programmes aligned with mining and logistics operations —
+              Structured skills transfer programmes aligned with mining and logistics operations
               creating pathways to sustainable employment within the sector.
             </p>
           </div>

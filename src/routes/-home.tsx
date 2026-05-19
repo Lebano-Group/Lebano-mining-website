@@ -3,11 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { VerticalTimeline } from "@/components/VerticalTimeline";
 import { CommoditiesCubeCarousel } from "@/components/CommoditiesCubeCarousel";
 import heroImg from "@docs/op-stockpile.jpg";
-import excavator from "@docs/op-excavator.jpg";
 
-export const ourBusinessHead = () => ({
+export const homeHead = () => ({
   meta: [
-    { title: "Our Business — Lebano Mining | Lebano Group" },
+    { title: "Home — Lebano Mining | Lebano Group" },
     {
       name: "description",
       content:
@@ -15,9 +14,6 @@ export const ourBusinessHead = () => ({
     },
   ],
 });
-
-const cardHover =
-  "rounded border border-border bg-card shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
 
 function HeroMarqueeHeadline() {
   const phrase = (
@@ -46,29 +42,6 @@ function HeroMarqueeHeadline() {
   );
 }
 
-const stats = [
-  {
-    figure: "1Mt+",
-    label: "Coal exported annually",
-  },
-  {
-    figure: "12+",
-    label: "Years of active operations",
-  },
-  {
-    figure: "5",
-    label: "Coal development regions — Mpumalanga",
-  },
-  {
-    figure: "4",
-    label: "Commodities — producing & exploring",
-  },
-  {
-    figure: "2",
-    label: "International export markets",
-  },
-] as const;
-
 const whatWeDo = [
   {
     n: "01",
@@ -78,12 +51,12 @@ const whatWeDo = [
   {
     n: "02",
     title: "Mining & Production",
-    body: "Operational mining across the bulk commodity value chain — from early-stage exploration through to active thermal coal production and export.",
+    body: "Operational mining across the bulk commodity value chain from early-stage exploration through to active thermal coal production and export.",
   },
   {
     n: "03",
     title: "Logistics & Rail",
-    body: "End-to-end logistics mine to vessel — via Transnet and African Rail Corporation connecting Mpumalanga assets to the Richards Bay export corridor.",
+    body: "End-to-end logistics mine to vessel via Transnet and African Rail Corporation, connecting Mpumalanga assets to the Richards Bay export corridor.",
   },
   {
     n: "04",
@@ -105,7 +78,7 @@ const commodities = [
     title: "Lithium",
     tag: "● Exploration Stage",
     body:
-      "Active exploration programme underway. Lithium is a critical mineral for the global energy transition — battery technology, electric vehicles and grid storage.",
+      "Active exploration programme underway. Lithium is a critical mineral for the global energy transition battery technology, electric vehicles and grid storage.",
   },
   {
     symbol: "◇",
@@ -123,7 +96,7 @@ const commodities = [
   },
 ] as const;
 
-export function OurBusiness() {
+export function Home() {
   return (
     <>
       {/* HERO */}
@@ -149,7 +122,7 @@ export function OurBusiness() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              to="/about"
+              to="/operations"
               className="group/cta inline-flex items-center gap-2 px-7 py-3.5 rounded bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider text-sm shadow-gold transition-all duration-300 hover:opacity-95 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
             >
               Explore Our Operations{" "}
@@ -165,94 +138,27 @@ export function OurBusiness() {
           <p className="mt-12 text-sm uppercase tracking-[0.2em] text-muted-foreground flex flex-wrap gap-x-4 gap-y-2">
             <span>Mined with Purpose</span>
             <span className="text-primary/40 hidden sm:inline" aria-hidden>
-              ·
+              ●
             </span>
             <span>Delivered with Precision</span>
             <span className="text-primary/40 hidden sm:inline" aria-hidden>
-              ·
+              ●
             </span>
             <span className="text-primary">Lebano Mining</span>
           </p>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="container-narrow py-24">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className={`p-6 md:p-8 text-center ${cardHover}`}>
-              <div className="font-display text-4xl md:text-5xl uppercase text-gradient-gold mb-3">
-                {s.figure}
-              </div>
-              <p className="text-sm text-muted-foreground leading-snug">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* OUR APPROACH */}
-      <section className="container-narrow py-24 grid lg:grid-cols-2 gap-12 items-start">
-        <div className={`p-8 md:p-10 ${cardHover}`}>
-          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Approach</div>
-          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
-            Built on Operational Depth. Proven at International Scale.
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            Lebano Mining is an established South African bulk commodity mining and export company —
-            founded in 2012 and built from the ground up through direct engagement with the full
-            commodity supply chain. From mineral exploration and asset development across Mpumalanga
-            Province through to integrated rail logistics and international export via the Richards
-            Bay Coal Terminal, the company controls every stage of the journey from ground to market.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Beyond coal, Lebano Mining is actively exploring for Lithium, Copper and Chrome —
-            positioning the company at the frontier of the commodities that will define Africa&apos;s
-            industrial and energy future.
-          </p>
-        </div>
-        <div className="relative group/img lg:justify-self-end w-full max-w-xl">
-          <div
-            className="pointer-events-none absolute -right-2 top-1/4 h-24 w-1.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-primary via-primary/60 to-transparent opacity-80 shadow-[0_0_20px_oklch(0.74_0.14_75/0.45)]"
-            aria-hidden
-          />
-          <div className="absolute -inset-6 bg-gradient-to-br from-primary/25 via-transparent to-primary/10 blur-3xl transition-opacity duration-500 group-hover/img:opacity-90" />
-          <div className="mining-photo-shell relative transition-transform duration-500 ease-out group-hover/img:-translate-y-1">
-            <div className="mining-photo-frame w-full">
-              <div className="mining-photo-frame__inner aspect-[4/3] w-full">
-                <img
-                  src={excavator}
-                  alt="Excavator at Lebano operation"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-[1.05]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OUR PURPOSE */}
-      <section className="container-narrow py-24 text-center max-w-4xl mx-auto">
-        <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Our Purpose</div>
-        <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-          To unlock the long-term value of South Africa&apos;s mineral resources — delivering
-          reliable supply to global markets, building institutional-grade partnerships, and creating
-          enduring economic opportunity for every stakeholder we serve.
-        </p>
-        <p className="font-display text-xl md:text-2xl uppercase text-foreground tracking-tight">
-          Operational depth. International reach. Enduring value.
-        </p>
-      </section>
-
       {/* WHAT WE DO */}
       <section className="container-narrow py-24">
-        <div className="max-w-3xl mb-14">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">What We Do</div>
-          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
+          <h2 className="font-display text-4xl md:text-5xl uppercase mb-6 text-gradient-gold">
             An Integrated Mining & Export Operation
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Lebano Mining operates across the full bulk commodity value chain — from mineral
-            exploration in Mpumalanga through to international export via Richards Bay — while actively
+            Lebano Mining operates across the full bulk commodity value chain from mineral
+            exploration in Mpumalanga through to international export via Richards Bay while actively
             developing an exploration portfolio in the commodities of tomorrow.
           </p>
         </div>
@@ -285,7 +191,7 @@ export function OurBusiness() {
           </div>
           <div className="order-1 max-w-xl lg:order-2">
             <div className="text-sm text-primary mb-4">Our Commodities</div>
-            <h2 className="font-display text-4xl md:text-5xl mb-6">
+            <h2 className="font-display text-4xl md:text-5xl mb-6 text-gradient-gold">
               Producing Today. Exploring for Tomorrow.
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -299,3 +205,4 @@ export function OurBusiness() {
     </>
   );
 }
+

@@ -43,17 +43,17 @@ const explorationItems = [
   {
     title: "Lithium",
     body:
-      "Lebano Mining is actively exploring for Lithium — a critical mineral at the heart of the global energy transition. Lithium is the foundational input for battery technology, electric vehicle production and large-scale grid storage systems, making it one of the most strategically significant commodities of the next decade.",
+      "Lebano Mining is actively exploring for Lithium, a critical mineral at the heart of the global energy transition. Lithium is the foundational input for battery technology, electric vehicle production and large-scale grid storage systems, making it one of the most strategically significant commodities of the next decade.",
   },
   {
     title: "Copper",
     body:
-      "Lebano Mining is actively exploring for Copper — the metal of electrification. Copper is fundamental to renewable energy infrastructure, power grid expansion, electric vehicles and the full spectrum of technologies that underpin the global transition to a low-carbon economy.",
+      "Lebano Mining is actively exploring copper, the metal of electrification. Copper is fundamental to renewable energy infrastructure, power grid expansion, electric vehicles and the full spectrum of technologies that underpin the global transition to a low-carbon economy.",
   },
   {
     title: "Chrome",
     body:
-      "Lebano Mining is actively exploring for Chrome — a critical South African export commodity and a key input for stainless steel production, aerospace alloys and industrial applications. South Africa holds the world's largest known chrome reserves, making it a natural focus for domestic exploration.",
+      "Lebano Mining is actively exploring for Chrome, a critical South African export commodity and a key input for stainless steel production, aerospace alloys and industrial applications. South Africa holds the world's largest known chrome reserves, making it a natural focus for domestic exploration.",
   },
 ] as const;
 
@@ -61,16 +61,8 @@ function Operations() {
   return (
     <>
       <PageHeader
-        title={
-          <>
-            Lebano Mining does not simply hold <span className="text-gradient-gold">assets.</span>
-            <br className="hidden sm:block" />
-            <span className="sm:ml-0">
-              It <span className="text-gradient-gold">operates</span> them.
-            </span>
-          </>
-        }
-        subtitle="Moving resources from ground to vessel — across five Mpumalanga development regions, through the Richards Bay Coal Terminal, to markets across Europe and Southeast Asia. Simultaneously building the exploration portfolio of tomorrow."
+        title="Operations"
+        subtitle="Moving resources from ground to vessel across five Mpumalanga development regions, through the Richards Bay Coal Terminal, to markets across Europe and Southeast Asia. Simultaneously building the exploration portfolio of tomorrow."
         image={excavator}
       />
 
@@ -81,9 +73,14 @@ function Operations() {
           <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
             Mpumalanga Province — Five Development Regions
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            South Africa&apos;s primary thermal coal producing jurisdiction — established infrastructure,
-            proven geology and direct rail access to Richards Bay.
+          <p className="text-sm uppercase tracking-wider text-muted-foreground leading-relaxed mb-8 flex flex-wrap gap-x-3 gap-y-2">
+            <span>South Africa&apos;s primary thermal coal producing jurisdiction</span>
+            <span className="text-primary/50" aria-hidden>|</span>
+            <span>Established infrastructure</span>
+            <span className="text-primary/50" aria-hidden>|</span>
+            <span>Proven geology</span>
+            <span className="text-primary/50" aria-hidden>|</span>
+            <span>Direct rail access to Richards Bay</span>
           </p>
         </div>
         <ServicesCircularCarousel items={[...coalCarouselSlides]} />
@@ -105,7 +102,7 @@ function Operations() {
             {
               kicker: "01 — Assets",
               title: "Development & mineral rights",
-              body: "Active development across five Mpumalanga regions — exploration, project build-up and production aligned with thermal coal and bulk commodity strategy.",
+              body: "Active development across five Mpumalanga regions exploration, project build-up and production aligned with thermal coal and bulk commodity strategy.",
             },
             {
               kicker: "02 — Logistics",
@@ -115,12 +112,12 @@ function Operations() {
             {
               kicker: "03 — Terminal",
               title: "Richards Bay Coal Terminal",
-              body: "Dedicated port allocation within a world-scale dry bulk gateway — aligning stockpile, railing and vessel loading through RBCT.",
+              body: "Dedicated port allocation within a world-scale dry bulk gateway aligning stockpile, railing and vessel loading through RBCT.",
             },
             {
               kicker: "04 — Markets",
               title: "International off-take",
-              body: "1Mt+ per annum exported with institutional partnerships including Vitol and NG Global Energy Solutions — anchored in European and Southeast Asian demand.",
+              body: "1Mt+ per annum exported with institutional partnerships including Vitol and NG Global Energy Solutions anchored in European and Southeast Asian demand.",
             },
           ]}
         />
@@ -181,8 +178,8 @@ function Operations() {
             Exploring the Commodities of Tomorrow
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Beyond coal, Lebano Mining is actively exploring for three critical minerals —
-            positioning the company at the frontier of global commodity demand and South Africa&apos;s
+            Beyond coal, Lebano Mining is actively exploring for three critical minerals positioning
+            the company at the frontier of global commodity demand and South Africa&apos;s
             expanding mineral economy.
           </p>
         </div>
@@ -205,8 +202,8 @@ function Operations() {
             <span className="text-gradient-gold">To Established Markets.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Anchored by long-term partnerships with Vitol — one of the world&apos;s largest independent
-            commodity trading companies — and supported by NG Global Energy Solutions.
+            Anchored by long-term partnerships with Vitol one of the world&apos;s largest independent
+            commodity trading companies and supported by NG Global Energy Solutions.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -254,17 +251,13 @@ function Operations() {
               Safety &amp; Environment
             </div>
             <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">
-              Non-Negotiable. At Every Level.
+              Safety &amp; Environment
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              At Lebano Mining, safety is not a commitment. It is an operational standard —
-              enforceable, measurable and non-negotiable at every level of the organisation.
-            </p>
             <p className="text-muted-foreground leading-relaxed">
               Rigorous health and safety protocols aligned with South Africa&apos;s Mine Health and
-              Safety Act and international standards. Environmental management plans covering land use,
+              Safety Act and international best-practice standards. Environmental management plans covering land use,
               water management, dust control and progressive rehabilitation maintained across all active
-              sites.
+              development sites.
             </p>
           </div>
         </div>

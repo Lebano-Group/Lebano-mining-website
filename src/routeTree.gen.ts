@@ -9,16 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as SocialResponsibilityRouteImport } from './routes/social-responsibility'
 import { Route as OperationsRouteImport } from './routes/operations'
 import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
 
-const SustainabilityRoute = SustainabilityRouteImport.update({
-  id: '/sustainability',
-  path: '/sustainability',
+const SocialResponsibilityRoute = SocialResponsibilityRouteImport.update({
+  id: '/social-responsibility',
+  path: '/social-responsibility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OperationsRoute = OperationsRouteImport.update({
@@ -41,6 +42,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,72 +55,79 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
-  '/sustainability': typeof SustainabilityRoute
+  '/social-responsibility': typeof SocialResponsibilityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
-  '/sustainability': typeof SustainabilityRoute
+  '/social-responsibility': typeof SocialResponsibilityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
-  '/sustainability': typeof SustainabilityRoute
+  '/social-responsibility': typeof SocialResponsibilityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-us'
     | '/contact'
     | '/gallery'
     | '/leadership'
     | '/operations'
-    | '/sustainability'
+    | '/social-responsibility'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-us'
     | '/contact'
     | '/gallery'
     | '/leadership'
     | '/operations'
-    | '/sustainability'
+    | '/social-responsibility'
   id:
     | '__root__'
     | '/'
+    | '/about-us'
     | '/contact'
     | '/gallery'
     | '/leadership'
     | '/operations'
-    | '/sustainability'
+    | '/social-responsibility'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   LeadershipRoute: typeof LeadershipRoute
   OperationsRoute: typeof OperationsRoute
-  SustainabilityRoute: typeof SustainabilityRoute
+  SocialResponsibilityRoute: typeof SocialResponsibilityRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sustainability': {
-      id: '/sustainability'
-      path: '/sustainability'
-      fullPath: '/sustainability'
-      preLoaderRoute: typeof SustainabilityRouteImport
+    '/social-responsibility': {
+      id: '/social-responsibility'
+      path: '/social-responsibility'
+      fullPath: '/social-responsibility'
+      preLoaderRoute: typeof SocialResponsibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/operations': {
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -157,11 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   LeadershipRoute: LeadershipRoute,
   OperationsRoute: OperationsRoute,
-  SustainabilityRoute: SustainabilityRoute,
+  SocialResponsibilityRoute: SocialResponsibilityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
