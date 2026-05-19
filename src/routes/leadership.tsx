@@ -5,7 +5,7 @@ import lebo from "@docs/team/lebo-mutavhatsindi.png";
 import joel from "@docs/team/joel-kesler.png";
 import shireen from "@docs/team/shireen-stow.png";
 import kabelo from "@docs/team/kabelo-sebidi.png";
-import kgalamadi from "@docs/team/kgalamadi-ramotlhale.jpg";
+import kgalamadi from "@docs/team/Kgalamadi final pic.jpg";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({
