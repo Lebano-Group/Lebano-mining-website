@@ -18,10 +18,8 @@ import team from "@docs/op-team-onsite.jpg";
 import lebano36 from "@docs/lebano-36.jpg";
 import lebano37 from "@docs/lebano-37.jpg";
 import lebano38 from "@docs/lebano-38.jpg";
-import lebano40 from "@docs/lebano-40.jpg";
 import lebano41 from "@docs/lebano-41.jpg";
 import lebano43 from "@docs/lebano-43.jpg";
-import lebano44 from "@docs/lebano-44.jpg";
 import galleryImg1 from "@docs/Gallery pictures/IMG-20200727-WA0011.jpg";
 import galleryImg2 from "@docs/Gallery pictures/IMG-20200727-WA0013.jpg";
 import galleryImg3 from "@docs/Gallery pictures/20191112_134312.jpg";
@@ -54,8 +52,6 @@ const galleryItems: GalleryItem[] = [
   { src: lebano37, label: "Fleet — Bell B40D ADTs", kind: "photo" },
   { src: lebano43, label: "Loader & Stockpile", kind: "photo" },
   { src: lebano36, label: "Articulated Fleet On Site", kind: "photo" },
-  { src: lebano40, label: "Port & Cranes — Transnet", kind: "photo" },
-  { src: lebano44, label: "Port Bulk Handling", region: "Operations", kind: "photo" },
   { src: lebano38, label: "Branded Haul Truck — ADT #240", kind: "photo" },
   { src: excavator, label: "Bulk handling — Richards Bay", kind: "photo" },
   { src: team, label: "Field Team On-Site", kind: "photo" },
