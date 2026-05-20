@@ -46,7 +46,7 @@ const whatWeDo = [
   {
     n: "01",
     title: "Exploration & Development",
-    body: "Exploration underway in Lithium, Copper and Chrome.",
+    body: "Exploration underway in Lithium, Copper, Gold and Chrome.",
   },
   {
     n: "02",
@@ -56,13 +56,9 @@ const whatWeDo = [
   {
     n: "03",
     title: "Logistics & Rail",
-    body: "Pit-to-port solutions for mine to vessel through Transnet and African Rail Corporation.",
+    body: "Pit-to-port solutions.",
   },
-  {
-    n: "04",
-    title: "International Export",
-    body: "Dedicated Richards Bay port allocation. 1Mt+ exported annually. Long-term partnerships including Vitol SA and NG Global Energy Solutions. Europe, India, China and Southeast Asia.",
-  },
+
 ] as const;
 
 const commodities = [
@@ -89,24 +85,10 @@ const commodities = [
   },
   {
     symbol: "◇",
-    title: "Gold-Arizona, USA",
-    tag: "● Exploration Stage",
+    title: "Gold USA",
+    tag: "● Active Development",
     body:
-      "Lebano Mining holds active gold exploration interests in the state of Arizona, United States, one of the most historically significant and geologically prospective gold-producing jurisdictions in North America. This international exploration programme reflects the company's commitment to building a diversified, globally positioned mineral portfolio.",
-  },
-  {
-    symbol: "◇",
-    title: "Magnesium",
-    tag: "● Exploration Stage",
-    body:
-      "Active exploration programme underway. Magnesium is one of the lightest structural metals and a critical material in the automotive, aerospace and clean energy sectors — with growing strategic importance as global industries accelerate their transition to lightweight, low-emission technologies.",
-  },
-  {
-    symbol: "◇",
-    title: "Iron Ore",
-    tag: "● Exploration Stage",
-    body:
-      "Active exploration programme underway. Iron ore is a foundational bulk commodity the primary input for global steel production and a commodity in which South Africa holds significant reserve endowments and established export infrastructure.",
+      "As part of our global expansion strategy, Lebano Mining and its international partners have active gold development projects in Nevada, Arizona and South Arizona.",
   },
   {
     symbol: "◇",
@@ -138,7 +120,7 @@ export function Home() {
           <HeroMarqueeHeadline />
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Active locally and globally. Exporting in excess of one million metric tons
-            annually through Richards Bay to Europe, Southeast Asia, India and China. Exploring the commodities
+            annually through Richards Bay port and Maputo to Europe, Southeast Asia, India and China. Exploring the commodities
             that will power tomorrow.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -179,7 +161,7 @@ export function Home() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Lebano Mining operates across the full bulk commodity value chain from mineral
-            exploration in local and global markets to international export through Richards Bay while actively
+            exploration in local and global markets to international export, actively
             developing an exploration portfolio in the commodities of tomorrow.
           </p>
         </div>

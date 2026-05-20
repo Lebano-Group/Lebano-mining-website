@@ -166,7 +166,7 @@ const mashuduInitiatives = [
     id: "univen",
     title: "University of Venda",
     lines: [
-      "The Foundation funds scholarships for academically deserving learners from disadvantaged backgrounds at institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
+      "The Foundation funds scholarships for learners at institutions across South Africa, creating pathways to meaningful employment and professional development for the next generation of South African talent.",
       "The foundation donated to the University of Venda to support the institution and its students.",
     ],
     images: univenImages,
@@ -273,8 +273,8 @@ function SocialResponsibility() {
           <p className="max-w-3xl leading-relaxed mb-8 opacity-95">
             Founded by Mr. Livhuwani Mutavhatsindi in 2022, the Mashudu Francinah Foundation is Lebano
             Mining&apos;s primary vehicle for structured community investment and social development across
-            South Africa with a particular focus on education, food security and the upliftment of
-            communities in Limpopo Province. The Foundation reflects Mr. Mutavhatsindi&apos;s personal
+            South Africa, with a particular focus on education, food security and the upliftment of
+            communities. The Foundation reflects Mr. Mutavhatsindi&apos;s personal
             conviction that the measure of a business is not only its commercial performance, but its impact
             on the people and communities that surround it. The following programmes are recorded in
             our foundation documentation open each item for the full account.

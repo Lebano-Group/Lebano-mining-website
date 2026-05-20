@@ -5,7 +5,7 @@ import { ServicesCircularCarousel } from "@/components/ServicesCircularCarousel"
 import { VerticalTimeline } from "@/components/VerticalTimeline";
 import excavator from "@docs/op-excavator.jpg";
 import port from "@docs/op-port.jpg";
-import lebano44 from "@docs/lebano-44.jpg";
+import safetyEnvironment from "@docs/Gallery pictures/IMG-20200727-WA0013.jpg";
 
 export const Route = createFileRoute("/operations")({
   head: () => ({
@@ -62,7 +62,6 @@ function Operations() {
     <>
       <PageHeader
         title="Operations"
-        subtitle="Moving resources from ground to vessel across five Mpumalanga development regions, through the Richards Bay Coal Terminal, to markets across Europe and Southeast Asia. Simultaneously building the exploration portfolio of tomorrow."
         image={excavator}
       />
 
@@ -78,9 +77,8 @@ function Operations() {
             <span className="text-primary/50" aria-hidden>|</span>
             <span>Established infrastructure</span>
             <span className="text-primary/50" aria-hidden>|</span>
-            <span>Proven geology</span>
             <span className="text-primary/50" aria-hidden>|</span>
-            <span>Direct rail and road access to Richards Bay</span>
+            <span>Direct rail and road access to ports</span>
           </p>
         </div>
         <ServicesCircularCarousel items={[...coalCarouselSlides]} />
@@ -92,35 +90,12 @@ function Operations() {
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Integrated flow</div>
           <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">From Ground to Market</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Lebano Mining traces a single chain from development assets in Mpumalanga through
-            integrated rail and road solutions to a dedicated Richards Bay allocation to long-term export
+            Lebano Mining traces a single chain from development assets through
+            integrated rail and road solutions to long-term export
             corridors in Europe, India, China and Southeast Asia.
           </p>
         </div>
-        <VerticalTimeline
-          items={[
-            {
-              kicker: "01 — Assets",
-              title: "Development & mineral rights",
-              body: "Active development across five Mpumalanga regions exploration, project build-up and production aligned with thermal coal and bulk commodity strategy.",
-            },
-            {
-              kicker: "02 — Logistics",
-              title: "Rail to the export corridor",
-              body: "Pit-to-port solutions through Transnet and African Rail Corporation, connecting Mpumalanga operations to the Richards Bay bulk export corridor.",
-            },
-            {
-              kicker: "03 — Terminal",
-              title: "Richards Bay Coal Terminal",
-              body: "Dedicated port allocation within a world-scale dry bulk gateway aligning stockpile, railing and vessel loading through NPT.",
-            },
-            {
-              kicker: "04 — Markets",
-              title: "International off-take",
-              body: "1Mt+ per annum exported with institutional partnerships including Vitol and NG Global Energy Solutions anchored in European and Southeast Asian demand.",
-            },
-          ]}
-        />
+        
       </section>
 
       {/* Export Infrastructure */}
@@ -142,7 +117,7 @@ function Operations() {
             <ul className="space-y-3 text-muted-foreground leading-relaxed mb-8">
               <li>
                 <span className="text-foreground font-medium">Annual throughput capacity: </span>
-                60Mt+
+                58Mt+
               </li>
               <li>
                 <span className="text-foreground font-medium">Lebano Mining: </span>
@@ -154,7 +129,7 @@ function Operations() {
               </li>
               <li>
                 <span className="text-foreground font-medium">Markets: </span>
-                Europe | Southeast Asia
+                Europe | India | China | Southeast Asia
               </li>
             </ul>
             <Link
@@ -194,56 +169,13 @@ function Operations() {
         </div>
       </section>
 
-      {/* International Export */}
-      <section className="container-narrow pb-28 pt-0">
-        <div className="max-w-4xl mb-14">
-          <h2 className="font-display text-3xl md:text-5xl uppercase mb-6 leading-tight">
-            1 Million Metric Tons. Annually.{" "}
-            <span className="text-gradient-gold">To Established Markets.</span>
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Anchored by long-term partnerships with Vitol SA, one of the world&apos;s largest independent
-            commodity trading companies and supported by NG Global Energy Solutions.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
-            <div className="font-display text-4xl md:text-5xl uppercase text-gradient-gold mb-3">
-              1Mt+
-            </div>
-            <p className="text-sm text-muted-foreground leading-snug">
-              Exported per annum through dedicated Richards Bay port allocation
-            </p>
-          </div>
-          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
-            <div className="font-display text-xl md:text-2xl uppercase mb-3 leading-snug">
-              Europe &amp;
-              <br />
-              SE Asia
-            </div>
-            <p className="text-sm text-muted-foreground leading-snug">
-              Established international export markets with long-term off-take relationships
-            </p>
-          </div>
-          <div className={`p-8 md:p-10 text-center ${cardHover}`}>
-            <div className="font-display text-lg md:text-xl uppercase mb-3 tracking-wide">
-              VITOL
-              <br />
-              <span className="text-primary text-base">+ NG Global</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-snug">
-              Institutional trading partnerships — global commodity market access
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Safety & Environment */}
       <section className="bg-gradient-panel border-y border-border/60 py-20">
         <div className="container-narrow grid lg:grid-cols-2 gap-12 items-center">
           <img
-            src={lebano44}
-            alt="Port bulk handling at Richards Bay"
+            src={safetyEnvironment}
+            alt="Excavator loading a haul truck at an open-pit mining operation"
             className="rounded shadow-elevated aspect-[4/3] object-cover w-full"
           />
           <div>

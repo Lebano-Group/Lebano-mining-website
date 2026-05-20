@@ -19,8 +19,8 @@ const cardHover =
   "rounded border border-border bg-card shadow-elevated transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-20px_oklch(0_0_0/0.75)] hover:border-primary/50 hover:ring-1 hover:ring-primary/20";
 
 const companyOverview = [
-  "Lebano Mining (Pty) Ltd is a South African bulk commodity mining and export company, founded in 2012 by Mr. Livhuwani Mutavhatsindi and headquartered in Midrand, Gauteng. The company operates across the full commodity value chain from mineral exploration and asset development through to integrated rail logistics and international export with a primary focus on thermal coal and an expanding exploration portfolio in Lithium, Copper, Gold, Magnesium, Iron ore and Chrome.",
-  "Over more than a decade of active operation, Lebano Mining has grown from a domestic bulk commodity logistics provider into a fully integrated mining and export company with active development assets locally and globally, with a dedicated port allocation at the Richards Bay Coal Terminal, and established commodity trading relationships spanning Europe, India, China and Southeast Asia.",
+  "Lebano Mining (Pty) Ltd is a South African bulk commodity mining and export company, founded in 2012 by Mr. Livhuwani Mutavhatsindi and headquartered in Midrand, Gauteng. The company operates across the full commodity value chain from mineral exploration and asset development through to integrated rail and road solutions and international export with a primary focus on thermal coal and gold with an expanding exploration portfolio in Lithium, Copper and Chrome.",
+  "Over more than a decade of active operations, Lebano Mining has grown from a domestic bulk commodity logistics provider into a fully integrated mining and export company with active development assets locally and globally.",
 ] as const;
 
 const values = [
@@ -53,8 +53,7 @@ function About() {
             </h1>
             <p className="mt-8 mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed font-light">
               Lebano Mining is an established South African mining and export company with over a decade
-              of operational history, active development assets across Mpumalanga Province and proven export
-              capability through Richards Bay.
+              of operational history and active development assets.
             </p>
           </div>
         </div>
