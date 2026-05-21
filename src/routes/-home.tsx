@@ -67,7 +67,7 @@ const commodities = [
     title: "Thermal Coal",
     tag: "● Active Production",
     body:
-      "1Mt+ exported annually through Richards Bay. Five development regions across Mpumalanga Province. Long-term off-take with Vitol and NG Global Energy Solutions.",
+      "1Mt+ exported annually through Richards Bay. Five development regions across Mpumalanga Province. Long-term off-take partnerships.",
   },
   {
     symbol: "◇",
