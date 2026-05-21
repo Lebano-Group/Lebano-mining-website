@@ -46,7 +46,7 @@ const whatWeDo = [
   {
     n: "01",
     title: "Exploration & Development",
-    body: "Exploration underway in Lithium, Copper, Gold and Chrome.",
+    body: "Exploration underway in Lithium, Copper and Chrome.",
   },
   {
     n: "02",

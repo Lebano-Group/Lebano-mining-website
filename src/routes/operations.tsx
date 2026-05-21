@@ -205,7 +205,7 @@ function Operations() {
             Exploring the Commodities of Tomorrow
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Beyond coal, Lebano Mining is actively exploring for other critical minerals positioning
+            Beyond coal and gold, Lebano Mining is actively exploring for other critical minerals positioning
             the company at the frontier of global commodity demand and South Africa&apos;s
             expanding mineral economy.
           </p>
